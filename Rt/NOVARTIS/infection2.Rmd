@@ -1,0 +1,787 @@
+---
+title: "Infection in heterogeneous population with interventions"
+author: "C. Bartels"
+date: "18 April 2020"
+output: word_document
+---
+
+## simulations
+
+```{r}
+# setup
+require(dplyr)
+require(tidyr)
+require(ggplot2)
+require(gganimate)
+set.seed(123)
+
+theme_set(theme_classic())
+
+# size of population
+nPop <- 10^5
+
+
+# end of simulation
+tend <- 365
+
+# infective period, assumed to start one day after infection with duration
+idur <- 7
+
+# number of repeated simulations
+nsim <- 50
+
+# homgenous population
+  # rate of new infections per day 
+  r0a = 0.4
+  # between subject variability of r0
+  sd0a = 0.0
+
+# heterogenous population
+  # rate of new infections per day
+  r0b = 0.2
+  # between subject variability of r0
+  sd0b = 1.0
+
+
+
+# simulate spread of infection
+mySim <- function(pat1, int1 = NULL, rVac = 0.0) {
+  
+  # number of patients that get vaccinated
+  nVac <- max(1.0, min(nrow(pat1), rVac*nrow(pat1)))
+  
+  pat1 <-
+    pat1 %>%
+    mutate(
+      is = 0, # day of infection (0 ... not infected)
+      ip = 1:n(), # subject identifier
+      is = ifelse(ip <= nVac, 99999, is), # vacinated subjects
+      is = ifelse(ip %in% ceiling(runif(10,nVac,n())), 1, is), # 10 random subjects get infected
+      cru = cumsum(r0) / sum(r0) # to select subjets that get infected with probability proportional to r0
+    )
+
+  # simulate day by day
+  for(iw in 2:tend) { # iw <- 2
+    
+    # intervention
+    if(is.null(int1)) {
+      if1 <- 1
+    } else {
+      if1 <- int1 %>% filter(t == iw) %>% select(rf) %>% unlist()
+    }
+  
+    # select patients that are infective
+    pat2 <- pat1 %>% filter(is != 0 & is > iw-idur & is <= iw)
+  
+    # rate of transmission
+    rt <- sum(pat2$r0) * if1
+    
+    # number of subjects infected
+    ni <- rpois(1, rt)
+    
+    if(ni > 0) {
+      # randomly select the patients who get transmitted
+      pt1 <- runif(ni, min = 0.0, max = 1.0)
+      ip1 <- findInterval(pt1, pat1$cru) + 1
+      
+      # select patients who receive infection
+      pat1$sel <- FALSE
+      pat1[ip1, "sel"] <- TRUE
+  
+      # infect patients who are not immune
+      pat1 <- 
+        pat1 %>%
+        mutate(is = ifelse(is == 0 & sel, iw, is))
+    }
+    
+  }
+
+  return(pat1)
+}
+
+# repeated simulations and summarize as median and percentile
+mySim2 <- function(r0, sd0, int1 = NULL) 
+{
+  
+  # subjects
+  pat1 <- tibble(
+    r0l = rnorm(nPop, log(r0), sd0), # log of patient specific rate
+    r0 = exp(r0l) / exp(sd0^2/2) # patient specific rate (rescaled to have mean r0)
+  )
+
+  sims <- list()
+  for(isim in 1:nsim) {
+    
+    sim1 <- mySim(pat1, int1)
+
+    pp1 <-
+      ggplot(sim1, aes(x=r0, fill=(is!=0))) + 
+      geom_density(alpha=0.4, position="stack") + 
+      scale_x_log10()
+  
+    s2 <- sim1 %>% group_by(is) %>% summarise(ni = n())
+  
+    ts1 <- 
+      tibble(t = 1:tend, isim=isim) %>% 
+      left_join(s2, by = c("t" = "is")) %>% 
+      mutate(
+        ni = ifelse(is.na(ni), 0, ni),
+        nt = cumsum(ni)) 
+    
+    sims[[isim]] <- ts1
+  
+  }
+  
+  sim2 <- 
+    bind_rows(sims) %>%
+    group_by(t) %>%
+    summarise(
+      ni25 = quantile(ni, probs = 0.25),
+      nim = median(ni),
+      ni75 = quantile(ni, probs = 0.75),
+      nt25 = quantile(nt, probs = 0.25),
+      ntm = median(nt),
+      nt75 = quantile(nt, probs = 0.75)
+    )
+
+}
+
+
+# Illustrate heterogenous patient population
+pat1 <- tibble(
+  r0l = rnorm(nPop, log(r0b), sd0b), # log of patient specific rate
+  r0 = exp(r0l) / exp(sd0b^2/2) # patient specific rate (rescaled to have mean r0)
+)
+
+p0 <-
+  ggplot(pat1, aes(x=r0)) + 
+  geom_density() +
+  scale_x_log10() +
+  xlab("Infection rate (1/Day)")
+
+print(p0)
+
+# make animated graph of disease progression
+mygraph1 <- function(sim1) {
+  sim1 <-
+    sim1 %>%
+    mutate(bin = cut_interval(log(r0), n = 40)) %>%
+    group_by(bin) %>%
+    mutate(
+      dbin = median(r0),
+      order = as.double(bin)) %>%
+    ungroup()
+  
+  an1 <-
+    sim1 %>%
+    expand(ip, iweek) %>%
+    rename(lweek = iweek) %>%
+    full_join(sim1, by="ip") %>%
+    ungroup()
+  
+  an2 <-
+    an1 %>%
+    group_by(dbin, bin, order, lweek) %>%
+    summarise(
+      n = sum(is>0 & iweek<=lweek),
+      ntot = n(),
+      ninf = sum(is>0),
+      reff = mean(r0 * (is == 0 | iweek>lweek)) * (idur - 1)) %>%
+    ungroup() %>%
+    arrange(lweek, dbin)
+  
+  mylabs1 <- 
+    sim1 %>% 
+    select(order, dbin) %>% 
+    unique() %>%
+    mutate(lab = ifelse((order+2) %% 5 == 0, paste(signif(dbin,2)), ""))
+  
+  # Animation
+  p <-
+    an2 %>% 
+    ggplot(aes(x = order)) +
+    geom_bar(aes(y=ntot), stat = "identity", fill = "grey20", alpha=0.2) +
+    geom_bar(aes(y=ninf), stat = "identity", fill = "red", alpha=0.2) +
+    geom_bar(aes(y=n), stat = "identity", fill = "#ff9933") +
+    labs(title=paste0('Week {closest_state}\nR(1 year) = ', round(R360, 2)), 
+         x="Infection rate (1/Day)",
+         y="Number of subjects") +
+    theme(plot.title = element_text(hjust = 0.5, size = 18)) +
+    scale_x_continuous(breaks=mylabs1$order, labels=mylabs1$lab) +
+    transition_states(lweek, transition_length = 1, state_length = 5) +
+    view_follow(fixed_y=TRUE, fixed_x = TRUE) +
+    ease_aes('cubic-in-out')
+
+  return(p)
+}
+
+
+```
+
+## No intervention, no Heterogeneity
+
+```{r}
+
+
+
+sim2 <- mySim2(r0a, sd0a)
+  
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+print(p1 + scale_y_log10() + coord_cartesian(ylim = c(1, 100)))
+print(p1 + scale_y_log10() + coord_cartesian(xlim = c(10,30)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+
+ts2 <- sim2 %>% mutate(Scenario = "Base")
+
+```
+
+## No intervention, with Heterogeneity
+
+```{r}
+
+
+sim2 <- mySim2(r0b, sd0b)
+  
+
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Heterogeneity")
+)  
+
+p1 <-
+  ggplot(ts2 %>% filter(Scenario %in% c("Base", "Heterogeneity")), aes(x = t, y = ntm / nPop * 100)) +
+  geom_line(aes(linetype = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Base"),
+                aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+print(p1 + coord_cartesian(xlim = c(4, 30)) + scale_y_log10())
+
+
+```
+
+
+
+## Intervention from day 20 to 50, no Heterogeneity
+
+```{r}
+
+
+# intervention
+int1 <- 
+  tibble(t = 1:tend) %>%
+  mutate(rf = ifelse(t>20 & t<50, 0.3, 1.0)) # period of social distancing
+
+
+sim2 <- mySim2(r0a, sd0a, int1)
+  
+
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Intervention")
+)  
+
+p1 <-
+  ggplot(ts2 %>% filter(Scenario %in% c("Base", "Intervention")), aes(x = t, y = ntm / nPop * 100)) +
+  geom_line(aes(linetype = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Base"),
+                aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+
+```
+
+
+## Intervention from day 20 to 50, with Heterogeneity
+
+```{r}
+
+
+sim2 <- mySim2(r0b, sd0b, int1)
+  
+
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Both")
+)  
+
+p1 <-
+  ggplot(ts2 %>% filter(Scenario %in% c("Heterogeneity", "Both")), aes(x = t, y = ntm / nPop * 100)) +
+  geom_line(aes(linetype = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Both"),
+                aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+
+
+```
+
+## Intervention from day 20 to 50 with follow up to day 80, with Heterogeneity
+
+```{r}
+
+
+# intervention
+int2 <- 
+  tibble(t = 1:tend) %>%
+  mutate(rf = case_when(
+    t <= 20 ~ 1,
+    t <  50 ~ 0.3,
+    t <  80 ~ 0.6,
+    TRUE ~ 1
+  )) # period of social distancing
+
+sim2 <- mySim2(r0b, sd0b, int2)
+  
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Follow up to day 80")
+)  
+
+p1 <-
+  ggplot(ts2 %>% filter(Scenario %in% c("Follow up to day 80", "Both")), aes(x = t, y = ntm / nPop * 100)) +
+  geom_line(aes(linetype = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Both"),
+                aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+
+
+```
+
+## Intervention from day 20 to 50 with follow up to day 180, with Heterogeneity
+
+```{r}
+
+# intervention
+int3 <- 
+  tibble(t = 1:tend) %>%
+  mutate(rf = case_when(
+    t <= 20 ~ 1,
+    t <  50 ~ 0.3,
+    t < 180 ~ 0.6,
+    TRUE ~ 1
+  )) # period of social distancing
+
+sim2 <- mySim2(r0b, sd0b, int3)
+  
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Follow up to day 180")
+)  
+
+  
+p1 <-
+  ggplot(ts2 %>% filter(Scenario %in% c("Follow up to day 180", "Both")), aes(x = t, y = ntm / nPop * 100)) +
+  geom_line(aes(linetype = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Follow up to day 180"),
+                aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+
+```
+
+
+## Intervention from day 20 to 50 with pronounced follow up to day 180, with Heterogeneity
+
+```{r}
+
+
+# intervention
+int4 <- 
+  tibble(t = 1:tend) %>%
+  mutate(rf = case_when(
+    t <= 20 ~ 1,
+    t <  50 ~ 0.3,
+    t < 180 ~ 0.5,
+    TRUE ~ 1
+  )) # period of social distancing
+
+sim2 <- mySim2(r0b, sd0b, int4)
+  
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Pronounced follow up to day 180")
+)  
+
+  
+
+
+```
+
+## Intervention from day 20 to day 180, with Heterogeneity
+
+```{r}
+
+
+# intervention
+int5 <- 
+  tibble(t = 1:tend) %>%
+  mutate(rf = case_when(
+    t <= 20 ~ 1,
+    t <  50 ~ 0.3,
+    t < 180 ~ 0.3,
+    TRUE ~ 1
+  )) # period of social distancing
+
+sim2 <- mySim2(r0b, sd0b, int5)
+  
+p1 <-
+  ggplot(sim2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_ribbon(aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+
+p2 <-
+  ggplot(sim2, aes(x = t, y = nim / nPop * 100)) +
+  geom_ribbon(aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  geom_line() +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p2)
+
+ts2 <- bind_rows(
+  ts2,
+  sim2 %>% mutate(Scenario = "Intervention to day 180")
+)  
+
+  
+p1 <-
+  ggplot(ts2, aes(x = t, y = ntm / nPop * 100)) +
+  geom_line(aes(colour = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Follow up to day 180"),
+                aes(ymin = nt25 / nPop * 100, ymax = nt75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infected")
+
+print(p1 + coord_cartesian(ylim = c(0, 100)))
+print(p1 + scale_y_log10() + coord_cartesian(ylim = c(1, 100)))
+print(p1 + scale_y_log10() + coord_cartesian(xlim = c(4,30)))
+
+p1 <-
+  ggplot(ts2, aes(x = t, y = nim / nPop * 100, colour = Scenario)) +
+  geom_line(aes(colour = Scenario)) +
+  geom_ribbon(data = ts2 %>% filter(Scenario == "Follow up to day 180"),
+                aes(ymin = ni25 / nPop * 100, ymax = ni75 / nPop * 100), alpha = 0.3) +
+  xlab("Day") +
+  ylab("% infectious")
+
+print(p1 )
+
+```
+
+# plots of density
+```{r}
+
+# subjects
+set.seed(123)
+pat0 <- tibble(
+  r0l = rnorm(nPop, log(r0a), 0.001), # log of patient specific rate
+  r0 = exp(r0l) / exp(0.001^2/2) # patient specific rate (rescaled to have mean r0)
+)
+
+set.seed(123)
+sim1 <- mySim(pat0)
+
+R360 = sim1 %>% summarise(mr = mean(r0 * (is == 0)) * (idur - 1)) %>% unlist()
+
+
+sim1 <-
+  sim1 %>%
+  mutate(
+    iweek = pmin((is + 6) %/% 7, 52))
+
+pp1 <-
+  ggplot(sim1, aes(x=r0)) + 
+  # geom_freqpoly(fill = NA, size=2) +
+  geom_histogram(aes(fill = (is>0)), bins=40, alpha=0.2) +
+  geom_freqpoly(aes(colour=factor(iweek)), position="stack", bins=40) + 
+  scale_x_log10() +
+  xlab("Infection rate (1/Day)") +
+  scale_fill_discrete(labels = c("No", "Yes")) +
+  guides(colour = "none", fill = guide_legend("Infected")) +
+  ggtitle(paste0("Homogeneous\nR(1 year) = ", round(R360, 2)))
+
+
+print(pp1)
+
+p <- mygraph1(sim1)
+animate(p, nframes=50, fps=4)
+anim_save("animHom.gif", p)
+
+
+# including vaccination
+set.seed(123)
+sim1 <- mySim(pat0, rVac = 1-1/r0a/(idur - 1))
+
+R360 = sim1 %>% summarise(mr = mean(r0 * (is == 0)) * (idur - 1)) %>% unlist()
+
+
+sim1 <-
+  sim1 %>%
+  mutate(
+    iweek = pmin((is + 6) %/% 7, 52))
+
+pp1 <-
+  ggplot(sim1, aes(x=r0)) + 
+  # geom_freqpoly(fill = NA, size=2) +
+  geom_histogram(aes(fill = (is>0)), bins=40, alpha=0.2) +
+  geom_freqpoly(aes(colour=factor(iweek)), position="stack", bins=40) + 
+  scale_x_log10() +
+  xlab("Infection rate (1/Day)") +
+  scale_fill_discrete(labels = c("No", "Yes")) +
+  guides(colour = "none", fill = guide_legend("Infected")) +
+  ggtitle(paste0("Vaccination\nR(1 year) = ", round(R360, 2)))
+
+
+print(pp1)
+
+p <- mygraph1(sim1)
+animate(p, nframes=50, fps=4)
+anim_save("animHomVac.gif", p)
+
+
+# intervention
+set.seed(123)
+sim1 <- mySim(pat0, int4)
+
+R360 = sim1 %>% summarise(mr = mean(r0 * (is == 0)) * (idur - 1)) %>% unlist()
+
+
+sim1 <-
+  sim1 %>%
+  mutate(
+    iweek = pmin((is + 6) %/% 7, 52))
+
+pp1 <-
+  ggplot(sim1, aes(x=r0)) + 
+  # geom_freqpoly(fill = NA, size=2) +
+  geom_histogram(aes(fill = (is>0)), bins=40, alpha=0.2) +
+  geom_freqpoly(aes(colour=factor(iweek)), position="stack", bins=40) + 
+  scale_x_log10() +
+  xlab("Infection rate (1/Day)") +
+  scale_fill_discrete(labels = c("No", "Yes")) +
+  guides(colour = "none", fill = guide_legend("Infected")) +
+  ggtitle(paste0("Homogeneous with follow up to day 180\nR(1 year) = ", round(R360, 2)))
+
+
+print(pp1)
+
+p <- mygraph1(sim1)
+animate(p, nframes=50, fps=4)
+anim_save("animHomI4.gif", p)
+
+
+# subjects
+set.seed(123)
+pat1 <- tibble(
+  r0l = rnorm(nPop, log(r0b), sd0b), # log of patient specific rate
+  r0 = exp(r0l) / exp(sd0b^2/2) # patient specific rate (rescaled to have mean r0)
+)
+
+set.seed(123)
+sim1 <- mySim(pat1)
+
+R360 = sim1 %>% summarise(mr = mean(r0 * (is == 0)) * (idur - 1)) %>% unlist()
+
+sim1 <-
+  sim1 %>%
+  mutate(
+    iweek = pmin((is + 6) %/% 7, 52))
+
+pp1 <-
+  ggplot(sim1, aes(x=r0)) + 
+  # geom_freqpoly(fill = NA, size=2) +
+  geom_histogram(aes(fill = (is>0)), bins=40, alpha=0.2) +
+  geom_freqpoly(aes(colour=factor(iweek)), position="stack", bins=40) + 
+  scale_x_log10() +
+  xlab("Infection rate (1/Day)") +
+  scale_fill_discrete(labels = c("No", "Yes")) +
+  guides(colour = "none", fill = guide_legend("Infected")) +
+  ggtitle(paste0("Heterogeneous\nR(1 year) = ", round(R360, 2)))
+
+
+print(pp1)
+
+p <- mygraph1(sim1)
+animate(p, nframes=50, fps=4)
+anim_save("animHetBase.gif", p)
+
+
+set.seed(123)
+sim1 <- mySim(pat1, int4)
+
+R360 = sim1 %>% summarise(mr = mean(r0 * (is == 0)) * (idur - 1)) %>% unlist()
+
+sim1 <-
+  sim1 %>%
+  mutate(
+    iweek = pmin((is + 6) %/% 7, 52))
+
+pp1 <-
+  ggplot(sim1, aes(x=r0)) + 
+  # geom_freqpoly(fill = NA, size=2) +
+  geom_histogram(aes(fill = (is>0)), bins=40, alpha=0.2) +
+  geom_freqpoly(aes(colour=factor(iweek)), position="stack", bins=40) + 
+  scale_x_log10() +
+  xlab("Infection rate (1/Day)") +
+  scale_fill_discrete(labels = c("No", "Yes")) +
+  guides(colour = "none", fill = guide_legend("Infected")) +
+  ggtitle(paste0("Heterogeneous with follow up to day 180\nR(1 year) = ", round(R360, 2)))
+
+
+print(pp1)
+
+p <- mygraph1(sim1)
+animate(p, nframes=50, fps=4)
+anim_save("animHetI4.gif", p)
+
+
+```
+
+
+
