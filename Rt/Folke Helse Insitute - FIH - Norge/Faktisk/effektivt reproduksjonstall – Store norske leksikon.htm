@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://snl.no/effektivt_reproduksjonstall -->
+<html lang="nb"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<script type="text/javascript" async="" src="./effektivt reproduksjonstall – Store norske leksikon_files/analytics.js"></script><script src="https://js-agent.newrelic.com/nr-1167.min.js"></script><script async="" src="./effektivt reproduksjonstall – Store norske leksikon_files/beacon.js"></script><script async="" src="./effektivt reproduksjonstall – Store norske leksikon_files/gtm.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"4e244f3df5","applicationID":"6891840","transactionName":"c18PQkUMVQ5WRRoEQkRZAlpSPE8LVkAaE1lVRw==","queueTime":0,"applicationTime":1665,"agent":""}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"4e244f3df5",applicationID:"6891840"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+    <title>effektivt reproduksjonstall – Store norske leksikon</title>
+      <meta name="description" content="Effektivt reproduksjonstall er et epidemiologisk mål på spredningspotensialet til en sykdomsfremkallende mikroorganisme i en befolkning. Det effektive reproduksjonstallet, også kjent som RE eller Reff, har fellestrekk med det basale reproduksjonstallet R0. Det basale og det effektive reproduksjonstallet bygger imidlertid på ulike forutsetninger og har ulike bruksområder.">
+    <meta name="google-site-verification" content="DwZjvVshXtvwxWrYJ6jvFu2URfuNBZxghWTANRxo6NE">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script>dataLayer = [{  'mediaCount': '0', 
+  'characterCount': '4921', 
+  'internalLinkCount': '16', 
+  'articleId': '443785', 
+  'userType': 'gjest', 
+  'environment': 'production'}];</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PFJQPQ');</script>
+
+
+    <link rel="canonical" href="https://snl.no/effektivt_reproduksjonstall">
+    <link rel="icon" href="https://snl.no/packs/assets/images/favicon-ae9db3ea70edd843915d055fd5e19065.png">
+
+    <link rel="image_src" href="https://snl.no/packs/assets/images/snl_logo_fb-8a4d6320145437b74760c465aa772788.png">
+
+    <link rel="stylesheet" href="./effektivt reproduksjonstall – Store norske leksikon_files/application-redesign-beb4e4f37d35daa6bc016b05ae4b24ec.css">
+    
+    <script>
+  window.Strings = {
+    autocompletePromptPositive: 'Skriv {count} eller flere tegn for å se søkeforslag.',
+    autocompletePromptZero: 'Begynn å skrive for å se søkeforslag.',
+    autocompleteResultsFound: ' søkeforslag funnet',
+    autocompleteResultItem: '{label} Søkeforslag {index} av {total}',
+    tableSortButton: 'Sorter'
+  }
+</script>
+
+    <script src="./effektivt reproduksjonstall – Store norske leksikon_files/application-redesign-211902abe8ca805ccdb0.js" defer="defer"></script>
+    
+
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="u00O1XYjC6RsL3bRYc5/cqI6JPX5dOIfW5L7jq54i0JEKidx+qx47aa/zYCMjWSKvMLSl0vY27YqT6kdv/n67g==">
+
+    <meta property="og:title" content="effektivt reproduksjonstall – Store norske leksikon">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Store norske leksikon">
+    <meta property="og:url" content="https://snl.no/effektivt_reproduksjonstall">
+          <meta property="og:image" content="https://storage.googleapis.com/snl-no-media/media/148924/article_topimage_zsun-fu-hsIDivLEF9I-unsplash.jpg">
+      <meta property="og:image" content="https://storage.googleapis.com/snl-no-media/media/148923/standard_korona-testing-bergen.jpg">
+      <meta property="og:image" content="https://storage.googleapis.com/snl-no-media/media/148927/standard_Reproduksjonstall2_og_3.png">
+      <meta property="og:image" content="https://storage.googleapis.com/snl-no-media/media/148929/standard_Effektivt_reproduksjonstall__1_.png">
+
+
+  </head>
+  <body itemscope="" itemtype="http://schema.org/WebPage" style="">
+      <!-- Begin comScore Tag -->
+      <script>
+        var _comscore = _comscore || [];
+        _comscore.push({ c1: "2", c2: "27926184" });
+        (function() {
+          var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+          s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+          el.parentNode.insertBefore(s, el);
+        })();
+      </script>
+      <noscript>
+        <img src="https://sb.scorecardresearch.com/p?c1=2&c2=27926184&cv=2.0&cj=1" alt="">
+      </noscript>
+      <!-- End comScore Tag -->
+
+
+
+    <div class="l-header">
+      <div class="l-header__content">
+        <header class="site-header">
+  <a href="https://snl.no/" class="site-header__home-link">
+    <span class="site-logo site-logo--snl">
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/snl_logo_dark-2c14cffc8dbfed734292bbd8a0422210.svg" alt="" class="site-logo__image">
+    Store norske leksikon
+</span>
+
+  </a>
+    <div class="site-header__login">
+      <a hidden="hidden" href="https://snl.no/.login" class="button js-login-button button--standalone button--mobile-icon">
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/login-300d9e7f590c2bd7e61fdd83058be8fb.svg" alt="Logg inn" class="button__icon">
+  <span class="button__text">Logg inn</span>
+</a>
+    </div>
+  <div class="site-header__search-form">
+    <form action="https://snl.no/.search" class="search-form js-autocomplete">
+  <div class="awesomplete"><input type="search" name="query" class="search-form__field" placeholder="Søk i Store norske leksikon" autocomplete="off" data-autocomplete-base-url="/.search/autocomplete?query=" aria-owns="awesomplete_list_1" role="combobox"><ul hidden="" role="listbox" id="awesomplete_list_1"></ul><span class="visually-hidden" role="status" aria-live="assertive" aria-atomic="true">Skriv 1 eller flere tegn for å se søkeforslag.</span></div>
+  <button class="search-form__button">
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/search-d6289c147f819b315a0090f979970dcb.svg" alt="Søk" class="search-form__icon">
+  </button>
+</form>
+
+  </div>
+</header>
+
+
+
+      </div>
+    </div>
+    <main id="content">
+      <div itemscope="" itemtype="http://schema.org/Article" class="l-article">
+
+
+  <div class="l-article__title">
+    <div class="page-title page-title--image" itemscope="" itemtype="http://schema.org/ImageObject">
+    <figure class="page-title__figure">
+      <picture>
+        <source media="(min-width: 768px)" srcset="https://storage.googleapis.com/snl-no-media/media/148924/article_topimage_zsun-fu-hsIDivLEF9I-unsplash.jpg">
+        <source srcset="https://storage.googleapis.com/snl-no-media/media/148924/article_topimage_mobile_zsun-fu-hsIDivLEF9I-unsplash.jpg">
+        <img class="page-title__image" src="./effektivt reproduksjonstall – Store norske leksikon_files/article_topimage_zsun-fu-hsIDivLEF9I-unsplash.jpg" alt="" itemprop="contentUrl">
+      </picture>
+    </figure>
+    <div class="page-title__attribution">
+      <span class="media-attribution-inline">
+    <a itemprop="name" href="https://unsplash.com/photos/hsIDivLEF9I">Smitte spres ofte raskere når mennesker er tett på hverandre.</a>    av    <span itemprop="author">ZSun Fu</span>/Unsplash.    <a itemprop="license" href="http://creativecommons.org/publicdomain/mark/1.0/deed.no">Falt i det fri (Public domain)</a></span>
+    </div>
+  <h1 class="page-title__heading" itemprop="headline">effektivt reproduksjonstall</h1>
+</div>
+
+  </div>
+
+
+
+    <div class="l-article__breadcrumb">
+        <nav class="breadcrumbs">
+    <h2 class="breadcrumbs__heading">
+      Brødsmulesti
+    </h2>
+    <ol class="breadcrumbs__list" itemprop="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <a href="https://snl.no/" itemprop="item" class="breadcrumbs__link">
+              <span itemprop="name">Store norske leksikon</span>
+            </a>
+            <meta itemprop="position" content="1">
+        </li>
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <a href="https://snl.no/.taxonomy/179" itemprop="item" class="breadcrumbs__link">
+              <span itemprop="name">Medisin</span>
+            </a>
+            <meta itemprop="position" content="2">
+        </li>
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <a href="https://snl.no/.taxonomy/3363" itemprop="item" class="breadcrumbs__link">
+              <span itemprop="name">Helse og samfunn</span>
+            </a>
+            <meta itemprop="position" content="3">
+        </li>
+        <li class="breadcrumbs__item" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <a href="https://snl.no/.taxonomy/191" itemprop="item" class="breadcrumbs__link">
+              <span itemprop="name">Epidemiologi og folkehelse</span>
+            </a>
+            <meta itemprop="position" content="4">
+        </li>
+    </ol>
+  </nav>
+
+    </div>
+
+    <div class="l-article__menu">
+        <nav class="toc">
+    <h2 class="toc__heading">Innhold</h2>
+    <ul class="toc__list">
+        <li class="toc__item">
+          <a href="https://snl.no/effektivt_reproduksjonstall#-Basalt_reproduksjonstall" class="toc__link">Basalt reproduksjonstall</a>
+        </li>
+        <li class="toc__item">
+          <a href="https://snl.no/effektivt_reproduksjonstall#-Effektivt_reproduksjonstall" class="toc__link">Effektivt reproduksjonstall</a>
+        </li>
+        <li class="toc__item">
+          <a href="https://snl.no/effektivt_reproduksjonstall#-Les_mer_i_Store_norske_leksikon" class="toc__link">Les mer i Store norske leksikon</a>
+        </li>
+    </ul>
+  </nav>
+
+        <aside class="highlighted-authors highlighted-authors--single">
+    <h2 class="highlighted-authors__heading">
+      Skrevet av
+    </h2>
+    <ul class="highlighted-authors__list">
+        <li class="highlighted-authors__item">
+          <a href="https://brukere.snl.no/42565" class="highlighted-authors__author-link">
+            <div class="highlighted-authors__image">
+              
+<figure class="profile-image">
+  <img src="./effektivt reproduksjonstall – Store norske leksikon_files/thumb_image1__1_.jpeg" alt="" class="profile-image__image">
+</figure>
+
+            </div>
+              <div class="highlighted-authors__author-academic-title">
+                lege
+              </div>
+            <span class="highlighted-authors__author-name">
+              Eirik Madsen
+            </span>
+          </a>
+            <div class="highlighted-authors__institution">
+                Oslo universitetssykehus
+            </div>
+        </li>
+    </ul>
+  </aside>
+
+    </div>
+
+  
+
+
+  <div class="l-article__section">
+
+
+          <div class="l-article__figure l-article__figure--picture" id="media-148923">
+      <figure class="picture picture--zoomable" itemscope="" itemtype="http://schema.org/ImageObject">
+  <div class="picture__image-wrapper">
+      <button type="button" data-zoomable="media-148923" data-zoomable-class="l-article__figure--zoomed" class="picture__zoom-trigger" aria-controls="media-148923">
+        <img src="./effektivt reproduksjonstall – Store norske leksikon_files/zoom_in-a2d9af9df81ca31db856029b8e14108e.svg" alt="Zoom inn" class="picture__zoom-icon">
+      </button>
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/standard_korona-testing-bergen.jpg" alt="" class="picture__image" itemprop="contentUrl">
+  </div>
+  <figcaption class="picture__caption">
+      <div itemprop="caption">
+        <div>I Norge ble det tidlig satt i gang omfattende testing for koronavirus under pandemien i 2020. Her et bilde fra legevakten i Bergen der medisinstudenter tar halsprøver av folk for å se om de er smittet med koronavirus.</div>
+      </div>
+    <div class="picture__attribution">
+      <div class="media-attribution-block">
+  <div class="media-attribution-block__attribute">
+        <span itemprop="name">Koronapandemien</span>  </div>
+  <div class="media-attribution-block__attribute">
+      <span class="media-attribution-block__attribution">
+        Av      </span>
+      <span itemprop="author">Marit Hommedal </span>/NTB Scanpix.  </div>
+  <div class="media-attribution-block__attribute">
+     Lisens:
+      <a itemprop="license" href="https://snl.no/.licenses/restricted">Begrenset gjenbruk</a>  </div>
+</div>
+    </div>
+  </figcaption>
+</figure>
+
+    </div>
+
+
+    <div class="l-article__body-text">
+      <div class="article-text">
+  <p>Effektivt reproduksjonstall er et <a class="crossref" href="https://sml.snl.no/epidemiologi">epidemiologisk</a> mål på spredningspotensialet til en sykdomsfremkallende <a class="crossref" href="https://sml.snl.no/mikroorganisme">mikroorganisme</a> i en <a class="crossref" href="https://snl.no/befolkning">befolkning</a>. Det effektive reproduksjonstallet, også kjent som R<sub>E</sub> eller R<sub>eff</sub>, har fellestrekk med det basale reproduksjonstallet R<sub>0</sub>. Det basale og det effektive reproduksjonstallet bygger imidlertid på ulike forutsetninger og har ulike bruksområder.</p>
+</div>
+
+      <div class="l-article__factbox">
+          <section class="factbox">
+    <div class="factbox__content">
+      <h2 class="factbox__heading">Faktaboks</h2>
+
+        <dl class="factbox__facts">
+          <div class="factbox__fact-item">
+            <dt class="factbox__fact-term">
+              også kjent som:
+            </dt>
+            <dd class="factbox__fact-description">
+              <p><a href="http://snl.no/engelsk">engelsk</a> <em>effective reproductive number</em></p>             </dd>
+          </div>
+        </dl>
+    </div>
+  </section>
+
+      </div>
+        <div class="article-text">
+  <p>R<sub>0</sub> angir hvor mange nye smittede en gjennomsnittlig pasient gir opphav til i en befolkning uten <a class="crossref" href="https://sml.snl.no/immunitet_-_medisin">immunitet</a> og uten smitteverntiltak. R<sub>E</sub> kan derimot brukes for å angi antall nye smittetilfeller en gjennomsnittlig pasient gir opphav til i en befolkning med immunitet og med smitteverntiltak. R<sub>E</sub> brukes blant annet til å vurdere effekten av smitteverntiltak under epidemier. Ettersom både R<sub>0</sub> og R<sub>E</sub> bygger på usikre forutsetninger, må tallene tolkes og brukes med forsiktighet.</p>
+</div>
+
+    </div>
+  </div>
+
+
+    <div class="l-article__tagsonomies">
+      <aside class="tagsonomy-affiliations">
+  <h2 class="tagsonomy-affiliations__heading">
+    Tilhørende emnesider
+  </h2>
+  Artikkelen inngår i temasiden
+    <a class="tagsonomy-affiliations__link" href="https://snl.no/.tema/Korona">
+      #Korona</a></aside>
+
+    </div>
+
+    <section class="l-article__section" id="-Basalt_reproduksjonstall">
+      <h2 class="l-article__subheading">
+        Basalt reproduksjonstall
+      </h2>
+
+            <div class="l-article__figure l-article__figure--picture" id="media-148927">
+      <figure class="picture picture--zoomable" itemscope="" itemtype="http://schema.org/ImageObject">
+  <div class="picture__image-wrapper">
+      <button type="button" data-zoomable="media-148927" data-zoomable-class="l-article__figure--zoomed" class="picture__zoom-trigger" aria-controls="media-148927">
+        <img src="./effektivt reproduksjonstall – Store norske leksikon_files/zoom_in-a2d9af9df81ca31db856029b8e14108e.svg" alt="Zoom inn" class="picture__zoom-icon">
+      </button>
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/standard_Reproduksjonstall2_og_3.png" alt="" class="picture__image" itemprop="contentUrl">
+  </div>
+  <figcaption class="picture__caption">
+      <div itemprop="caption">
+        <p>Et reproduksjonstall på R = 2 vil si at hver smitteførende person i gjennomsnitt smitter to nye individer. Hver av disse personene vil igjen smitte to nye individer. Et reproduksjonstall på R = 3 vil si at hver smitteførende person i gjennomsnitt gir opphav til tre nye smitteførende individer. Ved et typisk forløp av en epidemi ser man derfor først en periode med eksponentiell vekst i antall smittede.</p>
+      </div>
+    <div class="picture__attribution">
+      <div class="media-attribution-block">
+  <div class="media-attribution-block__attribute">
+        <span itemprop="name">Reproduksjonstall. Laget med biorender.</span>  </div>
+  <div class="media-attribution-block__attribute">
+      <span class="media-attribution-block__attribution">
+        Av      </span>
+      <a itemprop="author" href="https://brukere.snl.no/50713">Halvard Hiis</a>.  </div>
+  <div class="media-attribution-block__attribute">
+     Lisens:
+      <a itemprop="license" href="http://creativecommons.org/licenses/by-sa/3.0/no/">CC BY SA 3.0</a>  </div>
+</div>
+    </div>
+  </figcaption>
+</figure>
+
+    </div>
+
+
+      <div class="l-article__body-text">
+        <div class="article-text">
+  <p>Det basale reproduksjonstallet R<sub>0</sub> angir gjennomsnittlig antall nye smittetilfeller generert av ett infisert individ i en befolkning uten immunitet eller smitteverntiltak. R<sub>0</sub> avhenger av</p>
+
+<ul>
+
+<li>antall personer den smittede har kontakt med</li>
+
+<li>sannsynligheten for smitteoverføring ved hver kontakt</li>
+
+<li>varigheten av smittbarhet hos den infiserte</li>
+
+</ul>
+<p>Fordi R<sub>0</sub> påvirkes av flere biologiske og sosiale faktorer, blir R<sub>0 </sub>vanligvis beregnet ved hjelp av avanserte matematiske modeller. R<sub>0</sub> kan uttrykkes som <a class="crossref" href="https://snl.no/produkt_-_matematikk">produktet</a> av smittsomheten <em>β</em>, kontakthyppigheten <em>c</em> og varigheten av den smittsomme perioden <em>D</em>:</p>
+
+<p>R<sub>0</sub> = β × c × D</p>
+
+<p>Hvis R<sub>0</sub> er større enn 1, forventes epidemien å fortsette. Hvis R<sub>0</sub> er under 1, forventes epidemien etter hvert å dø ut.</p>
+<p>R<sub>0</sub> er et <a class="crossref" href="https://snl.no/estimat">estimat</a> som bygger på flere forutsetninger, og tallet er derfor usikkert. Estimatet kan lett bli feilberegnet, mistolket og uriktig anvendt. R<sub>0</sub> er ikke en biologisk konstant for et bestemt smittestoff eller et mål på sykdommens alvorlighet. R<sub>0</sub> er et tall uten benevning, og angir følgelig ikke smitteutbredelse over tid. Som formelen viser, er R<sub>0</sub> en funksjon av både menneskelige faktorer samt <a class="crossref" href="https://sml.snl.no/smittestoff">smittestoffets</a> biologiske egenskaper.</p>
+</div>
+
+      </div>
+    </section>
+    <section class="l-article__section" id="-Effektivt_reproduksjonstall">
+      <h2 class="l-article__subheading">
+        Effektivt reproduksjonstall
+      </h2>
+
+            <div class="l-article__figure l-article__figure--picture" id="media-148929">
+      <figure class="picture picture--zoomable" itemscope="" itemtype="http://schema.org/ImageObject">
+  <div class="picture__image-wrapper">
+      <button type="button" data-zoomable="media-148929" data-zoomable-class="l-article__figure--zoomed" class="picture__zoom-trigger" aria-controls="media-148929">
+        <img src="./effektivt reproduksjonstall – Store norske leksikon_files/zoom_in-a2d9af9df81ca31db856029b8e14108e.svg" alt="Zoom inn" class="picture__zoom-icon">
+      </button>
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/standard_Effektivt_reproduksjonstall__1_.png" alt="" class="picture__image" itemprop="contentUrl">
+  </div>
+  <figcaption class="picture__caption">
+      <div itemprop="caption">
+        <div>
+<p>I en befolkning uten immunitet og smitteverntiltak vil det basale reproduksjonstallet R<sub>0</sub> kunne være 3 for en gitt sykdomsfremkallende mikroorganisme. Det vil si at hver smitteførende person i gjennomsnitt smitter tre nye individer. Ved iverksetting av ulike smitteverntiltak kan det effektive reproduksjonstallet R<sub>E</sub> bli lavere. I nederste figur er R<sub>E </sub>= 1, noe som vil si at hver smitteførende person i gjennomsnitt viderefører smitten til én annen person. Hvis R<sub>E </sub>blir lavere enn 1, vil en epidemi etter hvert dø ut.</p>
+</div>
+      </div>
+    <div class="picture__attribution">
+      <div class="media-attribution-block">
+  <div class="media-attribution-block__attribute">
+        <span itemprop="name">Effektivt reproduksjonstall. Laget med biorender.</span>  </div>
+  <div class="media-attribution-block__attribute">
+      <span class="media-attribution-block__attribution">
+        Av      </span>
+      <a itemprop="author" href="https://brukere.snl.no/50713">Halvard Hiis</a>.  </div>
+  <div class="media-attribution-block__attribute">
+     Lisens:
+      <a itemprop="license" href="http://creativecommons.org/licenses/by-sa/3.0/no/">CC BY SA 3.0</a>  </div>
+</div>
+    </div>
+  </figcaption>
+</figure>
+
+    </div>
+
+
+      <div class="l-article__body-text">
+        <div class="article-text">
+  <p>Det effektive reproduksjonstallet R<sub>E</sub> er et mål på spredningspotensialet til en sykdomsfremkallende mikroorganisme i en populasjon, men beregnes ikke under forutsetning av at hele befolkningen er mottagelig for smitte. Til forskjell fra R<sub>0</sub> tar R<sub>E</sub> hensyn til faktorer som begrenser smittespredning i befolkningen. Derfor benyttes fortrinnsvis R<sub>E</sub> til å vurdere effekten av smitteverntiltak. Jo lavere R<sub>E</sub>, desto mindre og mer langstrakt blir epidemien. Når R<sub>E</sub> er under 1, forventes epidemien etter hvert å dø ut. Tiltak som reiseforbud, smitteisolering og skolestengning ved en epidemi har til hensikt å redusere smitteoverføringen slik at R<sub>E</sub> blir mindre enn 1.</p>
+
+<p>R<sub>E</sub> kan uttrykkes som produktet av den effektive (faktiske) smittsomheten <em>β<sub>e</sub></em>, den effektive kontakthyppigheten <em>c<sub>e</sub></em>, den effektive varigheten av smittsom periode <em>D<sub>e</sub></em> og andelen mottagelige i befolkningen <em>x</em>:</p>
+
+<p>R<sub>E</sub> = β<sub>e</sub> × c<sub>e</sub> × D<sub>e</sub> × x</p>
+
+<p>Beregningen av R<sub>E</sub> ligner dermed beregningen av R<sub>0</sub>, men tar også i betraktning andelen mottagelige i befolkningen. R<sub>E</sub> kan også uttrykkes som produktet av R<sub>0</sub> og andel mottagelige. Det vil si:</p>
+
+<p>R<sub>E</sub> = R<sub>0</sub> × x</p>
+
+<p>Hygienetiltak kan redusere smittsomheten slik at β<sub>e</sub> blir mindre enn β. Kontakthyppigheten kan reduseres ved å skille smittsomme fra mottagelige personer slik at c<sub>e</sub> blir mindre enn c. Varigheten av smittsom periode kan ikke påvirkes med mindre det finnes en <a class="crossref" href="https://sml.snl.no/kur">kur</a> mot sykdommen. Andelen mottagelige kan i utgangspunktet ikke påvirkes uten <a class="crossref" href="https://sml.snl.no/vaksinering">vaksinering</a>, men synker over tid som følge av immunitet etter gjennomgått infeksjon. Smitteverntiltak må rettes mot de fire faktorene som bestemmer spredningspotensialet for å bringe produktet av dem under 1.</p>
+
+<p>R<sub>E</sub> kan beregnes på fastsatte tidspunkt under en epidemi. Endringer i R<sub>E</sub> kan dermed følges over tid etter hvert som andelen mottagelige synker eller nye smitteverntiltak blir innført. Under en epidemi kan R<sub>E</sub> følges hyppig for å vurdere effekten av tiltak og behovet for nye <a class="crossref" href="https://snl.no/intervensjon">intervensjoner</a>. Når R<sub>E</sub> faller til under 1, gir hver pasient i gjennomsnitt opphav til færre en én ny pasient. Dermed vil epidemien etter hvert dø ut.</p>
+
+<p>Vaksinering virker ved å senke andelen mottagelige i befolkningen, og bidrar dermed til å redusere R<sub>E</sub>. R<sub>0</sub> kan brukes til å estimere andelen av en befolkning som må vaksineres for å fjerne en infeksjon fra befolkningen. For å vurdere effekten av vaksinering, bør derimot R<sub>E</sub> benyttes.</p>
+<p>For <a class="crossref" href="https://sml.snl.no/meslinger">meslinger</a> har det blitt rapportert R<sub>0</sub>-verdier fra 3,7 til 203,3 i ulike områder på ulike tidspunkt, selv om R<sub>0</sub>-verdien vanligvis oppgis som 12 til 18. Samtidig som meslinger er en av de mest smittsomme sykdommene vi kjenner til, vitner spredningen i R<sub>0</sub>-verdiene om at sosiale, atferdsrelaterte og miljømessige faktorer har stor innvirkning på R<sub>0</sub>. <a class="crossref" href="https://sml.snl.no/sars">Sars</a>-epidemien i 2002/2003 hadde R<sub>0</sub>-verdier i størrelsesorden 2 til 4. Til sammenligning har vanlig <a class="crossref" href="https://sml.snl.no/influensa">sesonginfluensa</a> R<sub>0</sub>-verdier på 1,2 til 1,5.</p>
+</div>
+
+      </div>
+    </section>
+    <section class="l-article__section" id="-Les_mer_i_Store_norske_leksikon">
+      <h2 class="l-article__subheading">
+        Les mer i Store norske leksikon
+      </h2>
+
+
+      <div class="l-article__body-text">
+        <div class="article-text">
+  <ul>
+
+<li><a class="crossref" href="https://sml.snl.no/epidemiologi">epidemiologi</a></li>
+
+<li><a class="crossref" href="https://sml.snl.no/epidemi">epidemi</a></li>
+
+<li><a class="crossref" href="https://sml.snl.no/vaksinering">vaksinering</a></li>
+
+</ul>
+</div>
+
+      </div>
+    </section>
+
+
+
+    <div class="l-article__meta">
+      <div class="l-article__info">
+        <aside class="article-info">
+  <h2 class="article-info__heading">
+    Artikkelinfo
+  </h2>
+  <dl class="article-info__items">
+      <dt class="article-info__item-name">
+        Skrevet av:
+      </dt>
+      <dd class="article-info__item-value">
+        <ul class="article-info__author-list">
+            <li class="article-info__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person" data-conjunction=" og ">
+                <a href="https://brukere.snl.no/42565">
+                  <span itemprop="name">Eirik Madsen</span>
+                    (Oslo universitetssykehus)</a></li>
+        </ul>
+      </dd>
+      <dt class="article-info__item-name">
+        Sist oppdatert:
+      </dt>
+      <dd class="article-info__item-value">
+        <time datetime="2020-03-27T13:39:34+01:00">
+          27. mars 2020</time>,
+        <a href="https://snl.no/.versions/list/443785">se alle endringer</a>
+      </dd>
+  </dl>
+  <strong class="article-info__license-type">
+    <a class="" href="https://snl.no/.licenses/free">fri gjenbruk.</a>
+  </strong>
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/cc-1d01cfa7b418cfdd9f4b1c63736febc8.svg" alt="Creative Commons" width="20" height="20" class="article-info__license-image">
+  <button class="link-button js-citation" type="button" data-target="article-info-citation" aria-controls="article-info-citation" aria-expanded="false">
+  Sitere eller gjenbruke?
+</button>
+
+  <div id="article-info-citation" hidden="hidden" aria-hidden="true">
+    Vil du sitere denne artikkelen? Kopier denne teksten og lim den inn i litteraturlisten din:
+    <cite class="article-info__cite">
+      Madsen, Eirik: <i>effektivt reproduksjonstall</i> i <i>Store norske leksikon</i> på snl.no.
+      Hentet <span class="js-current-date">13. mai 2020</span> fra https://snl.no/effektivt_reproduksjonstall</cite>
+  </div>
+</aside>
+
+      </div>
+        <div class="l-article__contributions">
+          <aside class="article-contributions">
+  <h2 class="article-contributions__heading">
+    Bidra
+  </h2>
+  <ul class="article-contributions__items">
+    <li class="article-contributions__item">
+      <a href="https://snl.no/.improvements/xhtml/443785">Foreslå endringer i artikkelen</a>
+    </li>
+    <li class="article-contributions__item">
+      <a href="https://snl.no/.articles/443785/media/new?media%5Bfigure_type%5D=picture">Foreslå bilder til artikkelen</a>
+    </li>
+      <li class="article-contributions__item">
+        <button class="link-button js-toggle-comments" type="button" data-target="article-comments" aria-controls="article-comments" aria-expanded="false">
+  Kommenter
+    <span class="link-button__extra-text"> eller still spørsmål</span>
+</button>
+
+        
+
+      </li>
+  </ul>
+</aside>
+
+        </div>
+    </div>
+      <div id="article-comments" class="l-article__comments" hidden="hidden" aria-hidden="true">
+        <div class="l-article__comments-contents">
+          <h2>Kommentarer
+            
+
+          </h2>
+          <div class="create-comment" id="new-comment">
+    <p class="create-comment__intro">
+      Kommentaren din publiseres her. Fagansvarlig eller redaktør svarer når de kan.
+    </p>
+    <p class="create-comment__intro">
+      Du må være logget inn for å kommentere.
+    </p>
+    <form action="https://snl.no/.login" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+      <input type="hidden" name="return_to" id="return_to" value="https://snl.no/effektivt_reproduksjonstall#new-comment">
+      <button type="submit" class="button button--standalone">
+  <span class="button__text">Logg inn</span>
+</button>
+      eller
+      <a href="https://snl.no/users/new/">
+        registrer deg
+      </a>
+</form></div>
+
+        </div>
+      </div>
+
+      <div class="l-article__authoritative-editor-wrapper">
+        <div class="l-article__authoritative-editor">
+          <div class="authoritative-editor">
+  <h2 class="authoritative-editor__heading">
+      <a class="authoritative-editor__secondary-link" href="https://meta.snl.no/Fagansvar">Fagansvarlig</a> for <a class="authoritative-editor__secondary-link" href="https://snl.no/.taxonomy/191">Epidemiologi og folkehelse</a>
+  </h2>
+    <a href="https://brukere.snl.no/50852">
+      <div class="authoritative-editor__image">
+        
+<figure class="profile-image">
+  <img src="./effektivt reproduksjonstall – Store norske leksikon_files/thumb_pasu.jpg" alt="" class="profile-image__image">
+</figure>
+
+      </div>
+      <div class="authoritative-editor__name">
+        Pål Surén
+      </div>
+    </a>
+    <div class="authoritative-editor__suffix">Lege, PhD, Folkehelseinstituttet</div>
+</div>
+
+        </div>
+
+      </div>
+</div>
+
+
+
+    </main>
+
+      <div class="l-footer l-footer--article">
+  
+  <div class="l-wrapper">
+    <footer class="l-footer__base">
+      <div class="l-footer__updates">
+          <article class="activity">
+  <h2>
+    Sist oppdatert
+  </h2>
+  <ul class="activity__list">
+    <li class="activity__item">
+      <a class="activity__item-link" href="https://snl.no/gamelan">
+        gamelan</a>:
+      oppdatert av <a class="activity__item-link" href="https://brukere.snl.no/52468">Jan Sverre Knudsen (OsloMet)</a>
+
+      <time class="activity__time" datetime="2020-05-12T23:27:43+02:00">
+        for rundt 2 timer siden
+      </time>
+    </li>
+    <li class="activity__item">
+      <a class="activity__item-link" href="https://snl.no/S%C3%B8rfjorden_-_Nordhordland">
+        Sørfjorden - Nordhordland</a>:
+      oppdatert av <a class="activity__item-link" href="https://brukere.snl.no/670">Geir Thorsnæs</a>
+
+      <time class="activity__time" datetime="2020-05-12T22:55:12+02:00">
+        for rundt 2 timer siden
+      </time>
+    </li>
+    <li class="activity__item">
+      <a class="activity__item-link" href="https://snl.no/S%C3%B8rfjorden_-_Hardanger">
+        Sørfjorden - Hardanger</a>:
+      oppdatert av <a class="activity__item-link" href="https://brukere.snl.no/670">Geir Thorsnæs</a>
+
+      <time class="activity__time" datetime="2020-05-12T22:39:27+02:00">
+        for rundt 2 timer siden
+      </time>
+    </li>
+    <li class="activity__item">
+      <a class="activity__item-link" href="https://snl.no/S%C3%B8rfjorden_-_Vestland">
+        Sørfjorden - Vestland</a>:
+      oppdatert av <a class="activity__item-link" href="https://brukere.snl.no/670">Geir Thorsnæs</a>
+
+      <time class="activity__time" datetime="2020-05-12T22:30:59+02:00">
+        for rundt 3 timer siden
+      </time>
+    </li>
+  </ul>
+  <a class="activity__all" href="https://snl.no/.recent-activities">
+    Se all aktivitet
+  </a>
+</article>
+
+
+          <article class="log-in log-in--article">
+  <h2>Vil du skrive eller endre artikler?</h2>
+  <a href="https://snl.no/.login" class="log-in__link">
+    Logg inn eller registrer deg
+  </a>
+</article>
+
+      </div>
+        <div class="l-footer__about">
+    <article class="about-site about-site--article">
+  <h2 class="about-site__heading">Om Store norske leksikon</h2>
+  <div class="about-site__description"><p>Store norske leksikon er et gratis og komplett oppslagsverk skrevet av fagfolk på bokmål og nynorsk. Med to millioner brukere i måneden og 300&nbsp;000 leste artikler hver dag er leksikonet Norges største nettsted for forskningsformidling. Leksikonet er eid av de norske universitetene og flere ideelle stiftelser/organisasjoner.</p></div>
+    <ul class="about-site__list">
+        <li class="about-site__item">
+          <a href="https://meta.snl.no/Fagansvar" class="about-site__link">
+            Hvem lager leksikonet?
+          </a>
+        </li>
+        <li class="about-site__item">
+          <a href="https://meta.snl.no/Forfatterveiledning" class="about-site__link">
+            Slik skriver du leksikonartikler
+          </a>
+        </li>
+        <li class="about-site__item">
+          <a href="https://meta.snl.no/Kontakt_oss" class="about-site__link">
+            Kontakt oss!
+          </a>
+        </li>
+        <li class="about-site__item">
+          <a href="https://meta.snl.no/Personvernerkl%C3%A6ring" class="about-site__link">
+            Personvernerklæring
+          </a>
+        </li>
+    </ul>
+  <a href="https://snl.no/" class="about-site__home">
+    <img src="./effektivt reproduksjonstall – Store norske leksikon_files/snl_logo_dark-2c14cffc8dbfed734292bbd8a0422210.svg" alt="Til forsiden" class="about-site__logo">
+  </a>
+</article>
+
+
+  </div>
+
+        <div class="l-footer__logos">
+      <aside class="partner-logos partner-logos--snl">
+      <p class="partner-logos__intro">Store norske leksikon er eid av de norske universitetene og flere andre ideelle organisasjoner:</p>
+    <ul class="partner-logos__list">
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Universitetet_i_Oslo_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/uio-3a5d6b9cf9298782c6c0ce28fe5b7b2a.svg" alt="Universitetet i Oslo" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/NTNU_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/ntnu-ca9d445d206a7b3eb8f28c4f799c682a.svg" alt="NTNU" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Universitetet_i_Bergen_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/uib-7598be62bdf319fb3f0d4eb0ccafae77.svg" alt="Universitetet i Bergen" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Universitetet_i_Troms%C3%B8_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/uit-ab2fc76174a914a97e14617176965bf9.svg" alt="UiT/Norges Arktiske Universitet" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Universitetet_i_S%C3%B8r%C3%B8st-Norge_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/usn-f2b416558d65bd39b11c3f6ffb6c328b.svg" alt="Universitetet i Søraust-Noreg" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/OsloMet_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/oslomet-5c49e992075a78ea2e20aeb2e5089d56.svg" alt="OsloMet" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/NMBU_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/nmbu-81617f852dbd52ed0a6e37bdd1a9259c.svg" alt="Norges miljø- og biovitenskapelige universitet" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Universitetet_i_Agder_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/uia-301cae97d5c0becac396618e605d5bd0.svg" alt="Universitetet i Agder" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Universitetet_i_Stavanger_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/uis-df1b68622e7c96d34a10b05251e6b616.svg" alt="Universitetet i Stavanger" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Nord_universitet_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/nord-ad68ebe06c83181907503cebf6fa18d6.svg" alt="Nord universitet" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Norges_Musikkh%C3%B8gskole_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/nmh-e50814f3db3a7f0866ad8bddc4d4028a.svg" alt="Norges musikkhøgskole" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://meta.snl.no/Meteorologisk_institutt_i_Store_norske_leksikon" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/met-6f57fcf5156bd08071326bb77d46ab18.svg" alt="Meteorologisk institutt" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://snl.no/Nasjonalmuseet_for_kunst,_arkitektur_og_design" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/nam-31b51563907fa156bcd5ef3aa6fdd309.svg" alt="Nasjonalmuseet" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://snl.no/Norsk_faglitter%C3%A6r_forfatter-_og_oversetterforening" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/nffo-05f4f17b004b76347ced9482ba4a625b.svg" alt="Norsk faglitterær forfatter- og oversetterforening" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://snl.no/Det_Norske_Videnskaps-Akademi" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/dnva-6a2b67ec6d591da8a7becc16a29a2814.svg" alt="Det Norske Videnskaps-Akademi" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://snl.no/Det_Norske_Akademi_for_Spr%C3%A5k_og_Litteratur" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/dna-8bf055a00bac2b18524657e845195911.svg" alt="Det Norske Akademi for Språk og Litteratur" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://snl.no/Sparebankstiftelsen_DNB" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/sbs-66da66678a19384f076417e10bac16d6.svg" alt="comp" class="partner-logos__image">
+            </a>
+        </li>
+        <li class="partner-logos__item">
+            <a href="https://snl.no/Fritt_Ord" class="partner-logos__link">
+            <img src="./effektivt reproduksjonstall – Store norske leksikon_files/fo-e031633d48578f513b13a5cb62185d55.svg" alt="Fritt Ord" class="partner-logos__image">
+            </a>
+        </li>
+    </ul>
+  </aside>
+
+
+  </div>
+
+    </footer>
+  </div>
+</div>
+
+
+
+  
+
+<img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"><div id="fatkun-drop-panel">
+        <a id="fatkun-drop-panel-close-btn">×</a>
+            <div id="fatkun-drop-panel-inner">
+                <div class="fatkun-content">
+                    <svg class="fatkun-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5892"><path d="M494.933333 782.933333c2.133333 2.133333 4.266667 4.266667 8.533334 6.4h8.533333c6.4 0 10.666667-2.133333 14.933333-6.4l2.133334-2.133333 275.2-275.2c8.533333-8.533333 8.533333-21.333333 0-29.866667-8.533333-8.533333-21.333333-8.533333-29.866667 0L533.333333 716.8V128c0-12.8-8.533333-21.333333-21.333333-21.333333s-21.333333 8.533333-21.333333 21.333333v588.8L249.6 475.733333c-8.533333-8.533333-21.333333-8.533333-29.866667 0-8.533333 8.533333-8.533333 21.333333 0 29.866667l275.2 277.333333zM853.333333 874.666667H172.8c-12.8 0-21.333333 8.533333-21.333333 21.333333s8.533333 21.333333 21.333333 21.333333H853.333333c12.8 0 21.333333-8.533333 21.333334-21.333333s-10.666667-21.333333-21.333334-21.333333z" p-id="5893"></path></svg>
+                    <div class="fatkun-title">Drag and Drop</div>
+                    <div class="fatkun-desc">The image will be downloaded</div>
+                </div>
+            </div>
+    </div></body></html>
