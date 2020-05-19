@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://s0.2mdn.net/9971286/1588672210934/index.html -->
+<html><head lang="es"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+    
+      
+      <title>Endesa</title>
+      <link rel="stylesheet" href="./styles.css">
+      <meta name="ad.size" content="width=300,height=600">
+      <script type="text/javascript" src="./tweenmax_2.1.2_min.js"></script>
+      <script type="text/javascript" src="./timelinemax_2.1.2_min.js"></script>
+      <script type="text/javascript">
+          var clickTag = "http://www.google.es";
+      </script>
+  <script type="text/javascript">
+    
+  (function() {
+    var MAX_URL_PARAM_LENGTH = 34;
+    var CLICK_X_URL_KEY = 'nx';
+    var CLICK_Y_URL_KEY = 'ny';
+    var CREATIVE_DIMENSIONS_KEY = 'dim';
+    var AD_URL_PARAM = '&adurl=';
+
+    var relegateNavigation = '';
+    var urlParamMap = {};
+
+    urlParamMap[CLICK_X_URL_KEY] = null;
+    urlParamMap[CLICK_Y_URL_KEY] = null;
+    urlParamMap[CREATIVE_DIMENSIONS_KEY] = null;
+
+    var handleClickTagMessage = function(e) {
+      try {
+        var eventData = JSON.parse(e.data);
+      } catch (err) {
+        return;
+      }
+      if (eventData.isInitClickTag) {
+        if (eventData.clickTags) {
+          for (var i = 0; i < eventData.clickTags.length; i++) {
+            var clkTag = eventData.clickTags[i];
+            window[clkTag.name] = clkTag.url;
+          }
+        } else if (eventData.clickTag) {
+          window.clickTag = eventData.clickTag;
+        }
+        relegateNavigation = eventData.relegateNavigation;
+      }
+    };
+
+    var storeClickCoordinates = function(e) {
+      urlParamMap[CLICK_X_URL_KEY] = Math.round(e.clientX);
+      urlParamMap[CLICK_Y_URL_KEY] = Math.round(e.clientY);
+    };
+
+    var getCreativeDimensions = function() {
+      return window.innerWidth + 'x' + window.innerHeight;
+    }
+
+    var getExitClickParams = function(e) {
+      urlParamMap[CREATIVE_DIMENSIONS_KEY] = getCreativeDimensions();
+
+      var exitParams = '';
+      for (var key in urlParamMap) {
+        exitParams += '&' + key + '=';
+        if (urlParamMap[key] !== null) {
+          exitParams += urlParamMap[key];
+        }
+      }
+      return exitParams;
+    }
+
+    var appendExitClickParams = function(url) {
+      var adUrlIndex = url.toLowerCase().indexOf(AD_URL_PARAM);
+      var paramsToBeAdded = getExitClickParams();
+      if (adUrlIndex > -1 && paramsToBeAdded.length <= MAX_URL_PARAM_LENGTH) {
+        url = url.substr(0, adUrlIndex) + paramsToBeAdded +
+          url.substr(adUrlIndex);
+      };
+      return url;
+    };
+
+    if (open.call) {
+      window.open = function(open) {
+        return function(url, name, features) {
+          url = appendExitClickParams(url);
+          if (relegateNavigation === 'parent') {
+            var message = {'clickTag': url, 'isPostClickTag': true};
+            parent.postMessage(JSON.stringify(message), '*');
+          } else {
+            var args = [url, name];
+            if (features) {
+              args.push(features);
+            }
+            open.apply(window, args);
+          }
+        };
+      }(window.open);
+    }
+
+    if (window.addEventListener) {
+      window.addEventListener(
+          'message', handleClickTagMessage, false);
+      window.addEventListener('mousedown', storeClickCoordinates, true);
+    } else {
+      window.attachEvent('onmessage', handleClickTagMessage);
+    }
+  })();
+    
+  </script></head>
+
+  <body style="">
+    <script type="application/javascript" src="./main.js"></script>
+  
+
+<img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"><div id="container-banner"><div id="eleClickTag"></div><img src="./fondo.jpg" class="fondo base" id="fondo" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale(1.03754, 1.03754);"><img src="./logo.png" class="elemento base" id="logo" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp1.png" class="elemento base" id="cp1" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp2.png" class="elemento base" id="cp2" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp3.png" class="elemento base" id="cp3" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><div class="elemento base" id="linea1"></div><div class="elemento base" id="linea2"></div><img src="./cp4.png" class="elemento base" id="cp4" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp5_1.png" class="elemento base" id="cp5_1" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp5_2.png" class="elemento base" id="cp5_2" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp_legal.png" class="elemento base" id="legal" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cp_claim.png" class="elemento base" id="cp_claim" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"><img src="./cta.png" class="elemento base" id="cta" style="opacity: 0; transform: matrix(1, 0, 0, 1, 0, 30);"></div></body></html>

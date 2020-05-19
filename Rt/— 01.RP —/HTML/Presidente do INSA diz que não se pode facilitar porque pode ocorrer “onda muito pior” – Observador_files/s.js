@@ -1,0 +1,1 @@
+BrandSafetyNadoscallback_69984843({"c": ["gs_covid19", "gs_health_misc", "moat_safe"], "r": 10550884318, "d": 5, "g": 0.0736088752746582, "pcode": "teads245638586802", "ct": 0})

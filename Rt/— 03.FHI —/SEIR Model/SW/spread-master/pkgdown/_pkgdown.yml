@@ -1,0 +1,26 @@
+url: https://folkehelseinstituttet.github.io/spread/
+navbar:
+  title: "spread"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Articles"
+      menu:
+      - text: "Commuter Model Intro"
+        href: articles/commuter_model.html
+      - text: "Commuter Model With Vax Data"
+        href: articles/including_vax.html
+      - text: "Asymmetric Mobility Intro"
+        href: articles/asymmetric_mobility_intro.html
+      - text: "Simple Branching Process Model"
+        href: articles/branching_process.html
+    - text: "Reference"
+      href: reference/
+    - text: "Changelog"
+      href: news/
+    - text: "Contributing"
+      href: CONTRIBUTING.html
+  right:
+    - icon: fa-github
+      href: https://github.com/folkehelseinstituttet/spread/
+

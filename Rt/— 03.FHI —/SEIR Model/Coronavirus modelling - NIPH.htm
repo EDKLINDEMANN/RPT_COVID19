@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#calibration -->
+<html class="no-js" lang="en" data-whatinput="keyboard" data-whatintent="mouse"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="preload" href="https://www.fhi.no/static/templates/build/fonts/CrimsonText-Regular.ttf" as="font" type="font/ttf" crossorigin="">
+    <link rel="preload" href="https://www.fhi.no/static/templates/build/fonts/BrandonTextWeb-Bold.woff" as="font" type="font/woff" crossorigin="">
+    <link rel="preload" href="https://www.fhi.no/static/templates/build/fonts/BrandonTextWeb-Regular.woff" as="font" type="font/woff" crossorigin="">
+    <link rel="preload" href="https://www.fhi.no/static/templates/build/fonts/BrandonTextWeb-Medium.woff" as="font" type="font/woff" crossorigin="">
+    <script type="text/javascript" async="" src="./Coronavirus modelling - NIPH_files/recaptcha__en.js"></script><script async="" src="./Coronavirus modelling - NIPH_files/gtm.js"></script><script src="./Coronavirus modelling - NIPH_files/jquery-3.3.1.min.js"></script>
+   
+    <script src="./Coronavirus modelling - NIPH_files/api.js" async="" defer=""></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push(
+                { 'gtm.start': new Date().getTime(), event: 'gtm.js' }
+            );
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K58JVC');
+    </script>
+    <!-- End Google Tag Manager -->
+    <title>Coronavirus modelling - NIPH</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./Coronavirus modelling - NIPH_files/bundle.css" rel="stylesheet">
+
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" type="text/css" href="/static/templates/build/css/ie9.css"/>
+    <![endif]-->
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" type="text/css" href="/static/templates/build/css/ie8.css"/>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .Form__Element {
+            margin-bottom: 1.5em;
+        }
+    </style>
+
+        <!-- Google stuff -->
+        <script>
+      window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'UA-1567793-1', 'auto');
+      ga('send', 'pageview');
+        </script>
+        <script async="" src="./Coronavirus modelling - NIPH_files/analytics.js"></script>
+        <script type="application/ld+json">
+            {
+            "@context" : "https://schema.org",
+            "@type" : "WebSite",
+            "name" : "FHI.no",
+            "alternateName" : "Folkehelseinstituttet",
+            "url" : "https://www.fhi.no"
+            }
+        </script>
+        <!-- automate the tagging for download tracking-->
+        <script type="text/javascript">
+            if (typeof jQuery != 'undefined') {
+                jQuery(document).ready(function ($) {
+                    var filetypes = /\.(zip|exe|pdf|doc*|xls*|ppt*|mp3)$/i;
+                    var baseHref = '';
+                    if (jQuery('base').attr('href') != undefined)
+                        baseHref = jQuery('base').attr('href');
+                    jQuery('a').each(function () {
+                        var href = jQuery(this).attr('href');
+                        if (href && (href.match(/^https?\:/i)) && (!href.match(document.domain))) {
+                            jQuery(this).click(function () {
+                                var extLink = href.replace(/^https?\:\/\//i, '');
+                                _gaq.push(['_trackEvent', 'External', 'Click', extLink]);
+                                if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
+                                    setTimeout(function () { location.href = href; }, 200);
+                                    return false;
+                                }
+                            });
+                        } else if (href && href.match(/^mailto\:/i)) {
+                            jQuery(this).click(function () {
+                                var mailLink = href.replace(/^mailto\:/i, '');
+                                _gaq.push(['_trackEvent', 'Email', 'Click', mailLink]);
+                            });
+                        } else if (href && href.match(filetypes)) {
+                            jQuery(this).click(function () {
+                                var extension = (/[.]/.exec(href)) ? /[^.]+$/.exec(href) : undefined;
+                                var filePath = href;
+                                _gaq.push(['_trackEvent', 'Download', 'Click-' + extension, filePath]);
+                                if (jQuery(this).attr('target') != undefined && jQuery(this).attr('target').toLowerCase() != '_blank') {
+                                    setTimeout(function () { location.href = baseHref + href; }, 200);
+                                    return false;
+                                }
+                            });
+                        }
+                    });
+                });
+            }
+        </script>
+        <!-- End Google Stuff -->
+
+    
+    
+
+    <meta property="og:title" content="Coronavirus modelling">
+    <meta property="og:description" content="This page briefly describes the model used by the NIPH for situational awareness and forecasting of the coronavirus outbreak in Norway.">
+    <meta property="og:site_name" content="Norwegian Institute of Public Health">
+    <meta property="og:url" content="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/">
+    <meta property="og:image" content="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/coronavirusmodellering.jpg?preset=mainbodywidth">
+    <meta property="fb:admins" content="598201156">
+    <meta name="description" content="This page briefly describes the model used by the NIPH for situational awareness and forecasting of the coronavirus outbreak in Norway.">
+    <meta name="pageID" content="90192">
+    
+    <meta name="last edited" content="2020-05-04">
+
+
+
+    <link rel="alternate" hreflang="no" href="https://www.fhi.no/sv/smittsomme-sykdommer/corona/koronavirus-modellering/">
+<link rel="alternate" hreflang="en" href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/">
+
+
+    
+<script type="text/javascript">var appInsights=window.appInsights||function(config){function t(config){i[config]=function(){var t=arguments;i.queue.push(function(){i[config].apply(i,t)})}}var i={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",r,f;setTimeout(function(){var t=u.createElement(o);t.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(t)});try{i.cookie=u.cookie}catch(y){}for(i.queue=[],r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)t("track"+r.pop());return t("set"+s),t("clear"+s),t(h+a),t(c+a),t(h+v),t(c+v),t("flush"),config.disableExceptionTracking||(r="onerror",t("_"+r),f=e[r],e[r]=function(config,t,u,e,o){var s=f&&f(config,t,u,e,o);return s!==!0&&i["_"+r](config,t,u,e,o),s}),i}({instrumentationKey:"4701fe8d-c81d-4784-aa95-13f8f382454c",sdkExtension:"a"});window.appInsights=appInsights;appInsights.queue&&appInsights.queue.length===0&&appInsights.trackPageView();</script><script src="./Coronavirus modelling - NIPH_files/ai.0.js"></script></head>
+<body class="has-dark-background is-sub-page" style="">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K58JVC"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+
+    <a class="skip-to-content" href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#main">Hopp til innhold</a>
+
+    
+
+<header class="fhi-header">
+
+    <div class="fhi-container fhi-header__top">
+        <a class="fhi-header__logo en" href="https://www.fhi.no/en/">
+            <img class="logo-default" alt="Norwegian Institute of Public Health " title="Norwegian Institute of Public Health" src="./Coronavirus modelling - NIPH_files/logo_lang_engelsk.svg">
+            <img class="logo-inverted" alt="Norwegian Institute of Public Health " title="Norwegian Institute of Public Health" src="./Coronavirus modelling - NIPH_files/Logo_ny_Kort_Engelsk_hvit.svg">
+            <!--[if lte IE 8]>
+            <img class=logo-default" alt="Folkehelseinstituttet " title="Folkehelseinstituttet" src="~/Static/templates/build/gfx/logo.png">
+            <img class=logo-inverted" alt="Folkehelseinstituttet " title="Folkehelseinstituttet" src="~/Static/templates/build/gfx/logo_white.png">
+            <![endif]-->
+        </a>
+
+        <div class="fhi-header__search">
+
+
+
+
+<form action="https://www.fhi.no/en/sys/search-result/#" method="get">
+    
+    <div role="search" class="fhi-search__inner">
+        <label class="fhi-visually-hidden is-hidden" for="global-search-header">Search for:</label>
+        <input name="term" id="global-search-header" data-autocomplete-url="/autosuggest/Prefix" data-autocomplete-enabled="true" placeholder="Search in NIPH" value="" type="text" class="fhi-input fhi-input--search ui-autocomplete-input" autocomplete="off">
+        <button type="submit" class="fhi-button fhi-button--search">
+            <span class="icon-magnifier--black fhi-icon--medium fhi-icon--xlarge@LG " alt="Search" title="Search"></span>
+            <span class="fhi-visually-hidden">Søk</span>
+        </button>
+    <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front ui-autocomplete-disabled" style="display: none;"></ul></div>
+</form>
+        </div>
+        <button class="fhi-button fhi-button--white fhi-button--round fhi-button--menu fhi-hamburger" id="toggle-menu" aria-hidden="true">
+            <!-- <span class="fhi-hamburger_icon icon-hamburger--black fhi-icon--xxlarge fhi-menu--isClosed"></span>
+            <span class="fhi-hamburger_icon icon-x fhi-icon--xxlarge fhi-menu--isOpen"></span> -->
+            <div class="fhi-main-menu-icon">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            <span class="fhi-hamburger_icon_text">Menu</span>
+        </button>
+    </div>
+    <nav class="fhi-header__nav">
+      
+
+<div class="fhi-mega-menu" id="main-nav" role="navigation">
+    <div class="fhi-container fhi-container--not-relative fhi-padding-none">
+        <div class="fhi-menu-close-button-container">
+            <button class="fhi-button fhi-hidden--mobile fhi-m-bottom-S fhi-m-top-S fhi-menu-back" type="button">
+                <span class="fhi-icon icon-menu-to-top"></span>
+                <span class="fhi-icon icon-menu-to-top-hover"></span>
+                <span>To top level</span>
+            </button>
+
+            <button class="fhi-button fhi-hidden--mobile fhi-m-bottom-S fhi-m-top-S fhi-menu-close" type="button" tabindex="-1">
+                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                <span>Close</span>
+            </button>
+        </div>
+        <ul class="fhi-mega-menu__list">
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">Infectious diseases &amp; Vaccines</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/id/antimicrobial/" tabindex="-1">Antimicrobial resistance</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/id/childcare-and-school/" tabindex="-1">Infectious disease control in childcare and school</a></li>
+                                            <li class="fhi-mega-menu__list-item" style="display: none;">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" class="active" tabindex="-1">
+                                                    <span>Infectious diseases</span>
+                                                </a>
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a class="sub-menu-item-title" href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Infectious diseases</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+                                                            <li class="fhi-mega-menu__list-item ">
+                                                                <a href="https://www.fhi.no/en/id/infectious-diseases/ebola/" tabindex="-1">Ebola</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item ">
+                                                                <a href="https://www.fhi.no/en/id/infectious-diseases/sex-and-health/" tabindex="-1">Sexual health</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item active">
+                                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/" tabindex="-1">Coronavirus disease - advice and information</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item ">
+                                                                <a href="https://www.fhi.no/en/id/infectious-diseases/smitte-fra-mat-vann-og-dyr/" tabindex="-1">Infection from food, water and animals</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item ">
+                                                                <a href="https://www.fhi.no/en/id/infectious-diseases/meningococcal-disease/" tabindex="-1">Meningococcal disease</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item ">
+                                                                <a href="https://www.fhi.no/en/id/infectious-diseases/TB/" tabindex="-1">Tuberculosis</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Influenza</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/id/influensa/seasonal-influenza/" tabindex="-1">Seasonal influenza</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/id/influensa/fugleinfluensa/" tabindex="-1">Avian influenza</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/id/travel/" tabindex="-1">Travel advice</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Vaccines and vaccination</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/id/vaccines/childhood-immunisation-programme/" tabindex="-1">Childhood Immunisation Programme</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/id/vaccines/hpv-vaccine/" tabindex="-1">HPV vaccine for young women</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/id/vaccines/vaccines-overview/" tabindex="-1">Travel vaccines</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">Mental &amp; Physical health</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/mp/childhood-health-promotion-measures/" tabindex="-1">Childhood and health promotion measures</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Chronic diseases</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/chronic-diseases/asthma-and-allergy/" tabindex="-1">Asthma and allergy</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/chronic-diseases/cancer/" tabindex="-1">Cancer</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/chronic-diseases/cardiovascular-diseases/" tabindex="-1">Cardiovascular diseases</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/chronic-diseases/dementia/" tabindex="-1">Dementia</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/chronic-diseases/diabetes/" tabindex="-1">Diabetes</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/chronic-diseases/osteoporosis-and-fractures/" tabindex="-1">Osteoporosis and fractures</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/mp/dental-health/" tabindex="-1">Dental health</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/mp/health-pregnancy-birth/" tabindex="-1">Health during birth and pregnancy</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Mental health</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/mental-health/angstdepresjon-og-andre-psykiske-plager-og-lidelser/" tabindex="-1">Anxiety, depression and other mental health disorders</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/mental-health/developmental-disorders-among-children/" tabindex="-1">Mental health in children and adolescents</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/mental-health/livskvalitet-og-trivsel/" tabindex="-1">Quality of life and well-being</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/mp/mental-health/selvmord-og-selvmordsforebygging/" tabindex="-1">Suicide and suicide prevention</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/mp/overweight-and-obesity/" tabindex="-1">Overweight and obesity</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/mp/pain/" tabindex="-1">Pain</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/mp/sleep-and-sleep-disorders/" tabindex="-1">Sleep and sleep disorders</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">Environment &amp; Lifestyle</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/alcohol/" tabindex="-1">Alcohol</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/cosmetic-allergy/" tabindex="-1">Cosmetic allergy</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/diet-and-nutrition/" tabindex="-1">Diet and nutrition</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/drinking-water/" tabindex="-1">Drinking water</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/drugs-and-addiction/" tabindex="-1">Drugs and addiction</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Environment and health</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/el/environment-and-health/air-pollution/" tabindex="-1">Air pollution</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/el/environment-and-health/environmental-contaminants/" tabindex="-1">Environmental contaminants</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/el/environment-and-health/radiation/" tabindex="-1">Radiation</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Insects and pests</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/el/insects-and-pests/head-lice-and-other-lice/" tabindex="-1">Lice</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/el/insects-and-pests/ticks-and-tick-borne-diseases/" tabindex="-1">Ticks and tick-borne diseases</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/el/insects-and-pests/insects/" tabindex="-1">Insects</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/physical-activity/" tabindex="-1">Physical activity</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/el/smoking-tobacco/" tabindex="-1">Smoking and tobacco</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">Health in Norway</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/cause-of-death-and-life-expectancy/" tabindex="-1">Causes of death &amp; Life expectancy</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/drug/" tabindex="-1">Drug consumption</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/elderly-health/" tabindex="-1">Elderly health</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/health-in-the-municipalities/" tabindex="-1">Health in the municipalities</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Health registries</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/registry-of-pregnancy-termination/" tabindex="-1">Norwegian Registry of Pregnancy Termination</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/cause-of-death-registry/" tabindex="-1">Norwegian Cause of Death Registry</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/cardiovascular-disease-registry/" tabindex="-1">Norwegian Cardiovascular Disease Registry</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/medical-birth-registry-of-norway/" tabindex="-1">Medical Birth Registry of Norway</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/msis/" tabindex="-1">Norwegian Surveillance System for Communicable Diseases (MSIS)</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/norwegian-immunisation-registry-sysvak/" tabindex="-1">Norwegian Immunisation Registry SYSVAK</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/norm/" tabindex="-1">Norwegian Surveillance System for Antimicrobial Drug Resistance (NORM)</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/norwegian-surveillance-system-for-virus-resistance-ravn/" tabindex="-1">Norwegian Surveillance System for Antiviral Resistance&nbsp; (RAVN)</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/health-registries/norpd/" tabindex="-1">Norwegian Prescription Database (NorPD)</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/injuries-and-accidents/" tabindex="-1">Injuries</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/migration-health/" tabindex="-1">Migration health</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/op/hin/" tabindex="-1">Public Health Report</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/hn/social-inequalities-in-health/" tabindex="-1">Social inequalities in health</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Statistics from NIPH</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/statistics/statistics-from-niph/" tabindex="-1">Statistics from NIPH</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/hn/statistics/NorSySS/" tabindex="-1">Norwegian Syndromic Surveillance System (NorSySS)</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">Quality &amp; Knowledge</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/healthservice-quality/" tabindex="-1">Health service quality measurements</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/health-system-analyses/" tabindex="-1">Health system analyses</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/HTA/" tabindex="-1">Health Technology Assessments (HTA)</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>International collaboration</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/qk/international/eregistries/" tabindex="-1">International Health Registry Projects (eRegistries)</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/qk/international/global-health/" tabindex="-1">WHO, EU, Bilateral Collaboration</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/qk/international/global-health-preparedness-programme/" tabindex="-1">Global Health Preparedness Programme</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/qk/international/eea-grants/" tabindex="-1">EEA and Norway Grants</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/helsebiblioteket/" tabindex="-1">Norwegian Electronic Health Library</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/systematic-reviews-hta/" tabindex="-1">Systematic reviews</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/user-experiences/" tabindex="-1">User experiences</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">Research &amp; Access to data</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/more/biobanks/" tabindex="-1">Biobanks</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/more/access-to-data/" tabindex="-1">Access to data</a></li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Research centres</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/more/research-centres/senter-for-sykdomsbyrde/" tabindex="-1">Centre for Disease Burden</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/more/research-centres/centre-informed-health-choices/" tabindex="-1">Centre for Informed Health Choices</a>
+                                                            </li>
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/more/research-centres/Centre-for-fertility-and-health/" tabindex="-1">Centre for Fertility and Health</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item fhi-mega-menu__list-item--expandable" aria-expanded="false">
+                                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" tabindex="-1">
+                                                    <span>Health studies</span>
+                                                    <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                                                </a>
+                                                <div class="fhi-mega-menu__sub-inner">
+                                                    <ul>
+
+                                                            <li class="fhi-mega-menu__list-item "> 
+                                                                <a href="https://www.fhi.no/en/more/health-studies/norwegian-twin-registry/" tabindex="-1">Norwegian Twin Registry</a>
+                                                            </li>
+                                                    </ul>
+                                                </div>
+
+                                            </li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/studies/moba/" target="_top" tabindex="-1">MoBa (Norwegian Mother, Father and Child Cohort Study)</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/qk/systematic-reviews-hta/" target="_top" tabindex="-1">Systematic health reviews</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/more/projects-a-z/" tabindex="-1">Projects A-Z</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/studies/" tabindex="-1">Studies A-Z</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="is-top-level" aria-expanded="false" aria-haspopup="true">
+                    <button class="fhi-mega-menu__button " tabindex="-1">
+                        <span class="top-menu-item-title">About NIPH</span>
+                        <!-- <span class="fhi-icon icon-plus-nav fhi-icon--medium fhi-hidden--desktop" aria-hidden="true"></span> -->
+                        <span class="fhi-icon icon-plus-nav fhi-icon--small" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="fhi-mega-menu__sub ">
+                        <div class="fhi-container">
+                            <!-- <button class="fhi-button fhi-button--grey fhi-button--round fhi-hidden--mobile fhi-align-self-start fhi-m-top-M fhi-menu-close" type="button">
+                                <span>Close</span>
+                                <span class="fhi-icon icon-x fhi-icon--small"></span>
+                            </button> -->
+                            <ul class="fhi-mega-menu__sub-list">
+
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/about/this-is-the-norwegian-institute-of-public-health/" tabindex="-1">About the Norwegian Institute of Public Health</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/about/departments-and-centres/" tabindex="-1">Divisions and departments</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/about/conferences/" tabindex="-1">NIPH meetings and conferences</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/about/about-this-website/" tabindex="-1">About this website</a></li>
+                                            <li class="fhi-mega-menu__list-item "><a href="https://www.fhi.no/en/about/press-centre/" tabindex="-1">Press centre</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+        </ul>
+    </div>
+
+    <div class="fhi-menu-close-button-container">
+        <button class="fhi-visually-hidden fhi-menu-close fhi-menu-close-sr" type="button" tabindex="-1">
+            <span>Close</span>
+        </button>
+    </div>
+</div>
+
+
+
+        <button name="mobile menu" aria-label="Mobile menu" class="fhi-visually-hidden" id="toggle-menu-sr" aria-expanded="false" aria-haspopup="true" aria-controls="main-nav" tabindex="-1">
+            <span class="icon-hamburger"></span>
+        </button>
+    </nav>
+    <nav class="fhi-header__sub-nav">
+        
+<div class="fhi-container" id="top-links" role="navigation">
+    <ul class="fhi-header__sub-nav-list">
+                <li>
+                    <a href="https://www.fhi.no/en/sys/content-a-z/" tabindex="3">Content A-Z</a>
+                </li>
+                <li>
+                    <a href="https://www.fhi.no/en/about/this-is-the-norwegian-institute-of-public-health/opening-hours-employees-addresses/" tabindex="4">Contact us</a>
+                </li>
+
+        <li>
+
+                    <img alt="Norsk nettsted" title="Norsk nettsted" src="./Coronavirus modelling - NIPH_files/nor.svg" style="width: 18px; display: inline-block; top: -2px; position: relative; padding-right: 3px;">
+                    <span lang="no"><a href="https://www.fhi.no/" tabindex="5">Norsk nettsted</a></span>
+        </li>
+    </ul>
+</div>
+
+    </nav>
+</header>
+
+
+
+
+    <div class="fhi-overlay"></div>
+   
+    <main id="main" tabindex="-1" class="">
+        
+
+<div class="fhi-container fhi-hidden--mobile is-discreet-entry">
+    <div class="fhi-row">
+        <div class="fhi-col fhi-p-bottom-none">
+            <div role="navigation" aria-label="You are here:" class="fhi-breadcrumb" id="breadcrumbs-menu">
+                <a class="fhi-breadcrumb-link" href="https://www.fhi.no/en/">Frontpage</a>
+                <span class="fhi-icon icon-arrow-small-right-grey fhi-icon--small fhi-m-right-XS fhi-m-left-XS"></span>
+                        <span class="fhi-breadcrumb-item">Infectious diseases &amp; Vaccines</span>
+                        <span class="fhi-icon icon-arrow-small-right-grey fhi-icon--small fhi-m-right-XS fhi-m-left-XS"></span>
+                        <span class="fhi-breadcrumb-item">Infectious diseases</span>
+                        <span class="fhi-icon icon-arrow-small-right-grey fhi-icon--small fhi-m-right-XS fhi-m-left-XS"></span>
+                        <a class="fhi-breadcrumb-item fhi-breadcrumb-link" href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/">Coronavirus disease - advice and information</a>
+                        <span class="fhi-icon icon-arrow-small-right-grey fhi-icon--small fhi-m-right-XS fhi-m-left-XS"></span>
+                                    <span>Coronavirus modelling</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement":
+    [
+    {"@type": "ListItem",
+        "position": 1,
+        "item": {
+        "@id": "",
+        "name": "Infectious diseases &amp; Vaccines" }
+    }
+    
+        ,
+    {"@type": "ListItem",
+        "position": 2,
+        "item": {
+        "@id": "/en/id/infectious-diseases/",
+        "name": "Infectious diseases" }
+    }
+    
+        ,
+    {"@type": "ListItem",
+        "position": 3,
+        "item": {
+        "@id": "/en/id/infectious-diseases/coronavirus/",
+        "name": "Coronavirus disease - advice and information" }
+    }
+    
+        ,
+        {"@type": "ListItem",
+        "position": 4,
+        "item": {
+        "@id": "/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/",
+        "name": "Coronavirus modelling" }
+    }
+    
+
+    ]
+    }
+</script>
+
+
+        
+
+<div class="fhi-container">
+    <div class="fhi-local-menu-container articlepage">
+        
+    </div>
+</div>
+
+<article>
+
+    <div class="fhi-container fhi-p-top-S fhi-m-top-M fhi-m-top-none@LG articlepage ">
+        <!-- Header -->
+        
+
+<div class="fhi-row article-header">
+  <div class="fhi-col fhi-col-12 fhi-col-8@LG">
+      <div class="fhi-m-bottom-S-plus fhi-align-items-start fhi-align-direction-column">
+        <p class="fhi-tag">Article</p>
+      </div>
+    <h1 class="fhi-heading1 fhi-m-top-XS@LG fhi-m-bottom-S-plus@LG">
+      Coronavirus modelling at the NIPH
+    </h1>
+
+
+
+    
+<p class="fhi-date">
+            <span>
+                Published
+            </span>
+                 <time datetime="2020-04-17">
+                     17.04.2020
+                 </time>
+                <span class="">
+                    Updated
+                </span>
+                <time datetime="2020-05-04">
+                    04.05.2020
+                </time>
+</p>
+
+
+    <div class="fhi-m-top-XS fhi-hidden--mobile">
+      <div class="fhi-align-column-centered-x">
+  <div class="">
+          <p class="fhi-ingress fhi-ingress--big fhi-p-top-S fhi-p-bottom-S fhi-m-bottom-none">
+        This page briefly describes the model used by the NIPH for situational awareness and forecasting of the coronavirus outbreak in Norway. The reproduction number (R) can be found in the daily reports listed below.
+      </p>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+    <div class="fhi-col fhi-col-12 fhi-col-4@LG fhi-print--hidden">
+
+
+        <figure class="figure fhi-image-container fhi-image-custom-height">
+            <img src="./Coronavirus modelling - NIPH_files/coronavirusmodellering.jpg" alt="coronavirusmodellering.JPG">
+        </figure>
+    </div>
+
+  <div class="fhi-m-bottom-M fhi-hidden--desktop">
+    <div class="fhi-align-column-centered-x">
+  <div class="">
+          <p class="fhi-ingress fhi-ingress--big fhi-p-top-S fhi-p-bottom-S fhi-m-bottom-none">
+        This page briefly describes the model used by the NIPH for situational awareness and forecasting of the coronavirus outbreak in Norway. The reproduction number (R) can be found in the daily reports listed below.
+      </p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  <hr class="fhi-print--hidden">
+
+
+        <!-- Byline and sharingpane -->
+        <div class="fhi-byline-container fhi-p-top-S-plus fhi-p-bottom-S fhi-m-bottom-S-plus">
+        <div class="in-english stats-list fhi-theme-page-links--item__lang" lang="no">
+                <a class="fhi-language-link" href="https://www.fhi.no/sv/smittsomme-sykdommer/corona/koronavirus-modellering/">
+                    <span class="fhi-lang-flag icon-flag-no fhi-icon--xlarge"></span>
+                    <span class="fhi-lang-flag--hover icon-flag-hover-no fhi-icon--xlarge"></span>
+                    Les på norsk
+                </a>
+        </div>
+
+            
+
+    <div class="fhi-share-panel">
+        <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" class="fhi-icon-link fhi-popover" data-popover="popover-content-90192">
+            <span class="icon-share"></span>
+            <span class="text">Share/tip</span>
+        </a>
+    </div>
+    <div id="popover-content-90192" class="gpopover">
+        <div class="gpopover-content fhi-p-S-plus fhi-p-bottom-S">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.fhi.no%2fen%2fid%2finfectious-diseases%2fcoronavirus%2fcoronavirus-modelling-at-the-niph-fhi%2f&amp;t=Coronavirus%20modelling" class="icon-button fhi-icon-link" onclick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600&#39;);return false;" target="_blank" rel="noopener" title="Share on Facebook">
+                <span class="icon-facebook fhi-icon--xlarge"></span>
+                <span class="text">Facebook</span>
+            </a>
+            <a href="https://twitter.com/share?url=https%3a%2f%2fwww.fhi.no%2fen%2fid%2finfectious-diseases%2fcoronavirus%2fcoronavirus-modelling-at-the-niph-fhi%2f&amp;text=Coronavirus%20modelling" target="_blank" class="icon-button fhi-icon-link">
+                <span class="icon-twitter fhi-icon--xlarge"></span>
+                <span class="text">Twitter</span>
+            </a>
+            <a href="mailto:?subject=Coronavirus%20modelling&amp;body=https%3a%2f%2fwww.fhi.no%2fen%2fid%2finfectious-diseases%2fcoronavirus%2fcoronavirus-modelling-at-the-niph-fhi%2f" target="_blank" class="icon-button fhi-icon-link">
+                <span class="icon-mail fhi-icon--xlarge"></span>
+                <span class="text">Send by e-mail</span>
+            </a>
+        </div>
+    <div class="gpopover-arrow"></div><div class="gpopover-arrow-shadow"></div></div>
+
+    <div class="fhi-print">
+        <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" onclick="window.print(); return false;" class="icon-button fhi-icon-link">
+            <span class="icon-print"></span>
+            <span class="text">Print</span>
+        </a>
+    </div>
+
+        </div>
+
+        <div class="fhi-row fhi-align-direction-column-reverse--mobile">
+            <div class="fhi-col fhi-col-8@LG">
+                
+
+<div class="textual-block" data-auto-jumpto-index="">
+<h2 id="coronavirus-modelling-at-niph"><strong>Coronavirus modelling at NIPH</strong></h2><p>In the reports published from 4th May 2020, a new reproduction number (R<sub>eff2</sub>) is introduced for the period from 20th April to 3rd May. See the chapters about Calibration and Uncertainty below.  </p>
+
+<p>This page briefly describes the model used by the NIPH for situational awareness and forecasting of the coronavirus outbreak in Norway.</p>
+<p>There is still considerable uncertainty associated with the course of COVID-19 disease and about how many people require hospitalisation and treatment. This has consequences for the model predictions. We handle this uncertainty to some extent with stochastic (random) simulations. We continuously update the parameters in the model as new knowledge and better data become available. We are constantly working to improve the methods we use to estimate the model parameters from the data.</p>
+<h2 id="metapopulation-model"><strong>Meta-population model</strong></h2><p>The model is a stochastic SEIR-type model with a local transmission process in each municipality. The spread between municipalities is modelled by following how people travel between municipalities. The amount of travel between the different municipalities is based on mobile phone data from Telenor. The model is a further development of Engebretsen <em>et al.</em> (2019) and Engebretsen <em>et al.</em> (2020).</p>
+
+<p>Several articles (Ferretti <em>et al</em> 2020, ECDC report, LSHTM report) have pointed to the importance of pre-symptomatic infection so we include pre-symptomatic and asymptomatic infection in the model. A schematic overview of the epidemiological model is illustrated below:</p>
+<p>The latest reports, with further details of the model, can be found in the list below.</p>
+
+
+        <figure class="figure">
+
+                <img src="./Coronavirus modelling - NIPH_files/coronavirusmodellering.jpg" alt="coronavirusmodellering.JPG" title="A schematic overview of the epidemiological model. ">
+
+                <figcaption>
+                    A schematic overview of the epidemiological model. 
+                </figcaption>
+
+        </figure>
+
+
+
+<p>Mobility data from Telenor Norway show how many people have travelled from municipality A to municipality B during each 6-hour intervals every day. We simulate mobility by moving people every 6 hours, according to the mobility data. Between the transfers, we allow everyone to mix for 6 hours, so that the virus can transmit among people in each municipality by contact between infectious individuals and susceptible individuals.</p>
+<p>The model implementation is available on <a href="https://github.com/folkehelseinstituttet/spread">GitHub</a>. We use the asymmetric_mobility_se1e2iiar model from this package.</p>
+<p>The model gives us time series for the number of individuals in each disease state (the classes in the figure above) in each municipality. We use predicted incidence in each municipality to simulate the number of hospitalisations, intensive care patients and deaths.</p>
+<h2 id="model-parameters"><strong>Model parameters</strong></h2><p>For the transmission part of the model, we use data from Ferretti <em>et al</em>. (2020), with some minor changes based on the ECDC report on the pre-symptomatic period.</p>
+
+<figure class="figure table "><table class=" standardTable" width="0">
+<thead>
+<tr>
+<td width="329" style="width: unset;">
+<p><strong>Parameters</strong></p>
+</td>
+<td width="329" style="width: unset;">
+<p><strong>Value</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td width="329" style="width: unset;">
+<p>Exposed period</p>
+</td>
+<td width="329" style="width: unset;">
+<p>3 days</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Pre-symptomatic period</p>
+</td>
+<td width="329" style="width: unset;">
+<p>2 days</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Symptomatic infectious period</p>
+</td>
+<td width="329" style="width: unset;">
+<p>5 days</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Infectiousness pre-symptomatic</p>
+</td>
+<td width="329" style="width: unset;">
+<p>1.25</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Proportion asymptomatic</p>
+</td>
+<td width="329" style="width: unset;">
+<p>40 %</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Infectiousness asymptomatic</p>
+</td>
+<td width="329" style="width: unset;">
+<p>0.1</p>
+</td>
+</tr>
+</tbody>
+</table></figure>
+<p>For the proportion who need hospitalisation, we use age-based rates based on data from Verity <em>et al</em>. (2020) adjusted for the proportion in nursing homes and scaled by 1/3 so that the death rate in Norway is 0.3 per cent per infection, which is more in line with recent international data (<a href="https://www.cebm.net/covid-19/global-covid-19-case-fatality-rates/">Global Covid-19 Case Fatality Rates, CEBM</a>.</p>
+<p> </p>
+<figure class="figure table "><table class=" standardTable" width="0">
+<thead>
+<tr>
+<td width="329" style="width: unset;">
+<p><strong>Parameter</strong></p>
+</td>
+<td width="329" style="width: unset;">
+<p><strong>Value</strong></p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td width="329" style="width: unset;">
+<p>Time spent in hospital</p>
+</td>
+<td width="329" style="width: unset;">
+<p>8 days</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Time spent in intensive care</p>
+</td>
+<td width="329" style="width: unset;">
+<p>4 days in hospital – 12 days in intensive care</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Hospitalisations per infection</p>
+<p>0- 9 years</p>
+<p>10-19 years</p>
+<p>20- 29 years</p>
+<p>30-39 years</p>
+<p>40-49 years</p>
+<p>50-59 years</p>
+<p>60-69 years</p>
+<p>70-79 years</p>
+<p>80+ years</p>
+</td>
+<td width="329" style="width: unset;">
+<p> </p>
+<p>0.0%</p>
+<p>0.013%</p>
+<p>0.37%</p>
+<p>1.1%</p>
+<p>1.4 %</p>
+<p>2.7%</p>
+<p>3.9 %</p>
+<p>5.5 %*</p>
+<p>5.5%*</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Symptom onset to hospitalisation</p>
+</td>
+<td width="329" style="width: unset;">
+<p>8 days</p>
+</td>
+</tr>
+<tr>
+<td width="329" style="width: unset;">
+<p>Proportion in intensive care per admission</p>
+<p>0- 9 years</p>
+<p>10-19 years</p>
+<p>20- 29 years</p>
+<p>30-39 years</p>
+<p>40-49 years</p>
+<p>50-59 years</p>
+<p>60-69 years</p>
+<p>70-79 years</p>
+<p>80+ years</p>
+</td>
+<td width="329" style="width: unset;">
+<p> </p>
+<p>5%</p>
+<p>5%</p>
+<p>5%</p>
+<p>5%</p>
+<p>6.3%</p>
+<p>12.2%</p>
+<p>27.4%</p>
+<p>43.2%</p>
+<p>70.9%</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="width: unset;">
+<p>* The proportion of hospital admissions is reduced since nursing home residents are not usually admitted.</p>
+</td>
+</tr>
+</tbody>
+</table></figure>
+<h2 id="calibration"><strong>Calibration</strong></h2><p>One of the key parameters in the model is the reproduction number. We calibrate the model and estimate the reproduction number so that the model is adapted to hospital admissions on a national level. Since the test criteria have changed during the epidemic, hospital admissions provide a more robust way of characterising developments, although we have a delay effect because infected individuals might need hospitalisation only later in the course of their diseases.</p>
+
+<p>We begin the calibration by taking into account all confirmed imported cases from abroad before 19<sup>th</sup> March. We place them in their residential communities on the date they developed symptoms, in the symptomatic class. Since there are likely to be more imported cases than those confirmed, we include an amplification factor that we also calibrate on data on hospital admissions.</p>
+<p>We vary the estimated reproduction number along the way in the model, and define R0 (the reproduction number at the beginning of the model) and R<sub>eff1</sub> and R<sub>eff2</sub> acting after the start of implemented measures. R0 is used from 17th February to 14th March, R<sub>eff1</sub> from 15th March and R<sub>eff2 </sub>after the 20th April. The 15th March was chosen because it provides the best fit for hospital admissions. We calibrate these together with the amplification factor by on a logarithmic scale. As the guidelines and measures change, we will make several changes to the reproduction rate when necessary.</p>
+<h2 id="uncertainty"><strong>Uncertainty</strong></h2><p>The results from the model are subject to uncertainty due to randomness in spread and mobility (whether infectious or susceptible people travel, for example) and uncertainty in the estimated parameters. In addition, there are several sources of uncertainty that the model does not capture, as we do not take into account uncertainty associated with the model's other parameters. The model is a simplified representation of reality and is based on an assumption of average behaviour in the population across ages.</p>
+
+<p>The number of patients admitted to hospital is based on the parameters that quantify the proportion of infected patients admitted to hospital. This has major uncertainties and impacts significantly estimates of the number of people who have been infected in Norway. As new knowledge suggests that fewer of those infected need to be admitted to hospital, and as the model is based on the number of hospital admissions in Norway, the estimate for the number of infected in Norway has been adjusted upwards in the model from week 16.</p>
+<p>Soon we hope to update more parameters in the model about healthcare sector use to Norwegian conditions using data from the Preparedness register. For better predictions, it will be essential to obtain data from planned prevalence studies. These data can significantly change the estimated proportions in hospital.</p>
+<p>The model does not contain an age structure, and transmission between different age groups is therefore not captured. Advice that the elderly should not have contact with others and thus reduce their risk of infection is, for example, not included in the model.</p>
+<h2 id="interpretation-of-results"><strong>Interpretation of results</strong></h2><p>The results of the model should be interpreted with caution and must always be viewed in the context of other information and with epidemiological assessments. As mentioned above, there are many moments of uncertainty and the model is constantly improved.</p>
+
+<p>In the model, hospital data are used to understand the evolution of the epidemic. If estimates of admissions do not match the model's estimates, it means that the model must be revised to better describe the developments we are observing. If other data are not well described by the model, it probably means that some of the parameters do not describe the situation in Norway well enough. We try to update these parameters as soon as we get updated information.</p>
+<h2 id="modifications-to-the-model"><strong>Modifications to the model</strong></h2><p>The model is dynamic and we update it when we receive new information from Norway or abroad. Major changes are described in the detailed report.</p>
+    <div aria-live="assertive" class="fhi-word-definition-wrapper"></div>
+</div>
+
+
+                    <div class="fhi-expandable-box fhi-m-top-L fhi-m-bottom-L references">
+                        <h2 class="fhi-expandable-header">
+                            <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" class="jumpto-index-heading" id="references">References</a>
+                        </h2>
+                        <div class="fhi-expandable-content fhi-p-top-M-plus fhi-p-bottom-S" aria-expanded="false">
+                            <p>Engebretsen et al. (2019): <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006879">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006879</a></p>
+<p>Engebretsen et al. (2020): <a href="https://www.medrxiv.org/content/10.1101/2020.03.11.20033555v1">https://www.medrxiv.org/content/10.1101/2020.03.11.20033555v1</a></p>
+<p>Ferretti et al. (2020): <a href="https://science.sciencemag.org/content/early/2020/03/30/science.abb6936">https://science.sciencemag.org/content/early/2020/03/30/science.abb6936</a></p>
+<p>Verity et al. (2020): <a href="https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30243-7/fulltext">https://www.thelancet.com/journals/laninf/article/PIIS1473-3099(20)30243-7/fulltext</a></p>
+<p>ECDC Report: <a href="https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-rapid-risk-assessment-coronavirus-disease-2019-eighth-update-8-april-2020.pdf">https://www.ecdc.europa.eu/sites/default/files/documents/covid-19-rapid-risk-assessment-coronavirus-disease-2019-eighth-update-8-april-2020.pdf</a></p>
+<p>LSHTM Report: <a href="https://cmmid.github.io/topics/covid19/control-measures/pre-symptomatic-transmission.html">https://cmmid.github.io/topics/covid19/control-measures/pre-symptomatic-transmission.html</a></p>
+                        </div>
+                    </div>
+
+                    <div class="fhi-expandable-box fhi-m-top-L fhi-m-bottom-L fhi-attachments">
+                        <h2 class="fhi-expandable-header open">
+                                <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#" class="jumpto-index-heading" id="reports-local-and-national-">
+Reports - local and national                                </a>
+                        </h2>
+                        <div class="fhi-expandable-content fhi-p-top-M-plus fhi-p-bottom-S" aria-expanded="open" style="display:block" ;"="">
+                            <div class="fhi-attachments-block">
+                                        <h3>Lokale rapporter</h3>
+                                    <ul class="fhi-list">
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/lokale-rapporter/2020.05.09_regional_corona_report_fylker.pdf" target="_blank" rel="noopener">
+            2020.05.09 Regional corona report fylker.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/lokale-rapporter/2020.05.05--regional_corona_report_fylker.pdf" target="_blank" rel="noopener">
+            2020.05.05 Regional corona report fylker (pdf)
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/lokale-rapporter/oslo_2020.04.18-corona_report.pdf" target="_blank" rel="noopener">
+            Oslo_2020.04.18-corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                    </ul>
+                                        <h3>Nasjonale rapporter</h3>
+                                    <ul class="fhi-list">
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.05.09-corona_report.pdf" target="_blank" rel="noopener">
+            2020.05.09 Corona report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.05.08-corona_report.pdf" target="_blank" rel="noopener">
+            2020.05.08 Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.05.07-corona-report.pdf" target="_blank" rel="noopener">
+            2020.05.07 Corona report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.05.06-corona-report.pdf" target="_blank" rel="noopener">
+            2020.05.06 Corona report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/national_corona_report_4may.pdf" target="_blank" rel="noopener">
+            2020.05.05. Corona report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.05.04.-corona-report.pdf" target="_blank" rel="noopener">
+            2020.05.04. Corona report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/corona_report_30apr.pdf" target="_blank" rel="noopener">
+            2020.04.30 Corona report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.29-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.29-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.28-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.28-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.27---corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.27 - Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/corona_report-24-april.pdf" target="_blank" rel="noopener">
+            2020.04.24-Corona_report (pdf)
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/corona_report-23-april.pdf" target="_blank" rel="noopener">
+            2020.04.23-Corona report (pdf)
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.22-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.22-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.21.04---corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.21 - Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.20-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.20-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.19-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.19-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.17-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.17 Corona report (pdf)
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.16-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.16-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.15-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.15-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                            <li>
+                                                    <img alt="pdf" style="width: 20px; padding-right: 10px; float: left; top: 4px; position: relative;" src="./Coronavirus modelling - NIPH_files/PDF_icon.svg">        <a href="https://www.fhi.no/contentassets/e6b5660fc35740c8bb2a32bfe0cc45d1/vedlegg/nasjonale-rapporter/2020.04.14-corona_report.pdf" target="_blank" rel="noopener">
+            2020.04.14-Corona_report.pdf
+        </a>
+                                                                                                                                                                                                                                                                                                
+                                            </li>
+                                    </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                <aside class="fhi-article-bottom fhi-print--hidden">
+                    <hr class="fhi-m-bottom-M-plus">
+
+                    
+
+                    <div class="fhi-m-bottom-M fhi-m-top-L-plus">
+                            <div class="about">
+        <!-- <hr class="fhi-m-top-L fhi-m-bottom-L"> 
+        <h2 class="fhi-heading6 fhi-m-bottom-M">About</h2> -->
+
+        <ul class="keywords-list">
+                <li>
+                    <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/">Coronavirus disease - advice and information</a>
+                </li>
+        </ul>
+    </div>
+
+                    </div>
+                    <h2 class="fhi-visually-hidden">Metadata</h2>
+
+
+                    <div id="feedback-container" style="display: block;">
+<form action="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/SendFeedback" data-parsley-validate="" id="feedbackForm" method="post" novalidate=""><input name="__RequestVerificationToken" type="hidden" value="ucPN1B30mowG37MdoA1hkw5KD6kI6HXZsfKZGjRygNyTioiY8kSB7BxFIIyHinDIgRXOCU2vQZUcwNXV7M4mzZLULI1sFl-3otdl3YTW1IQ1"><input id="ContactForm_PositiveFeedback" name="ContactForm.PositiveFeedback" type="hidden" value="">                            <div class="always-visible">
+                                <h3>Did you find what you were looking for?</h3>
+                                <div class="answer-group">
+                                    <button class="callBtn" onclick="positive.call(this); return false;">
+                                        <span>Yes</span>
+                                    </button>
+                                    <button class="callBtn" onclick="negative.call(this);return false;">
+                                        <span>No</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="feedback_text" style="display: none;" class="fhi-m-bottom-L">
+                                <div class="control-group">
+                                    <p>NB! Do not enter personal information<br>We will not reply to your message but will use your feedback to improve our website.</p>
+                                    <label for="ContactForm_Message">Your feedback</label>
+                                    <textarea cols="20" id="ContactForm_Message" name="ContactForm.Message" placeholder="NB! Do not enter personal information" rows="2"></textarea>
+                                </div>
+                                <div class="fhi-hidden">
+                                    <label for="ContactForm_Answer">Do not fill this field</label>
+                                    <input id="ContactForm_Answer" name="ContactForm.Answer" type="text" value="">
+                                </div>
+                            </div>
+                            <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="./Coronavirus modelling - NIPH_files/anchor.html" width="256" height="60" role="presentation" name="a-2qneezseimfe" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Coronavirus modelling - NIPH_files/saved_resource.html"></iframe></div><input id="submitFormButton" name="submitInput" data-sitekey="6Lf9enQUAAAAAAhegsH0NOvFYODQgehVOH3VubOB" data-callback="onFeedbackSubmit" onclick="sendingfeedback.call(this);" type="submit" class="callBtnSubmit g-recaptcha" value="Send feedback" style="display: none;">
+</form>                    </div>
+
+                    <script type="text/javascript">
+                        function positive() {
+                            document.getElementById("ContactForm_PositiveFeedback").setAttribute('value', 'true');
+                            document.getElementById("feedbackForm").submit();
+                            if (window.location.href.indexOf(".no/en/") > -1) {
+                                alert("Thanks for your feedback! \nBest regards, Norwegian Institute of Public Health");
+                            } else {
+                                alert("Takk for tilbakemelding.\nHilsen Folkehelseinstituttet");
+                            }
+                        };
+                        function negative() {
+                            $('.grecaptcha-badge').css("visibility", "visible");
+                            document.getElementById('feedback_text').style.display = "block";
+                            document.getElementById('submitFormButton').style.display = "block";
+                        };
+                        function sendingfeedback() {
+                            document.getElementById('feedback-container').style.display = "none";
+                        };
+                        function onFeedbackSubmit(token) {
+                            document.getElementById("feedbackForm").submit();
+                        };
+                    </script>
+                </aside>
+
+
+            </div>
+
+            <div class="fhi-col fhi-col-4@LG">
+
+
+
+                    <div class="internal-chapters-container">
+                        <h2 class="fhi-heading6 fhi-m-bottom-M">
+                            <span class="fhi-icon fhi-icon--medium icon-bulletpoint--down"></span>
+                            Skip to content on this page
+                        </h2>
+                        <div id="internal-chapters"></div><div class="internal-chapters"><ul class=""><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#coronavirus-modelling-at-niph">Coronavirus modelling at NIPH</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#metapopulation-model">Meta-population model</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#model-parameters">Model parameters</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#calibration">Calibration</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#uncertainty">Uncertainty</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#interpretation-of-results">Interpretation of results</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#modifications-to-the-model">Modifications to the model</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#references">References</a></li><li><a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#reports-local-and-national-">
+Reports - local and national                                </a></li></ul></div>
+                    </div>
+
+
+                
+
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+    <div class="more-about-container">
+        <div class="fhi-container">
+            <h2>More articles</h2>
+            <ul class="fhi-row">
+                    <li class="fhi-col-3@LG content-block">
+                        
+
+
+
+
+    <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/daily-reports/daily-reports-COVID19/" class="fhi-link--block">
+
+            <div class="fhi-block no-color">
+                    <div class="fhi-block__image">
+                            <figure class="figure">
+                                
+
+        <figure class="figure ">
+            <img src="./Coronavirus modelling - NIPH_files/graf-artikkelbilde.png" alt="graf-artikkelbilde.PNG">
+        </figure>
+
+                            </figure>
+                    </div>
+                <div class="fhi-block__text fhi-p-bottom-M fhi-p-top-S fhi-p-left-XS fhi-p-right-XS fhi-p-top-M@LG fhi-p-left-M-plus@LG fhi-p-right-M-plus@LG">
+                    <div class="fhi-align-row-centered-y fhi-m-bottom-M-plus">
+                                                
+<p class="fhi-date">
+                <span class="">
+                    Updated
+                </span>
+                <time datetime="2020-05-12">
+                    12.05.2020
+                </time>
+</p>
+                    </div>
+                    <h3 class="fhi-heading5 fhi-m-left-XS fhi-m-bottom-S-plus fhi-m-bottom-M@LG">
+                        Daily report and statistics about coronavirus and COVID-19
+                    </h3>
+                    <p class="fhi-p-left-XS fhi-p-right-XS fhi-ingress-text">
+                        Here is a selection of key data and statistics about SARS-CoV-2 and COVID-19 disease in Norway.
+                    </p>
+                </div>
+            </div>
+    </a>
+
+                    </li>
+                    <li class="fhi-col-3@LG content-block">
+                        
+
+
+
+
+    <a href="https://www.fhi.no/en/qk/systematic-reviews-hta/Call-for-Collaboration/" class="fhi-link--block">
+
+            <div class="fhi-block no-color">
+                    <div class="fhi-block__image">
+                                <figure class="figure">
+                                    <img src="./Coronavirus modelling - NIPH_files/onethirdwidth.webp" alt="No image">
+                                </figure>
+                    </div>
+                <div class="fhi-block__text fhi-p-bottom-M fhi-p-top-S fhi-p-left-XS fhi-p-right-XS fhi-p-top-M@LG fhi-p-left-M-plus@LG fhi-p-right-M-plus@LG">
+                    <div class="fhi-align-row-centered-y fhi-m-bottom-M-plus">
+                                                
+<p class="fhi-date">
+                <span class="">
+                    Published
+                </span>
+                    <time datetime="2020-04-28">
+                        28.04.2020
+                    </time>
+</p>
+                    </div>
+                    <h3 class="fhi-heading5 fhi-m-left-XS fhi-m-bottom-S-plus fhi-m-bottom-M@LG">
+                        Call for Collaboration
+                    </h3>
+                    <p class="fhi-p-left-XS fhi-p-right-XS fhi-ingress-text">
+                        The Norwegian Institute of Public Health (NIPH) is seeking agencies and other contributors interested in collaborating on a Live map of COVID-19 evidence.
+                    </p>
+                </div>
+            </div>
+    </a>
+
+                    </li>
+                    <li class="fhi-col-3@LG content-block">
+                        
+
+
+
+
+    <a href="https://www.fhi.no/en/studies/norflu/om/norflu-coronavirus-survey/" class="fhi-link--block">
+
+            <div class="fhi-block no-color">
+                    <div class="fhi-block__image">
+                            <figure class="figure">
+                                
+
+        <figure class="figure ">
+            <img src="./Coronavirus modelling - NIPH_files/nyhetsbrev-norflu-2020.png" alt="nyhetsbrev-norflu-2020.png">
+        </figure>
+
+                            </figure>
+                    </div>
+                <div class="fhi-block__text fhi-p-bottom-M fhi-p-top-S fhi-p-left-XS fhi-p-right-XS fhi-p-top-M@LG fhi-p-left-M-plus@LG fhi-p-right-M-plus@LG">
+                    <div class="fhi-align-row-centered-y fhi-m-bottom-M-plus">
+                                                
+<p class="fhi-date">
+                <span class="">
+                    Published
+                </span>
+                    <time datetime="2020-04-24">
+                        24.04.2020
+                    </time>
+</p>
+                    </div>
+                    <h3 class="fhi-heading5 fhi-m-left-XS fhi-m-bottom-S-plus fhi-m-bottom-M@LG">
+                        NorFlu Coronavirus Survey
+                    </h3>
+                    <p class="fhi-p-left-XS fhi-p-right-XS fhi-ingress-text">
+                        We need to learn more about why some people contract coronavirus easily and why some people develop severe COVID-19 disease.
+                    </p>
+                </div>
+            </div>
+    </a>
+
+                    </li>
+                    <li class="fhi-col-3@LG content-block">
+                        
+
+
+
+
+    <a href="https://www.fhi.no/en/qk/systematic-reviews-hta/map/" class="fhi-link--block">
+
+            <div class="fhi-block no-color">
+                    <div class="fhi-block__image">
+                            <figure class="figure">
+                                
+
+        <figure class="figure ">
+            <img src="./Coronavirus modelling - NIPH_files/nytt-forskningskart-med-logoer-downsized.png" alt="Nytt forskningskart med logoer downsized.png">
+        </figure>
+
+                            </figure>
+                    </div>
+                <div class="fhi-block__text fhi-p-bottom-M fhi-p-top-S fhi-p-left-XS fhi-p-right-XS fhi-p-top-M@LG fhi-p-left-M-plus@LG fhi-p-right-M-plus@LG">
+                    <div class="fhi-align-row-centered-y fhi-m-bottom-M-plus">
+                                                
+<p class="fhi-date">
+                <span class="">
+                    Published
+                </span>
+                    <time datetime="2020-04-02">
+                        02.04.2020
+                    </time>
+</p>
+                    </div>
+                    <h3 class="fhi-heading5 fhi-m-left-XS fhi-m-bottom-S-plus fhi-m-bottom-M@LG">
+                        Live map of COVID-19 evidence
+                    </h3>
+                    <p class="fhi-p-left-XS fhi-p-right-XS fhi-ingress-text">
+                        A growing number of studies and reports are being published on COVID-19 and the pandemic. This project will help decision makers and researchers navigate the research.
+                    </p>
+                </div>
+            </div>
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ("False" === "True") {
+            $("body").addClass("print-emulation")
+        }
+    })
+</script>
+
+    </main>
+
+    
+
+
+
+
+    
+
+    <footer class="main-footer">
+        <div class="fhi-container">
+            <div class="fhi-row">
+                <div class="fhi-col is-primary">
+
+                    <h2>Address/contact</h2>
+
+                    <p><strong>Norwegian Institute of <br>Public Health</strong></p>
+<p>PO Box 222 Skøyen<br>N-0213 Oslo</p>
+<p>PO Box 973 Sentrum<br>N-5808 Bergen</p>
+<p>Switchboard: (+47) 21 07 70 00<br>Org. no. 983&nbsp;744&nbsp;516</p>
+                </div>
+
+                <div class="fhi-col is-secondary">
+                        <h2>Latest</h2>
+                        <ul class="simple-list">
+                                <li>
+                                    <a href="https://www.fhi.no/en/news/">News by year</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/about/departments-and-centres/">Divisions and departments</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/about/this-is-the-norwegian-institute-of-public-health/would-you-like-to-work-at-the-niph/">Would you like to work at the NIPH?</a>
+                                </li>
+                        </ul>
+                </div>
+
+                <div class="fhi-col is-secondary">
+                        <h2>All our</h2>
+                        <ul class="simple-list">
+                                <li>
+                                    <a href="https://www.fhi.no/en/studies/">Studies</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/overview/projects/">Projects</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/publ/">Publications</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/op/">Online publications</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/more/health-studies/">Health studies</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.fhi.no/en/hn/health-registries/">Health registries</a>
+                                </li>
+                        </ul>
+                </div>
+
+                <div class="fhi-col is-tertiary">
+                    <ul class="simple-list">
+                                                                                                                                                                                                                                            </ul>
+                </div>
+
+                <div class="scroll-to-top is-on">
+                    <a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/#main">
+                        <span class="circle big icon-arrow-long-up is-white"></span>
+                        <span class="fhi-visually-hidden">Gå til toppen</span>
+                    </a>
+                </div>
+            </div>
+
+            <hr class="ruler is-tight is-inverted">
+        </div>
+        <div class="fhi-container">
+            <div class="stripe">
+                <img class="logo-inverted en" alt="Norwegian Institute of Public Health" title="Norwegian Institute of Public Health" src="./Coronavirus modelling - NIPH_files/logo_lang_engelsk.svg">
+
+                    <ul class="inline-list">
+                            <li>
+                                <a href="https://www.fhi.no/en/about/this-is-the-norwegian-institute-of-public-health/">About the Norwegian Institute of Public Health</a>
+                            </li>
+                            <li>
+                                <a href="https://www.fhi.no/en/about/this-is-the-norwegian-institute-of-public-health/privacy-policy/">Privacy Policy</a>
+                            </li>
+                    </ul>
+
+                <div class="page-type">
+
+                    1.0.0.0 - RD00155D62C60B - Article
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<div id="cookie-banner" class="english fhi-print--hidden" style="">
+    <div class="fhi-container">
+       <div class="fhi-row">
+           <div class="fhi-col fhi-col-12 fhi-flex fhi-align-space-between fhi-align-direction-column--mobile fhi-align-row-centered-y">
+<p><span style="font-family: Calibri;">The Norwegian Institute of Public Health's website uses cookies. <a href="https://www.fhi.no/en/about/this-is-the-norwegian-institute-of-public-health/privacy-policy/">Read more in our privacy policy</a>&nbsp;</span></p>           <button type="button" class="fhi-button fhi-button--round fhi-button--white">Close</button></div>
+       </div>
+    </div>
+</div>
+
+<script src="./Coronavirus modelling - NIPH_files/jquery-3.3.1.min(1).js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script src="./Coronavirus modelling - NIPH_files/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+<script src="./Coronavirus modelling - NIPH_files/scripts.js"></script>
+
+
+<script src="./Coronavirus modelling - NIPH_files/fhi.js"></script><div id="lightboxOverlay" class="lightboxOverlay fhi-print--hidden" style="display: none;"></div><div id="lightbox" class="lightbox fhi-print--hidden" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><div class="lb-nav"><a class="lb-prev" href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/"></a><a class="lb-next" href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/coronavirus-modelling-at-the-niph-fhi/"></a><span class="lb-number"></span></div></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div>
+
+
+    <script type="text/javascript" src="./Coronavirus modelling - NIPH_files/find.js"></script>
+<script type="text/javascript">
+if(FindApi){var api = new FindApi();api.setApplicationUrl('/');api.setServiceApiBaseUrl('/find_v2/');api.processEventFromCurrentUri();api.bindWindowEvents();api.bindAClickEvent();api.sendBufferedEvents();}
+</script>
+
+    <script src="./Coronavirus modelling - NIPH_files/what-input.min.js" defer="defer"></script>
+    <script>
+        objectFitImages();
+    </script>
+    <script src="./Coronavirus modelling - NIPH_files/highcharts.js" type="text/javascript"></script>
+
+
+<div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647; left: 142.5px; top: 1472.81px;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"><div id="fatkun-drop-panel">
+        <a id="fatkun-drop-panel-close-btn">×</a>
+            <div id="fatkun-drop-panel-inner">
+                <div class="fatkun-content">
+                    <svg class="fatkun-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5892"><path d="M494.933333 782.933333c2.133333 2.133333 4.266667 4.266667 8.533334 6.4h8.533333c6.4 0 10.666667-2.133333 14.933333-6.4l2.133334-2.133333 275.2-275.2c8.533333-8.533333 8.533333-21.333333 0-29.866667-8.533333-8.533333-21.333333-8.533333-29.866667 0L533.333333 716.8V128c0-12.8-8.533333-21.333333-21.333333-21.333333s-21.333333 8.533333-21.333333 21.333333v588.8L249.6 475.733333c-8.533333-8.533333-21.333333-8.533333-29.866667 0-8.533333 8.533333-8.533333 21.333333 0 29.866667l275.2 277.333333zM853.333333 874.666667H172.8c-12.8 0-21.333333 8.533333-21.333333 21.333333s8.533333 21.333333 21.333333 21.333333H853.333333c12.8 0 21.333333-8.533333 21.333334-21.333333s-10.666667-21.333333-21.333334-21.333333z" p-id="5893"></path></svg>
+                    <div class="fatkun-title">Drag and Drop</div>
+                    <div class="fatkun-desc">The image will be downloaded</div>
+                </div>
+            </div>
+    </div><div style="visibility: hidden; position: absolute; width: 100%; top: -10000px; left: 0px; right: 0px; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.5;"></div><div style="margin: 0px auto; top: 0px; left: 0px; right: 0px; position: absolute; border: 1px solid rgb(204, 204, 204); z-index: 2000000000; background-color: rgb(255, 255, 255); overflow: hidden;"><iframe title="recaptcha challenge" src="./Coronavirus modelling - NIPH_files/bframe.html" name="c-2qneezseimfe" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" style="width: 100%; height: 100%;"></iframe></div></div></body></html>
