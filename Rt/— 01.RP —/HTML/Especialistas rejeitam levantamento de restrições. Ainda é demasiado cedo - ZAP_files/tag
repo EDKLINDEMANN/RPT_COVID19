@@ -1,0 +1,40 @@
+(function(w, d) {
+  try {
+    d = w.top.document || d; w = w.top.document ? w.top : w;
+  } catch (e) {}
+  var ttag = function() {
+    try  {
+    frameElement.parentNode.style.display = "none";
+} catch (e) {}
+    w.teads.page(93181).placement(100945, {slider: {allow_corner_position: false, allow_top_position: false}, "css":"margin: 0px auto 26px; max-width: 550px;","format":"inread","slot":{"insertInside":true,"btf":false,"selector":"#zap-native","minimum":1}}).passback(function passback() {/* jshint ignore:start */
+var _slot_ = "#zap-native";
+var _min_ = 0;
+var d = window.document;
+try {
+  d = window.top.document;
+} catch (e) {}
+var adFrame = d.createElement("iframe");
+adFrame.width = 1;
+adFrame.height = 1;
+adFrame.border = 0;
+adFrame.style.border = "0";
+adFrame.frameBorder = 0;
+adFrame.style = "display: block; margin: 12px auto;";
+var body = `<script> var config = { targetingString: "", currentAdUnit: "zap-native", adPath: "/1111242/zap_native_pb2", adSizes: "[[1,1],[300,169],[640,360]]", loc: top.window.location || window.location, }; var targeting = { }; if (config.currentAdUnit && top.window.hbTargeting) { targeting = top.window.hbTargeting[config.currentAdUnit]; } targeting.isPassback= true; for (var key in targeting) { if (targeting.hasOwnProperty(key)) { var values = targeting[key]; if (Array.isArray(values)) { values = values.join('","'); } config.targetingString += '.setTargeting("' + key + '",["' + values + '"])'; } } document.write("<scr" + "ipt async src='https://securepubads.g.doubleclick.net/tag/js/gpt.js'></scr" + "ipt> <div id='passback'> <scr" + "ipt> window.googletag = window.googletag || {cmd: []}; googletag.cmd.push(function() { googletag.defineSlot('" + config.adPath + "', " + config.adSizes + ", 'passback')" + config.targetingString + ".addService(googletag.pubads());googletag.pubads().set('page_url', '" + config.loc + "');googletag.enableServices();googletag.display('passback'); });</scr" + "ipt></div>"); </script>`;
+var content = "<html><head><style>body{margin:0;padding:0;border:0}<\/style><\/head>" + "<body>" + body + "<\/body>" + "<\/html>";
+var passbackSlot = d.querySelectorAll(_slot_)[_min_];
+passbackSlot.appendChild(adFrame);
+adFrame.contentWindow.document.open("text/html");
+adFrame.contentWindow.document.write(content);
+adFrame.contentWindow.document.close();
+/* jshint ignore:end */}).serve();
+  };
+  if (w.teads && w.teads.page) { ttag(); }
+  else if (!w.teadsscript) {
+    var s = document.createElement('script');
+    s.src = 'https://s8t.teads.tv/media/format/v3/teads-format.min.js';
+    s.async = true; s.onload = ttag; w.teadsscript = d.getElementsByTagName('head')[0].appendChild(s);
+  } else {
+    w.teadsscript.addEventListener('load', ttag);
+  }
+})(window, document);

@@ -1,0 +1,735 @@
+/*** IMPORTS ***/
+/**********************************************
+* Actualização Janeiro 2015       *
+**********************************************/
+/* Client-specific Styles & Reset */
+
+
+
+
+/* #### DO NOT ERASE */
+abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,
+dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,
+ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,
+sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:0 0;
+}
+
+html,body {
+    height:100%;
+    overflow:hidden
+}
+
+body {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+    overflow:hidden;
+    -webkit-overflow-scrolling:touch;
+    line-height:1;
+}
+
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display:block
+}
+
+nav ul {
+    list-style:none
+}
+
+blockquote,q {
+    quotes:none
+}
+
+blockquote:after,blockquote:before,q:after,q:before {
+    content:'';
+    content:none
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:0 0;
+    color: white;
+    outline: 0;
+}
+
+a img {
+    border: 0;
+}
+
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none
+}
+
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:700
+}
+
+del {
+    text-decoration:line-through
+}
+
+abbr
+[title],dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #ccc;
+    margin:1em 0;
+    padding:0
+}
+
+input,select {
+    vertical-align:middle
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+}
+
+
+
+html body .bottom {
+    background-size: cover;
+    background-position: bottom right;
+}    
+.for_xxs, 
+.for_xs,
+.for_s,
+.for_m,
+.for_l,
+.for_xl {
+    display: none;
+}
+
+
+/** IE exception **/
+.ie6 .for_l, 
+.ie7 .for_l, 
+.ie8 .for_l {
+    display: block;
+}
+
+
+
+/* THEME */
+.top * {
+    max-height:100%
+}
+
+.top {
+    background:#0B1016 url(../media/close/bg.jpg);
+    -webkit-background-size:auto 100%;
+    -moz-background-size:auto 100%;
+    -ms-background-size:auto 100%;
+    -o-background-size:auto 100%;
+    background-size:auto 100%
+}
+
+.top .recheio a {
+    display:block
+}
+
+.bottom {
+    background:#222 url(../media/open/L.jpg) center center;
+/**
+        background-image:url(https://dl.dropbox.com/u/636550/to_guia.png) !important;
+        */
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -ms-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    height:80%;
+    position:relative
+}
+
+.resizing {
+    visibility:hidden
+}
+
+/* VIDEO */
+#vCtn>iframe {
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    position:absolute
+}
+
+#vCtn {
+    position:relative;
+    background-color:red;
+    width:100%;
+    height:100%;
+    background-color:#000!important
+}
+
+.video-controls {
+/* gmalta */
+    top:85%;
+    position:absolute
+}
+
+.video-controls li {
+    position:absolute;
+    width:42%;
+    max-width:800px;
+    bottom:0;
+    right:2%
+/* margin-bottom:4%;*/
+}
+
+.video-controls,.recheio {
+    width:100%;
+    max-width:2500px;
+    margin:0 auto
+}
+
+#mute-toggle {
+    right:40px;
+    left:36%;
+    bottom:5px;
+    width:30px;
+    height:30px;
+    float:right;
+    cursor:pointer;
+    cursor:hand;
+    position:absolute;
+    background:#969696;
+    background:rgba(0,0,0,0.8);
+    text-indent:-9999em;
+    direction:ltr;
+    background:url(../media/playerskin/mute_to.png) no-repeat top left;
+    -webkit-background-size:100% auto;
+    -moz-background-size:100% auto;
+    -ms-background-size:100% auto;
+    -o-background-size:100% auto;
+    background-size:100% auto;
+    text-transform:uppercase;
+    color:#fff;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-shadow:rgba(0,0,0,0.6);
+    -webkit-border-radius:.4em .4em 0 0;
+    -moz-border-radius:.4em .4em 0 0;
+    -ms-border-radius:.4em .4em 0 0;
+    -o-border-radius:.4em .4em 0 0;
+    border-radius:.4em .4em 0 0;
+    opacity:.8;
+    z-index:1000
+}
+
+body #mute-toggle:hover {
+    opacity:1
+}
+
+#mute-toggle:active {
+}
+
+.muted #mute-toggle {
+    background-position:bottom left
+}
+
+.mute-on,.muted .mute-off {
+    display:none
+}
+
+.muted .mute-on {
+    display:block
+}
+
+body .video-no-fundo {
+    background-image:none
+}
+
+body .video-no-fundo .videobox {
+    width:100%;
+    height:0;
+    padding-bottom:24%;
+    left:0;
+    bottom:0;
+    max-width:none;
+    top:0
+}
+
+.overlay-knowmore, #to-video {
+    position:absolute;
+    top:0;
+    left:%; /* colocar margin do VIDEO a esquerda em todos os tamanhos 5, 10, 2 sempre em percentagem*/
+    width:100%!important;
+    height:100%!important
+}
+
+.videobox {
+    overflow:hidden
+}
+
+/* Botão Saiba Mais que fica em cima do video de nome (overlay-knowmore) */
+.overlay-knowmore {
+    position:absolute;
+    top:15%;
+    left:auto;
+    right:-9em;
+    width:7em!important;
+    height:auto!important;
+    padding:.5em 1em;
+    background:#fff;
+    background:rgba(255,255,255,0.8);
+    z-index:10;
+    text-align:center;
+    color:#000;
+    text-shadow:1px 0 0 #fff;
+    font-size:1.5em;
+    font-weight:700;
+    font-family:sans-serif;
+    text-transform:lowercase;
+    letter-spacing:-1px;
+    -webkit-border-radius:.4em 0 0 .4em;
+    -moz-border-radius:.4em 0 0 .4em;
+    -ms-border-radius:.4em 0 0 .4em;
+    -o-border-radius:.4em 0 0 .4em;
+    border-radius:.4em 0 0 .4em;
+    -webkit-transition:right .4s
+}
+
+.overlay-knowmore:after {
+}
+
+.videobox:hover .overlay-knowmore:hover {
+    cursor:pointer;
+    cursor:hand;
+    text-decoration:underline
+}
+
+.videobox:hover .overlay-knowmore {
+    right:0
+}
+
+.videobox {
+    position:absolute;
+    top:20%;
+    left:18%;
+    bottom:16%!important;
+    width:35%;
+    max-width:40%
+}
+
+.video16-9 {
+}
+
+.videobox embed,.videobox object,.videobox video,.videobox iframe {
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+.takeover-closed {
+    display:none
+}
+
+.takeover-open {
+    display:block
+}
+
+.top {
+    display:none
+}
+
+.to-closed .top,.to-closed .takeover-closed {
+    display:block
+}
+
+body.to-closed .top {
+    height:100%
+}
+
+.to-closed .top + a,.to-closed .takeover-open,body#takeover.to-closed #mute-toggle {
+    display:none
+}
+
+.to-open #mute-toggle,.to-open .takeover-open {
+    display:block
+}
+
+.to-closed * {
+    cursor:pointer;
+    cursor:hand
+}
+
+.top {
+    height:20%;
+    padding-left:3em
+}
+
+.top p,.top .recheio,.top a,.top img {
+    height:100%
+}
+
+.top .recheio {
+    position:relative
+}
+
+.top img {
+    position:relative;
+    left:0;
+    top:0;
+    height:100%;
+    width:auto
+}
+
+
+
+
+/*** IMPORTS ***/
+/**********************************************
+* MEDIA QUERIES  - Posição do video em vários formatos ----------------------------*
+**********************************************/
+
+
+/*** HEIGHT ***/
+
+@media only screen and (height:80px) {
+#main {
+    opacity:0;
+    transition:opacity .4s ease-in-out;
+    -moz-transition:opacity .4s ease-in-out;
+    -webkit-transition:opacity .4s ease-in-out;
+    display:none;
+}
+#collapsed {
+    display:block
+}
+}
+
+
+/***------------------------------- MIN ----- HEIGHT ***/
+
+@media only screen and (min-height:81px) {
+#main {
+    opacity:1;
+    transition:opacity 1s ease-in-out;
+    -moz-transition:opacity 1s ease-in-out;
+    -webkit-transition:opacity 1s ease-in-out
+}
+}
+
+
+@media only screen and (min-height: 100px) {
+
+    body .top {
+        display: none;
+    }
+
+    body .bottom {
+        height: 100%;
+    }
+}
+/***------------------------------- MAX ----- HEIGHT ***/
+
+/* Closed */
+@media only screen and (max-height: 100px) {
+    body .top {
+        height: 100%;
+    }
+    .top + a {
+        display: none;
+    }
+
+    .takeover-open {
+        display: none;
+    }
+    .takeover-closed {
+        display: block;
+    }
+    #mute-toggle {
+        display: none;
+    }
+}
+
+
+/***------------------------------- MAX ----- WIDTH ***/
+
+
+
+@media only screen and (max-width :400px) {
+#m,#xl {display:none}
+}
+
+@media only screen and (max-width :780px) {
+#xl {display:none}
+#m {margin-left:70%!important}
+}
+    
+/*** M OPEN - VIDEO ***/ 
+@media only screen and (max-width: 1024px) {
+    .videobox {
+        position: absolute;
+        top:16%; 
+        left: 19%; 
+        bottom: 14%;
+        width: 35%;
+        max-width: 100%;
+    }
+}
+
+/***------------------------------- MIN ----- WIDTH ***/
+
+/*** XS OPEN - VIDEO ***/ 
+@media only screen and (max-width: 420px) {
+
+    body .bottom {
+        background-color: #060606;
+        background-image: url(../media/open/XXS.jpg) !important;
+        background-repeat: no-repeat;
+    }
+       .video-controls li {
+        display:none !important;
+    }
+        .videobox {
+        position: absolute;
+        top: 28%; 
+        left: 5%; 
+        bottom: 0;
+        width: 43%;
+        max-width: 545px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    body .videobox {
+left: 42%!important;
+    bottom: 6%!important;
+    top: 17.4%!important;
+    width: 54% !important;
+	display:none!important;
+    }
+    
+    .video-controls li {
+        display:none !important;
+    }
+ }
+
+/*** XS OPEN - VIDEO ***/ 
+@media only screen and (max-width: 629px) {
+    html body {
+        /**
+        background: blue;
+        **/
+    }
+   /* .for_s { display: block; }*/
+
+    body .videobox {
+    left: 44%;
+    right: 16%;
+    top: 36%;
+    width: 68%;
+    bottom: 14%!important;
+    }
+    body .bottom {
+        background-image: url(../media/open/XS.jpg);
+    }
+    
+    .for_xxs, .for_xs, .for_s ,.for_m ,.for_l ,.for_xl {display: none;}
+} 
+
+@media only screen and (max-width: 602px) {
+    
+    .for_xxs { display: block;margin-left: -23px!important;position: absolute; }
+    .for_xl, .for_l, .for_m, .for_s ,.for_xs {display: none;}
+    
+}
+
+/*** Xl OPEN - VIDEO ***/ 
+@media only screen and (min-width: 1024px) {
+    .videobox {
+position: absolute;
+    top: 18.4%;
+    left: 21%;
+    bottom: 12%;
+    width: 35%;
+    max-width: 100%;
+    }
+}
+@media only screen and (min-width: 1300px) {
+
+    body .bottom {
+        background-image: url(../media/open/XL.jpg);
+    }
+
+    .video-controls li {
+        position: absolute;
+        left: 56%;
+    }
+}
+@media only screen and (min-width: 1580px) {
+    html body {
+        /**
+        background: green;
+        **/
+    }
+    .for_xl { display: block; }
+
+    body .bottom {
+        background-image: url(../media/open/XL.jpg?v2);
+    }
+}
+
+
+
+/***------------------------------- MIN AND MAX ----------- WIDTH ***/
+@media only screen and (min-width: 603px) and (max-width: 959px) {
+    
+    .for_xs { display: block; }
+    .for_xl, .for_l, .for_m, .for_s ,.for_xxs {display: none;}
+    
+}
+/*** Xl, S OPEN - VIDEO ***/ 
+@media only screen and (min-width: 769px)  and (max-width: 1024px) {
+
+    body .bottom {
+        background-image: url(../media/open/M.jpg);
+    }
+    
+    .videobox {
+    position: absolute;
+    top: 18.4%;
+    left: 21%;
+    bottom: 16%;
+    width: 35%;
+    max-width: 40%;
+    }
+}
+
+/*** S, XS OPEN - VIDEO ***/ 
+@media only screen and (min-width: 630px) and (max-width: 768px) {
+
+    body .bottom {
+        background-image: url(../media/open/S.jpg);
+    }
+
+    .videobox embed, .videobox object, .videobox video, .videobox iframe {
+        width: 60%;
+    }
+
+
+    @media only screen and (min-height: 100px) {  
+        .videobox {
+    position: absolute;
+    top: 18.4%;
+    left: 21%;
+    bottom: 6%;
+    width: 35% !important;
+    max-width: 300px !important;
+        }
+    
+          .video-controls li {
+            display:none !important;
+        }
+    }
+}
+
+/*** XS OPEN - VIDEO ***/ 
+@media only screen and (min-width: 420px) and (max-width: 629px){
+    
+    body .bottom {
+        background-color:#060606;
+        background-image: url(../media/open/XS.jpg);
+        background-repeat: no-repeat;
+    }
+    
+    .logo_left {display: none;}
+
+    .video-controls li {
+        display:none !important;
+    }
+    body #mute-toggle {
+        left: -15px;
+    }
+    .videobox {
+        position: absolute;
+        top: 6%; 
+        left: 5%; 
+        bottom: 6%;
+        width: 80%;
+        max-width: 305px;
+        }
+}
+@media only screen and (min-width: 960px) and (max-width: 1129px) {
+    
+    .for_s { display: block; }
+    .for_xl, .for_l, .for_m, .for_xs ,.for_xxs {display: none;}
+    
+}
+
+@media only screen and (min-width: 1130px) and (max-width: 1299px) {
+    html body {
+        /**
+        background: yellow;
+        **/
+    }
+    .for_m { display: block; }
+    .for_xxs, .for_xs, .for_xl, .for_l, .for_s, .for_xs ,.for_xxs {display: none;}
+    
+}
+@media only screen and (min-width: 1300px) and (max-width: 1579px) {
+    html body {
+        /**
+        background: green;
+        **/
+    }
+    .for_l { display: block; }
+    
+}
+
+/*no overlay ipad */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (-webkit-min-device-pixel-ratio: 1){      
+}
+@media only screen and (max-device-width : 1024px)  {
+ p.overlay-knowmore {display: none!important;visibility: hidden;}
+
+}
+
+
+/*gmalta*/
+/*@media only screen and (min-width: 630px)  { 
+    .for_xs ,.for_xxs {display: none;}
+}*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  {
+ p.overlay-knowmore {display: none!important;visibility: hidden;}
+}
+/*gmalta*/

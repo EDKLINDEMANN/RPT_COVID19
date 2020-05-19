@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12/ago/2019, 14:41:34
+    Author     : MiguelCarvalho
+*/
+
+img.nc-cover-img {
+    max-width: 243px;
+    max-height: 309px;
+    display: block;
+    margin: auto;
+}
+a.nc-capa-homepage-assinar-text {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+a.nc-capa-homepage-assinar-text:hover{
+    color: #01aded;
+}
+
+h4.nc-capa-homepage-assinar {
+    padding-bottom: 15px;
+}
+
+.nc-embed-container { 
+		position: relative; 
+		padding-bottom: 56.25%;
+		overflow: hidden;
+		max-width: 100%;
+		height: auto;
+	} 
+
+	.nc-embed-container iframe,
+	.nc-embed-container object,
+	.nc-embed-container embed { 
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}

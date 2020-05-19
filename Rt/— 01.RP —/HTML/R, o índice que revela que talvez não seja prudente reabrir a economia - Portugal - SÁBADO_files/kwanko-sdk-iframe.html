@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://img.metaffiliation.com/kwanko-sdk-iframe.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Kwanko SDK</title>
+  </head>
+  <body style="">
+    <script type="text/javascript">
+
+    (function(w) {
+
+      var lsValue = w.localStorage.getItem('netals');
+      var lsTime = w.localStorage.getItem('netalst');
+
+      var cookieValue = null, timeValue = null;
+
+      w.addEventListener('message', function onMessage(e) {
+
+        // This is what we have in store
+        lsValue = w.localStorage.getItem('netals');
+        lsTime = w.localStorage.getItem('netalst');
+
+        // This is what we get from the SDK
+        cookieValue = e.data.netals;
+        timeValue = e.data.netalst;
+
+        // We only update if the data is more recent
+        if (timeValue > lsTime) {
+          lsValue = cookieValue;
+          lsTime = timeValue;
+
+        }
+
+        // TODO: perform some tests before saving data
+        w.localStorage.setItem('netals', lsValue);
+        w.localStorage.setItem('netalst', lsTime);
+      });
+
+      console.log('=> iframe send back', lsValue, lsTime);
+
+      w.parent.postMessage({ netals: lsValue, netalst: lsTime }, '*');
+
+    })(window);
+
+    </script>
+  
+<img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"></body></html>

@@ -1,0 +1,158 @@
+/*
+ * Stylesheet for iframe-based takeovers
+ * important classes:
+ *
+ * (wrapper div for proportion preserving using padding-bottom hack)
+ * .sapo_takeover_iframecontent
+ * (toggler button, to toggle between full view and minimal view)
+ * .sapo_takeover_iframetoggle
+ * (iframe itself. sticks inside the wrapper div in order to maintain proportion.)
+ * .sapo_takeover_iframe
+ *
+ * (load different css sprites for the button) (applied in the iframecontent)
+ * .sapo_takeover_theme_dark
+ * .sapo_takeover_theme_light
+ *
+ * */
+
+
+/* iframe container */
+.sapo_takeover_iframecontent, .sapo_takeover_iframecontent_closed {
+    height: 0;
+    position: relative;
+    padding-bottom: 30%;
+    width: 100%;
+    background-color: #000000;
+    background-image: url("pub_white.png"); 
+    background-position: right top;
+    background-repeat: no-repeat;
+    margin-bottom: 8px;
+    display: block !important;
+}
+
+.sapo_takeover_iframecontent_closed {
+    padding-bottom: 0;
+    height: 80px;
+}
+
+/* iframe for takeover html */
+.sapo_takeover_iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    display: block;
+    overflow-x: hidden;
+    margin-top:8px;
+}
+
+/* toggle button, hovered on iframe */
+.sapo_takeover_iframetoggle,
+.sapo_takeover_iframetoggle_closed {
+    cursor: pointer;
+    border: 0;
+    position: absolute;
+    left: .8em;
+    top: .8em;
+    /* background-image below */
+    background-color: transparent;
+    /*background-position: 0 0;*/
+    background-position: left top;
+    color: white;
+    width: 25px;
+    height: 25px;
+    text-indent: -9999em;
+    direction: ltr;
+    overflow: hidden;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+/* flip toggle button css sprite when takeover closed */
+.sapo_takeover_iframetoggle_closed {
+     /*background-position: 0 25px;*/
+     background-position: left bottom;
+
+}
+
+.sapo_takeover_iframetoggle:hover,
+.sapo_takeover_iframetoggle_closed:hover {
+    opacity: 1;
+}
+
+/* Themes for takeover button*/
+.sapo_takeover_theme_light .sapo_takeover_iframetoggle,
+.sapo_takeover_theme_light .sapo_takeover_iframetoggle_closed {
+    background-image: url("https://reclames.impresa.pt/staticfiles/seta_to_dark.png");
+    background-repeat: no-repeat;
+}
+
+.sapo_takeover_theme_dark .sapo_takeover_iframetoggle,
+.sapo_takeover_theme_dark .sapo_takeover_iframetoggle_closed {
+    background-image: url(https://reclames.impresa.pt/staticfiles/seta_to_dark.png);
+    background-repeat: no-repeat;
+}
+
+
+
+.no-svg .sapo_takeover_theme_light .sapo_takeover_iframetoggle,
+.no-svg .sapo_takeover_theme_light .sapo_takeover_iframetoggle_closed {
+    background-image: url("https://reclames.impresa.pt/staticfiles/seta_to_dark.png");
+    background-repeat: no-repeat;
+}
+
+.no-svg .sapo_takeover_theme_dark .sapo_takeover_iframetoggle,
+.no-svg .sapo_takeover_theme_dark .sapo_takeover_iframetoggle_closed {
+    background-image: url(https://reclames.impresa.pt/staticfiles/seta_to_dark.png);
+    background-repeat: no-repeat;
+}
+
+.sapo_takeover_iframetoggle_closed {
+    /*background-position: 0 0;*/
+}
+
+@media screen and (max-width: 629px) {
+    .sapo_takeover_iframecontent {
+        padding-bottom: 60%;
+    }
+    .sapo_takeover_iframecontent_closed {
+        /* padding-bottom: 80px;*/
+        /*background-position: 0 35px;*/
+    }
+    .sapo_takeover_iframetoggle_closed ,.sapo_takeover_iframetoggle {
+        width: 40px;
+        height: 40px;
+        background-size: 40px 80px;
+    }
+}
+
+
+.bsu_pub, .bsu_dark, .bsu_almofada {
+display:none!important;
+} 
+.bsu_pub, .bsu_dark a {
+z-index: 0 !important;visibility: hidden;
+}
+
+.pun_sic div[class^="sapo_takeover_iframecontent"],
+.pun_sicmul div[class^="sapo_takeover_iframecontent"],
+.pun_sicrad div[class^="sapo_takeover_iframecontent"]
+{ margin-bottom:0;}
+
+.skin-visaojunior div[class^="sapo_takeover_iframecontent"],
+.skin-visaosete div[class^="sapo_takeover_iframecontent"],
+.skin-visaosolidaria div[class^="sapo_takeover_iframecontent"],
+.skin-jornaldeletras div[class^="sapo_takeover_iframecontent"],
+.yui3-skin-sam div[class^="sapo_takeover_iframecontent"]
+{margin-bottom:0; margin-top:36px!important;}
+
+.skin-visao div[class^="sapo_takeover_iframecontent"]
+{margin-bottom:0; margin-top:0px!important;}
+
+.pun_tvmais div[class^="sapo_takeover_iframecontent"]
+{margin-bottom:0; margin-top:25px!important;}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://s0.2mdn.net/dfp/146882/97525202/1557220918353/Untitled-2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style></style><script src="./jquery-2.0.3.min.js"></script><script src="./edge.4.0.1.min.js"></script><script src="./Untitled-2_edge.js"></script><script src="./Untitled-2_edgeActions.js"></script><script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script>
+	<script> var clickTag = "https://www.google.pt/"; </script>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="ad.size" content="width=300,height=600">
+	<title>Untitled</title>
+<!--Adobe Edge Runtime-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script type="text/javascript" charset="utf-8" src="./Untitled-2_edgePreload.js"></script>
+    <style>
+        .edgeLoad-EDGE-15260056 { visibility:hidden; }
+    </style>
+<!--Adobe Edge Runtime End-->
+
+</head>
+<body style="margin: 0px; padding: 0px;">
+	<div id="Stage" class="EDGE-15260056" onclick="window.open(window.clickTag)" style="position: relative; transform: translateZ(0px); background-color: rgb(255, 255, 255); width: 300px; height: 600px; overflow: hidden;">
+	<div id="Stage_fundo" class="Stage_fundo_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 369px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(-67px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/fundo.jpg&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform-style: preserve-3d;"></div><div id="Stage_NAVEGUE" class="Stage_NAVEGUE_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/NAVEGUE.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; transform-style: preserve-3d;"></div><div id="Stage_TIT" class="Stage_TIT_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/TIT.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; transform-style: preserve-3d;"></div><div id="Stage_BG" class="Stage_BG_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/BG.jpg&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform-style: preserve-3d;"></div><div id="Stage_LOGO" class="Stage_LOGO_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/LOGO.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform-style: preserve-3d;"></div><div id="Stage_DEF" class="Stage_DEF_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/DEF.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; transform-style: preserve-3d;"></div><div id="Stage_EQUI" class="Stage_EQUI_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 12px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/EQUI.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0; transform-style: preserve-3d;"></div><div id="Stage_CRESC" class="Stage_CRESC_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 12px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/CRESC.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0; transform-style: preserve-3d;"></div><div id="Stage_BERMA" class="Stage_BERMA_id" style="position: absolute; margin: 0px; left: 0px; top: 0px; width: 300px; height: 600px; right: auto; bottom: auto; transform-origin: 50% 50%; transform: translate(0px, 0px) translateZ(0px) rotate(0deg) scale(1, 1); background-size: 100% 100%; background-image: url(&quot;images/BERMA.png&quot;); background-position: 0px 0px; background-repeat: no-repeat; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform-style: preserve-3d;"></div></div>
+
+<img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"></body></html>

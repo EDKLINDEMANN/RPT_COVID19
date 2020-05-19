@@ -1,0 +1,45 @@
+#wp-email-popup{padding:0px; background:#e0e0e0}
+#wp-email-popup #wpadminbar{display:none;}
+
+#wp-email-popup #wp-email-loading { display: none; }
+#wp-email-popup header{
+	display: block;
+	background: #ccc;
+	margin-bottom: 0px;
+	padding: 10px;
+}
+#wp-email-popup header h1{margin:0px; font-size:24px; line-height:30px; color:#0084a0; font-weight:normal;}
+#wp-email-popup header img{float:right;}
+
+#wp-email-content {margin-top:20px;}
+#wp-email-content p {font-size:12px;}
+#wp-email-popup{padding:10px 10px 0px;}
+
+
+#wp-email-popup .recomendar{padding-top:10px;font-size:14px;}
+#wp-email-popup .recomendar strong{display:block; font-size:18px;}
+
+#wp-email-popup form{margin:0px 0px 20px;}
+#wp-email-popup label{display:inline;font-size:12px;font-weight:bold;}
+#wp-email-popup input[type=text]{width:98%; padding:1%; border:0px; background:#fff; margin:0px;}
+#wp-email-popup textarea{height:100px;width:98%; padding:1%; border:0px; background:#fff;resize:none; margin:0px;}
+
+#wp-email-popup .formblock{overflow:hidden; clear:both;}
+
+#wp-email-popup .formblock p{margin-left:2%; width:49%; display:block; float:left;}
+#wp-email-popup .formblock p:first-child{margin-left:0px;}
+
+#wp-email-popup #wp-email-button {clear:both; overflow:hidden; margin:0px;}
+#wp-email-popup #wp-email-button input{float:right}
+#wp-email-popup #wp-email-button span {float:left; line-height:26px;  font-size:12px; color:#0084a0;}
+
+#wp-email-popup legend{
+	font-size: 11px;
+	font-weight: bold;
+	border-bottom: 0px;
+	padding: 0px;
+	margin: 0px;
+	line-height: 11px;
+	color: #0084a0;
+	font-style: italic;
+}

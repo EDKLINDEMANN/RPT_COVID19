@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://barra.xl.pt/responsive/sabado.html?Site=sabado.pt -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Barra Cofina // Responsive</title>
+    <script type="text/javascript" async="" src="./ga.js"></script><script type="text/javascript" src="./jquery-1.10.2.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="./barracofina.css">
+</head>
+<body style="">
+
+   
+    <div class="mainBarra">
+         <div class="content">
+            <a href="http://www.cofina.pt/" target="_top" title="Cofina Media" class="cofinaLogo">Cofina Media</a>
+            <div class="ticker">
+               <ul class="sitesCofina">
+                   <li data-id="1"><a href="https://www.record.pt/" target="_blank" class="a">Record</a><span class="sep">|</span></li>
+<li data-id="2"><a href="https://www.cmjornal.pt/" target="_blank" class="a">Correio da Manhã</a><span class="sep">|</span></li>
+<li data-id="3"><a href="https://www.jornaldenegocios.pt/" target="_blank" class="a">Negócios</a><span class="sep">|</span></li>
+<li data-id="17"><a href="https://www.flash.pt/" target="_blank" class="a">Flash</a><span class="sep">|</span></li>
+<li data-id="5"><a href="https://www.vidas.pt/" target="_blank" class="a">Vidas</a><span class="sep">|</span></li>
+<li data-id="6"><a href="https://www.maxima.pt/" target="_blank" class="a">Máxima</a><span class="sep">|</span></li>
+<li data-id="9"><a href="https://www.cm-tv.pt/" target="_blank" class="a">CMTV</a><span class="sep">|</span></li><li class="">
+</li><li data-id="16"><a href="https://www.aquelamaquina.pt/" target="_blank" class="a">Aquela Máquina</a><span class="sep">|</span></li>
+<li data-id="18"><a href="http://www.must.jornaldenegocios.pt/" target="_blank" class="a">Must</a><span class="sep">|</span></li>
+<li data-id="8"><a href="http://www.destak.pt/" target="_blank" class="a">Destak</a><span class="sep">|</span></li>
+<li data-id="10"><a href="https://www.classificadoscm.pt/" target="_blank" class="a">Classificados</a><span class="sep">|</span></li>
+<li data-id="16"><a href="https://loja.xl.pt/?utm_source=edit_botaotop_sabado" target="_blank" class="a">Loja Xl</a><span class="sep">|</span></li>
+<li data-id="12"><a href="https://assinaturas.xl.pt/" target="_blank" class="a">Assinaturas</a><span class="sep">|</span></li>
+<li data-id="13"><a href="https://www.empregosonline.pt/" target="_blank" class="a">Emprego</a><span class="sep">|</span></li>
+<li data-id="13"><a href="http://www.cofinadigital.pt/" target="_blank" class="a">Publicidade</a><span class="sep">|</span></li>
+<li data-id="15"><a href="http://www.cofina.pt/" target="_blank" class="a">Cofina Media</a></li>
+
+               </ul>
+            </div>
+         </div>
+         <div class="clear"></div>
+      </div>
+
+    <script>
+        //$("[data-id='17']").hide();
+        var sites = {s1: 'https://www.record.pt/', s2: 'https://www.cmjornal.pt/', s3: 'https://www.jornaldenegocios.pt/', s4: 'https://www.sabado.pt/', s17: 'https://www.flash.pt/', s5: 'https://www.vidas.pt/', s6: 'https://www.maxima.pt/', s9: 'https://www.cm-tv.pt/', s16: 'https://www.aquelamaquina.pt/', s18: 'http://www.must.jornaldenegocios.pt/', s8: 'http://www.destak.pt/', s10: 'https://www.classificadoscm.pt/', s16: 'https://loja.xl.pt/', s12: 'https://assinaturas.xl.pt/', s13: 'https://www.empregosonline.pt/', s13: 'http://www.cofinadigital.pt/', s15: 'http://www.cofina.pt/',  };
+
+        var BarraUtils = {
+            ParentSite: function () {
+                return "";
+
+                var site = parent.document.location.origin;
+                site = site.replace("http://", "");
+                site = site.replace("https://", "");
+                site = site.replace("www.", "");
+                site = site.replace(".pt", "");
+                site = site.replace(".xl.pt", "");
+                //console.log(site);
+                return site;
+            },
+
+            SiteParameter: function () {
+
+                var URLSite = document.location.href;
+                var qString = URLSite.split('=');
+                var site = (qString[1])
+                site = this.ReplaceUrl(site);
+                //console.log("Site Parameter: "+ site);
+                if (site !== undefined)
+                    return site;
+
+                return "";
+            },
+
+            ReplaceUrl: function (url) {
+                if (url === undefined)
+                    return;
+                url = url.replace("http://", "");
+                url = url.replace("https://", "");
+                url = url.replace("www.", "");
+                url = url.replace(".xl.pt", "");
+                url = url.replace(".pt", "");
+                url = url.replace("/", "");
+                //console.log("Replaced Url: " + url);
+                return url;
+            }
+        }
+
+        
+
+        $(".clearLinha").prev().children("span").remove(); // Remover separador primeira linha
+        $(".sitesCofina li").last().children("span").remove() // Remover ultimo separados
+
+        if (BarraUtils.SiteParameter() != 'passatempos' || BarraUtils.SiteParameter() != 'vidas') {
+            $(".clearLinha").removeClass();
+            $("[data-id='9']").append('<span class="sep">|</span>');
+        }
+
+        function ParentSite() {
+            var site = parent.document.location.origin;
+            site = site.replace("http://", "");
+            site = site.replace("https://", "");
+            site = site.replace("www.", "");
+            site = site.replace(".pt", "");
+            site = site.replace(".xl.pt", "");
+            //console.log(site);
+            return site;
+        }
+        /*****************
+        * Google Analytics
+        ******************/
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-154015-46']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+
+        /************
+        * Track click
+        *************/
+
+        function trackClick() {
+            $('.sitesCofina a').click(function (event) {
+                //event.preventDefault();
+                var site = $(this).text();
+                _gaq.push(['_trackEvent', 'BarraCofina', 'Logo', site]);
+            });
+
+            $('#noticiasCofina a').click(function (event) {
+                //event.preventDefault();
+                var id = $(this).parent('li').attr('data-id');
+                var site = $('.sitesCofina [data-id="' + id + '"]').text();
+                site = site.replace('|', '');
+                _gaq.push(['_trackEvent', 'BarraCofina', 'Noticia', site]);
+            });
+        }
+
+        trackClick();
+
+
+    </script>
+
+
+<img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"></body></html>

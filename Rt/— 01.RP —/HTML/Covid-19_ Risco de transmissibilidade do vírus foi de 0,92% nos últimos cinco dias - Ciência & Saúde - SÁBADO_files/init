@@ -1,0 +1,52 @@
+(function () {var c = window.__tgconf = window.__tgconf || {};
+c.appId = "329";
+c.publicId = '3XNHCBIS';
+c.domain = "www.sabado.pt";
+c.rootPath = "https://services.insurads.com";
+c.messagingPath = "https://messaging.insurads.com/rt-pub/node";
+c.instancePath = "https://services.insurads.com";
+c.visitorId = "05F30F29D4C9798B";
+c.sessionId = "05F30F29D4C9798B";
+c.contextId = '9CDC';
+c.section = '459';
+c.g_country = 'PT';
+c.g_region = '13';
+c.g_city = 'Sao Mamede de Infesta';
+c.d_type = 'Personal computer';
+c.d_browser = 'Chrome';
+c.d_os = 'Others';
+c.znl = {"462208":{"conf":{"bottomHeight":0,"showDelay":0,"showCloseDelay":5,"closeCallback":"","headerText":"","sizes":[{"width":320,"height":50},{"width":320,"height":100}]},"fp":1,"type":"bottom","dc":"mobile"},"459611":{"tu":1,"conf":{"bottomHeight":0,"showDelay":0,"showCloseDelay":0,"closeCallback":"","headerText":"","sizes":[{"width":320,"height":50}]},"type":"bottom","dc":"mobile"},"459610":{"tu":1,"conf":{"bottomHeight":0,"showDelay":0,"showCloseDelay":0,"closeCallback":"","headerText":"","sizes":[{"width":728,"height":90}]},"type":"bottom","dc":"desktop,tablet"}};
+c.dads = 0;
+c.dfp = 0;
+c.dfpCt = 0;
+c.integrations = {"dfp":{"networkCode":"4196"}};
+c.pid = 20;
+c.pmid = null;
+c.isoo = '0';
+c.cookies = 1;
+
+c.scn = "___iat_ses";
+c.scd = 1800;
+c.sscn = "";
+c.vcn = "___iat_vis";
+c.vcd = 15552000;
+c.vscn = "";
+c.ts = 1589889978617;
+
+c.frt= 20.0;
+c.mui= 99.0;
+c.smc= {"disconnectTimer":120.0,"idleTimer":19.0};
+
+var loadScripts = 1;
+if (loadScripts) {
+var s0 = document.createElement('script');
+s0.type = 'text/javascript';
+s0.async = true;
+s0.src = 'https://cdn.insurads.com/tg-1.1.111.js';
+document.getElementsByTagName('HEAD')[0].appendChild(s0);
+}
+
+
+window.__tginitcb && window.__tginitcb();
+
+})();

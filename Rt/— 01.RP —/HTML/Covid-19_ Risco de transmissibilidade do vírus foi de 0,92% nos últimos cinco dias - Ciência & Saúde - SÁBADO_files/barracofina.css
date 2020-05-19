@@ -1,0 +1,109 @@
+﻿body {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.mainBarra {
+    width: 100%;
+    background: #e6e6e6;
+    height: 36px;
+}
+
+.content {
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.cofinaLogo {
+    width: 43px;
+    height: 36px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../Assets/i/cofina.png);
+    background-attachment: scroll;
+    text-indent: -9999px;
+    float: left;
+    z-index: 2;
+}
+
+.ticker {
+    height: 36px;
+    padding-left: 43px;
+    text-decoration: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 1
+}
+
+ul.sitesCofina {
+    overflow: hidden;
+    padding: 0;
+    margin: 10px auto 0 auto;
+    font-family: sans-serif;
+    display: inline-block;
+}
+
+    ul.sitesCofina li {
+        float: left;
+        font-size: 11px;
+        list-style-type: none;
+    }
+
+        ul.sitesCofina li a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        ul.sitesCofina li .sep {
+            color: #fc0000;
+            padding: 0 4px;
+        }
+
+.clear {
+    clear: both;
+}
+
+.clearLinha {
+    clear: left;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        width: 98%;
+    }
+}
+
+@media (max-width: 800px) {
+    .mainBarra {
+        min-height: 50px;
+    }
+
+    .content {
+        width: 98%;
+    }
+
+    .ticker {
+        padding-left: 53px;
+    }
+
+    ul.sitesCofina li {
+        float: initial;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 414px) {
+    .mainBarra {
+        min-height: 70px;
+    }
+}
+
+@media (max-width: 375px) {
+    .mainBarra {
+        min-height: 90px;
+    }
+}
