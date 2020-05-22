@@ -1,0 +1,127 @@
+a {
+	color: #016537;
+}
+.singlephp{
+	max-width: 1200px;
+	margin: 30px auto 78px;
+}
+
+.single_main{max-width: 50%;}
+
+.backButton{
+	font-size: 16px;
+	line-height: 19px;
+	color: #6E7073;
+	margin-bottom: 50px;
+	display: flex;
+	cursor: pointer;
+}
+
+.voltarWord{margin-left: 10px;}
+
+.single_title_zone{
+    display: flex;
+    flex-direction: column;
+    border-left: 8px solid #016537;
+    padding-left: 25px;
+    margin-bottom: 34px;
+}
+
+.single_mainTitle{
+    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 39px;
+    color: rgba(0, 0, 0, 0.85);
+	margin-top:10px;
+}
+
+.single_subTitle{
+    font-size: 18px;
+    line-height: 22px;
+    color: #6E7073;
+}
+
+.single_banner{display: flex; margin-bottom: 34px;}
+.single_banner img{
+    height: auto;
+    width: 100%;
+    max-height: inherit;
+    align-self: center;
+    display: flex;
+}
+
+.single_content{
+    color: #6E7073;
+    line-height: 25px;
+    letter-spacing: normal;
+}
+
+.single_knowmore{
+    color: #6E7073;
+    font-size: 18px;
+}
+
+.single_knowlink{color: #016537;}
+
+.c-accordion__title{
+	color: #016537;
+	border-bottom:1px solid #016537;
+	font-size:22px;
+}
+.single_content figure iframe {
+	width: 300px;
+	height: 220px;
+	
+}
+
+/*=============================================Mobile=============================================*/
+/*---------------------Phones-------------------*/
+@media (max-width: 839px) {
+	.singlephp{
+		max-width: calc(100% - 36px);
+		margin: 40px auto 100px;
+	}
+	
+	.single_main{max-width: unset;}
+	
+	.backButton{margin-bottom: 40px;}
+	
+	.single_mainTitle{
+		font-size: 18px;
+		line-height: 22px;
+	}
+	
+	.single_subTitle{
+		font-size: 14px;
+		line-height: 17px;
+	}
+	
+	.single_banner{
+		width: calc(100% - 66px);
+		margin: 0 auto 22px;
+	}
+	
+	.single_content{
+		max-width: calc(100% - 66px);
+		margin: 0 auto;
+	}
+	
+	.single_knowmore{
+		max-width: calc(100% - 66px);
+		margin: 0 auto; 
+	}
+	.single_content figure iframe {
+		
+		width: 100%;
+		height: 100%;
+	}
+	.header-nav {
+		
+		margin-top: 25px;
+		
+	}
+	.wp-block-audio{
+		margin-left:0;
+	}
+}

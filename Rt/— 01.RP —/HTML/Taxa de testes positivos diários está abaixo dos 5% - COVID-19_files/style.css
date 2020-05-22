@@ -1,0 +1,739 @@
+/*
+
+############################### Search Tearms
+
+=============> General
+	( ) Tags&Misc
+
+=============> Main
+	( ) Header.php
+	( ) Index.php
+	( ) Footer.php
+
+=============> Pages/Categories/Single
+	( ) General
+	( ) Single.php
+	( ) Category.php (just in case)
+	( ) Page.php (just in case)
+
+=============> Plugins
+
+=============> Mobile
+	( ) DeskTop Media (just incase)
+	( ) IPADs
+	( ) Phones
+*/
+
+
+
+/*============================================General============================================*/
+/*-----------------Tags&Misc-----------------*/
+body{
+    font-size: 18px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+p{
+	font-size:16px;
+}
+a{text-decoration: none; color: unset;}
+
+ul, ol, li{font-size: 16px;}
+
+.manditory{color: red;}
+
+/*==============================================Main==============================================*/
+/*------------------Header.php------------------*/
+.first_to_read {
+	width: 0;
+	height: 0;
+	position: absolute;
+	left: -1000000px;
+}
+#header {
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	transition: 0.5s;
+}
+
+#saltar {
+	position: absolute;
+	left: -10000px;
+	top: -10000px;
+}
+#saltar.focused {
+	top: 1px;
+	left: 1px;
+	z-index: 99999;
+}
+
+#mobile_header {
+	display: none;
+	z-index: 10;
+}
+
+#desktop_header {
+	align-items: center;
+}
+
+.header_content {	
+	width: 100%;	
+}
+.header-bg-top {
+	background: linear-gradient(180deg, #029E68 0%, #016537 100%);
+}
+.header-top {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+	display:flex;
+}
+.header-top>h1 { margin: 0; }
+.header-bottom {
+	max-width: 1200px;
+	width: 100%;
+	margin: 0 auto;
+}
+.border-white {
+	border: 0;
+}
+.menu-item-nivel1 a.current {
+	border-bottom: 6px solid #D41C1E;
+	font-weight: bold;
+	padding-bottom: 13px;
+}
+.menu-item-nivel1 > a:hover {
+	border-bottom: 6px solid #D41C1E;
+	font-weight: bold;
+	padding-bottom: 13px;
+}
+
+.header-nav {
+	list-style: none;
+    display: flex;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header-nav>ol{
+    padding: 0;
+    width: 100%;
+    font-size: inherit;
+    list-style: none;
+    display: flex;
+	margin: 5px 0;
+}
+.header-nav>ol>li{ max-height: 20px; }
+
+	.header-nav li {
+		margin: 0px auto;
+		color: #fff;
+		min-height: 20px;
+		position: relative;
+		padding-bottom: 17px;
+	}
+	
+
+		.header-nav li a {
+			color: black;
+			font-size: 1em;
+			letter-spacing: 0.12px;
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			font-weight: 400;
+
+		}
+
+			.header-nav li a img {
+				width: 15px;
+				margin-left: 5px;
+			}
+
+		.header-nav li ol {
+			list-style: none;
+			padding: 0;
+			position: absolute;
+			display: none;
+			margin: 0;
+			top: 37px;
+			padding-top: 5px;
+			z-index: 10;
+			width: 165px;
+		}
+
+		.header-nav li ol.block,
+		.header-nav li:hover ol	{
+			display: block;
+		}
+
+		.header-nav li ol li {
+			margin: 0;
+			width: 100%;
+			text-transform: uppercase;
+			padding-left: 10px;
+			padding-bottom: 15px;
+			background: #fff;
+		}
+
+			.header-nav li ol li a {
+				font-weight: 300;
+			}
+
+			.header-nav li ol li:first-child {
+				padding-top: 10px;
+			}
+
+			.header-nav li ol li:last-child {
+				padding-bottom: 10px;
+			}
+
+.header_logo_menu {
+	width: 23.2031px;
+}
+
+.logo-main {
+	margin: 25px 0;
+}
+.sns-share-trans {
+	display: flex;
+	margin-left: auto;
+	flex-direction: column;
+	margin-top: 17px;
+}
+.icons_and_search {
+	display: flex;
+	margin-top: 10px;
+	margin-left: auto;
+}
+.sns-logo{
+	margin-left:20px;
+	width:174px;
+}
+.text_find{
+	margin-right:15px;
+}
+.translate_insta {
+	border-right: 1px solid #fff;
+	height: 25px;
+	padding-right: 20px
+}
+
+.intagram-link {
+	margin-right: 10px;
+}
+
+.search_area {
+	margin-left: auto;
+}
+
+.searcher_zone {
+	display: none;
+}
+
+#banner_searcher {
+	display: flex;
+	height:30px;
+}
+
+.banner_submiter {
+	background: transparent;
+	border: 0;
+	display: none;
+}
+
+.div_search {
+	width: 0px;
+	overflow: hidden;
+	transition: 0.5s
+}
+.div_search>label { font-size: 1em; }
+.lupa_icon {
+	height: 30px;
+}
+
+.fake_lupa_icon {
+	height: 30px;
+}
+.easy_logo_desk {
+	margin-right: auto;
+	height: 30px;
+}
+.translate_ico {
+	margin-right: 10px;
+	height:30px;
+}
+.sns-link{
+	margin-left:auto;
+}
+.lang-off {
+	display: none
+}
+
+/*------------------Footer.php------------------*/
+.footer_wrapper {
+	display: flex;
+	max-width: 1180px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.footer_primary {
+	display: flex;
+	align-items: center;
+	background-color: #f2f2f2;
+}
+
+.footer_menu {
+	display: flex;
+	width: 100%;
+	margin-right: 50px;
+}
+
+.footer_menu_list {
+	display: flex;
+	min-height: 100px;
+	padding: 0;
+	list-style: none;
+	margin: 0;
+}
+
+.footer_menu_item {
+	display: flex;
+}
+
+	.footer_menu_item a {
+		margin: auto 23px;
+		color: #595959;
+		text-decoration: none;
+		font-size: 16px;
+		line-height: normal;
+		font-weight: 400;
+		letter-spacing: normal;
+		font-family: Roboto;
+		display: flex;
+		align-items: center;
+	}
+
+		.footer_menu_item a:first-child {
+			margin-left: 0px;
+		}
+
+.footer_eport_sns24 {
+	display: flex;
+	height: 67px;
+	margin-left: auto;
+}
+
+	.footer_eport_sns24 a {
+		display: flex;
+		padding: 0 21px;
+		border: 2px solid white;
+		border-width: 0 1px 0 2px;
+	}
+
+		.footer_eport_sns24 a:hover {
+			background: #fff;
+		}
+
+		.footer_eport_sns24 a:nth-child(2) {
+			border-width: 0 2px;
+		}
+
+		.footer_eport_sns24 a img {
+			display: flex;
+			margin: auto;
+		}
+
+.footer_secondary {
+	min-height: 80px;
+}
+
+	.footer_secondary div,
+	.footer_secondary div a,
+	.footer_secondary span {
+		display: flex;
+	}
+
+		.footer_secondary div a {
+			margin: auto;
+		}
+
+	.footer_secondary .credit {
+		display: flex;
+		font-size: 11px;
+		color: #424242;
+		letter-spacing: -0.1px;
+		font-family: Raleway;
+		margin: auto;
+	}
+
+.footer_desenvild_por {
+	flex-direction: column;
+	font-family: Raleway;
+	font-size: 13px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.footer_logos img{height: 44px;}
+.footer_logos a:nth-child(2){margin-left: 25px;}
+
+.c-accordion__title:after {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	content: "\f055";
+	color: #777;
+	font-weight: 300;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%)
+}
+
+.is-open .c-accordion__title:after {
+	content: "\2212"
+}
+.wpcf7-form p>label{ 
+	display: flex;
+	flex-direction: column;
+    padding-bottom: 10px; 
+}
+.wpcf7-form label>span { margin-left: 5px; }
+.wpcf7-form input:not([type='checkbox']),
+.wpcf7-form select,
+.wpcf7-form textarea{ 
+    min-width: 300px;
+    min-height: 32px;
+    font-size: 14px;
+}
+/*=====================================Pages/Categories/Single====================================*/
+/*----------------Category.php------------------*/
+
+
+/*------------------Single.php------------------*/
+
+/*=============================================Mobile=============================================*/
+@media (max-width: 839px) and (min-width: 667px){
+	.header-nav>ol>li{ padding: 0 25px; }
+}
+/*---------------------Phones-------------------*/
+@media (max-device-width : 1024px){
+	/*---------------------Header-------------------*/
+
+	.icons_and_search {
+		display: none;
+	}
+
+	.logo-main {
+		display: none;
+	}
+
+	#desktop_header {
+		display: block;
+		margin-top: 0;
+	}
+
+	.header_content {
+		display: block;
+		border: 0;
+		padding: 0;
+		height: 75px;
+	}
+
+	.header-nav {
+		display: block;
+		background: #fff;
+		margin-top: 10px;
+		z-index: 100;
+		position: relative;
+		top: -1000000px;
+		padding: 20px 0;
+	}
+	.link-logo-dgs{
+		width:200px;
+		
+	}
+		.link-logo-dgs img {
+			width: 200px;
+			margin:25px 0;
+		}
+	.sns-logo-mobile {
+		margin: auto;
+	}
+	.banner_search_icon {
+		width: 100px;
+	}
+	.header-nav-mobile {
+		background: linear-gradient(180deg, #029E68 0%, #016537 100%);
+		display: flex;
+		padding: 0px 23px;
+	}
+		.header-nav-mobile h1{
+			margin:0;
+		}
+	.menu_toggler_after {
+		display: none;
+		margin-left: auto;
+		margin-top: 15px;
+	}
+	.link-logo-sns {
+		margin: 0 auto;
+	}
+	.header-nav > ol > li {
+		max-height: 100%;
+	}
+	.menu_toggler {
+		color: #fff;
+		font-size: 1.875em;
+		margin-left: auto;
+		margin-top: 20px;
+	}
+
+	.mobile-cross {
+		color: #fff;
+		font-size: 1.875em;
+		margin-top: 2px;
+	}
+
+	/*.header-nav-mobile > img {
+		margin-left: auto;
+	}*/
+
+	.logo-mobile-cross {
+		display: flex;
+		padding: 25px 40px;
+	}
+
+	.logo-mobile-after {
+		margin-right: auto;
+	}
+	/*.mobile-cross {
+        margin-left: auto;
+    }*/
+	.searcher_zone {
+		display: flex;
+		margin: 0 40px;
+	}
+	.text_find{
+		display:flex;
+		margin-top:30px;
+		margin-left:20px;
+	}
+	.fake_lupa_icon{
+		height:44px;
+		width:44px;
+	}
+	.easy_logo {
+		height: 48px;
+		margin: 0 20px;
+	}
+	.portugal_mobile {
+		height: 44px;
+		width: 44px;
+	}
+	#banner_searcher {
+		padding: 5px 0;
+	}
+
+		#banner_searcher input {			
+			background: transparent;
+			width: 90%;
+			height: 100%;
+			color: black;
+			font-size: 1em;
+		}
+
+		#banner_searcher .banner_submiter {
+			border: 0;
+			background: transparent;
+			padding: 0;
+		}
+
+			#banner_searcher .banner_submiter img {
+				height: 44px;
+				width:44px
+			}
+
+	.menu-item-nivel1 a:hover {
+		font-weight: bold;
+		border:0;
+		padding:0;
+		
+	}
+	.menu-item-nivel1 a.current {
+		border: 0;
+		padding: 0;
+	}
+
+	.header-nav>ol{
+		display: block;
+    	margin-top: 0;
+	}
+	
+	.header-nav li {
+		margin: 9px 20px;
+		font-size: 1.125em;
+		border-bottom: 1px solid #D41C1E;
+		padding-bottom: 12px;
+		max-height: unset;
+	}
+
+		.header-nav li a {
+			font-weight: 300;
+		}
+
+		.header-nav li ol {
+			display: none;
+			position: relative;
+			top: unset;
+			left: unset;
+		}
+
+		.header-nav li:hover ol {
+			display: block;
+			
+		}
+		.header-nav li ol{
+			width:100%;
+			background:#fff;
+		}
+		.header-nav li ol li {
+			margin: 25px 0;
+			width: 97%;
+			text-transform: uppercase;
+			padding-left: 10px;
+			padding-bottom: 10px;
+		}
+
+			.header-nav li ol li:last-child {
+				margin-bottom: 0;
+				border: 0;
+				padding-bottom: 0px;
+			}
+
+	.translate_insta_mobile {
+		display: flex;
+		padding: 20px 0;
+		margin-left: 20px;
+	}
+
+	.intagram-link {
+		margin-left: 5px;
+		color: #fff;
+		font-size: 1.125em;
+		font-weight: 300;
+	}
+
+	.instagtam_mobile {
+		height: 35px;
+	}
+
+	.searcher_zone {
+		display: none;
+	}
+
+	#banner_searcher {
+		display: flex;
+	}
+
+	.banner_submiter {
+		background: transparent;
+		border: 0;
+		display: none;
+	}
+
+	.div_search {
+		width: 0px;
+		overflow: hidden;
+		transition: 0.5s
+	}
+	
+
+	/*------------------Footer.php------------------*/
+
+	.footer_primary_wrapper {
+		flex-direction: column;
+	}
+
+	.footer_menu_list {
+		flex-direction: column;
+		padding-top: 26px;
+		padding-left: 33px;
+	}
+
+	.footer_menu_item {
+		display: flex;
+		margin-bottom: 30px;
+	}
+
+	.footer_eport_sns24 {
+		height: 70px;
+	}
+
+		.footer_eport_sns24 a {
+			width: 50%;
+		}
+
+			.footer_eport_sns24 a:nth-child(1) {
+				border-width: 2px 1px 0 0;
+			}
+
+			.footer_eport_sns24 a:nth-child(2) {
+				border-width: 2px 0px 0 2px;
+			}
+
+	.footer_secondary {
+		flex-wrap: wrap;
+		padding: 0 10px;
+	    flex-direction: column;
+		width: calc(100% - 20px);
+	}
+	
+	.footer_logos{width: 100%; margin-top: 20px;}
+	.footer_devby{margin: 15px 25px 0 0;}
+	.footer_devby a{margin-right: 0 !important;}
+
+		.footer_secondary div:nth-child(1) {
+			margin-right: auto;
+		}
+
+		.footer_secondary .credit {
+			order: 1;
+			margin: 20px auto;
+		}
+}
+
+
+
+
+/*******************************************Pagina Somatorio equipamentos *****************************/
+
+.listequi{
+	display: flex;
+	margin-bottom:2px;
+}
+.equipname{
+	padding:10px;
+	background:#ededed;
+	min-width:250px;
+}
+.equipquant{
+	padding:10px;
+	background: #016537;
+    min-width: 100px;
+    color: #fff;
+}
+
+.equipname_label{
+	padding:10px;
+
+	min-width:250px;
+}
+.equipquant_label{
+	padding:10px;
+
+    min-width: 100px;
+}
+
+/*******************************************Pagina Somatorio equipamentos *****************************/

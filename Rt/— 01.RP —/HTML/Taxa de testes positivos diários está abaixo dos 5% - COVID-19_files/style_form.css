@@ -1,0 +1,174 @@
+figcaption{
+	font-size: 14px;
+    text-align: center;
+}
+
+/* ================================== Area Botão ===================================== */
+.form_openener{
+	display: flex;
+    align-items: center;
+    background: #016537;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    padding: 15px 5px;
+}
+.opener_text{
+	display: inline;
+    padding: 0px 149px 0 20px;
+    font-weight: 300;
+    width: 100%;
+}
+.opener_arrow{
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: #4A9569;
+    position: absolute;
+    right: 0;
+}
+
+.fa-chevron-down:before{transition: all ease 0.2s;}
+.opened .fa-chevron-down:before{transform: rotate(-180deg);}
+
+
+/* ================================== Area Form ===================================== */
+.form_revealer{
+	display: none;
+	flex-direction: column;	
+}
+
+.wpcf7-form-control-wrap{ display: flex; }
+#form-produtores input,
+#form-produtores select{
+    height: 33px;
+    width: 100%;
+    max-width: 431px;
+}
+.form-accep{
+	display: flex;
+    width: 100%;
+    max-width: 431px;
+}
+#form-produtores .form-accep>input{
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-left: 0;
+}
+.form_revealer{
+    border: solid 1px #016537;
+    margin-top: -1px;
+    padding: 25px 20px 20px;
+}
+.form_revealer .logo_economia{
+    width: 100px;
+    height: 44px;
+}
+#form-produtores .form_submitter{
+   	height: 34px;
+	width: 100px;
+    background-color: #016537;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+}
+
+/* ================================== Acordeoes ===================================== */
+
+.c-accordion__title{
+   font-weight: bold;
+}
+
+
+table{width: 100%;}
+
+table tr{
+	padding: 10px 0;
+	display: flex;
+	border-bottom: 0.5px solid #D7D8DE;
+}
+
+table th{
+	font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.26px;
+    color: #016537;
+    width: calc(100% / 3);
+    text-align: center;
+}
+table th:first-child{text-align: left;}
+
+table td{
+	width: calc(100% / 3);
+    text-align: center;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.26px;
+}
+table td:first-child{text-align: left;}
+
+table td:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/* ================================== Tabelas ===================================== */
+
+
+/* ================================== Area POPUP ===================================== */
+.popmessage{
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999999;
+}
+
+.popmessage_darkness{
+	position: fixed;
+	z-index: 999997;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.popmessage>span{
+	background: #fff;
+	padding: 20px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	z-index: 999999;
+	max-width: calc(100% - 60px);
+}
+.popmessage .button_close_popup{
+    margin: 15px auto;
+    background: #016537;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+
+
+@media (max-device-width : 1024px){
+	.form_openener{
+		height: unset;
+	}
+	
+	.opener_text{
+	    padding: 20px 56px 20px 20px;
+    }
+}

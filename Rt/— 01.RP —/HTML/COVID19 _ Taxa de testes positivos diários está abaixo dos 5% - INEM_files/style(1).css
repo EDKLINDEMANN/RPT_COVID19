@@ -1,0 +1,11 @@
+.covid_link{
+    position: fixed;
+    right: 0;
+    z-index: 99;
+    top: calc(50% - 58px);
+}
+@media (max-width: 768px){
+	.covid_link{
+		right: -1px;
+	} 
+}
