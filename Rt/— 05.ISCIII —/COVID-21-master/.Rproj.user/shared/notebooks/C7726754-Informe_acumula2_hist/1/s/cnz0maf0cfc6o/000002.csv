@@ -1,0 +1,77 @@
+"0","for (r in respuestas) {  # r = ""confirmados"""
+"0","  cat(""\n\n# "", r, ""\n\n"") "
+"0","  "
+"0","  for (ca in iso) { # ca <- ""ES"""
+"0","    cat(""\n\n## "",  ccaa[ca], ""\n\n"")"
+"0","  "
+"0","    datos <- acumula22[[ca]][[r]] %>% mutate(sapinc = sapinc(lag(observado), observado))"
+"0","    "
+"0","    # res <- with(datos, car::Boxplot(~ sapinc, id = list(labels=format(fecha[!is.na(sapinc)]))))"
+"0","   "
+"0","    cat(""\n\n Gráfico secuencial: \n\n"") "
+"0",""
+"0","    plot(observado ~ fecha, type = ""l"", main = paste(ccaa[ca], r), "
+"0","         xlab = ""Fecha"", ylab = r, data = datos)"
+"0","    with(acumula22.last[[ca]][[r]], lines(fecha, observado, lty = 3))"
+"0","    "
+"0","    if(is.null(changes2[[ca]][[r]])) {"
+"0","        cat(""\n\nNo hay cambios...\n\n"") "
+"0","    } else {"
+"0","         points(new ~ fecha, col = ""red"", data = changes2[[ca]][[r]])"
+"0","         cat(""\n\n Los puntos rojos muestran el 'nuevo valor' en cambios (tipo 1).\n\n"") "
+"0","         points(old ~ fecha, col = ""blue"", data = filter(changes2[[ca]][[r]], change == 2))"
+"0","         cat(""\n\n Los puntos azules muestran un cambio (tipo 2) por salto.\n\n"") "
+"0",""
+"0","    }"
+"0","    cat(""\n\n Con línea de puntos se muestra la serie actualizada. \n\n"") "
+"0","    "
+"0","    cat(""\n\n Incrementos porcentuales (simétricos) respecto al día anterior (a partir de 2020-04-01): \n\n"") "
+"0",""
+"0","    plot(sapinc ~ fecha, type = ""h"", main = paste(ccaa[ca], r), "
+"0","         xlab=""Fecha"", ylab= ""Incremento porcentual (simétrico)"", data = filter(datos, fecha >= as.Date(""2020-04-01"")) )    "
+"0","    "
+"0","  }"
+"0","}"
+"1","
+
+# "
+"1"," "
+"1","confirmados"
+"1"," "
+"1","
+
+"
+"1","
+
+## "
+"1"," "
+"1","ESPA�A"
+"1"," "
+"1","
+
+"
+"1","
+
+ Gráfico secuencial: 
+
+"
+"1","
+
+ Los puntos rojos muestran el 'nuevo valor' en cambios (tipo 1).
+
+"
+"1","
+
+ Los puntos azules muestran un cambio (tipo 2) por salto.
+
+"
+"1","
+
+ Con línea de puntos se muestra la serie actualizada. 
+
+"
+"1","
+
+ Incrementos porcentuales (simétricos) respecto al día anterior (a partir de 2020-04-01): 
+
+"

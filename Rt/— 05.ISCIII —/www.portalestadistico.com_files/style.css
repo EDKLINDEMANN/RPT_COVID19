@@ -1,0 +1,151 @@
+
+/* =Global
+-------------------------------------------------------------- */
+*,
+*:before,
+*:after {
+  /*-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;*/ 
+  
+  }
+
+/* =Template
+-------------------------------------------------------------- */
+
+#main {
+  /*background-color: #fff;
+  padding-top: 150px; */
+  }
+
+.container {
+  /*width: 80%;*/
+  margin: 0 auto;
+  /*padding: 0 30px; */
+  }
+
+/* =Header
+-------------------------------------------------------------- */
+header 
+{
+    background-color: #ffffff;
+    /*box-shadow: 0px 0px 70px 1px #888888;*/
+    
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  /*background-color: #0683c9;*/
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s; 
+}
+  header h1#logo {
+    display: inline-block;
+    float: left;
+    /*font-family: "Oswald", sans-serif;*/
+    font-size: 40px;
+    /*color: white;*/
+    /*font-weight: 400;
+    height: 150px;
+    line-height: 150px;*/
+    
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    }
+  header nav {
+    display: inline-block;
+    float: right; }
+    header nav a {
+      line-height: 150px;
+      margin-left: 20px;
+      color: #9fdbfc;
+      font-weight: 700;
+      font-size: 18px;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s; }
+      header nav a:hover {
+        color: white; }
+  
+  header.smaller #cabecera
+  {
+      height: 37px;
+      padding-top: 0px;
+  }
+  
+  header.smaller #menu_prinicpal
+  {
+      border-bottom-width: 3px;
+      height: 23px;
+  }
+    
+  header.smaller #logotipo_grande
+  {
+      height: 0%;
+      display: none;
+  }
+  
+  header.smaller #logotipo_pequeno
+  {
+      height: 100%;
+      display: inherit;
+  }
+  
+    
+  header.smaller .texto_importante_sinmargen
+  {
+        font-size: 11px;
+        /*color: #FFFFFF;*/
+        text-align: center;
+  }
+    
+header.smaller #texto_indice
+{
+margin-left: 0px;
+margin-right: 0px;
+}
+
+header.smaller h1#logo {
+  font-size: 14px;
+  font-weight: bold;
+  /*height: 75px;
+  width: 150px;
+  line-height: 75px;*/
+}
+
+header.smaller nav a {
+ line-height: 75px; }
+
+header.smaller #nav ul.Listado_menu
+{
+    margin-top: 3px;
+}
+
+
+/* =Extras
+-------------------------------------------------------------- */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0; }
+    
+/* Hack para IE 10 y superior para cuadrar el texto del selector de territorio en modo "recogido" */    
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+ /* IE10+ CSS styles go here */
+    header.smaller #capa_texto_seleccion_territorio p
+    {
+        font-size: 11.5px;
+    }
+}
