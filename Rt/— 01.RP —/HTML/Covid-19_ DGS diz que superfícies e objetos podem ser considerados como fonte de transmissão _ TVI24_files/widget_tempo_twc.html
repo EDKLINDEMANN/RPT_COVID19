@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://www.iol.pt/widget_tempo_twc.html?project=tvi24&header=false -->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>Tempo</title>
+
+        <link rel="stylesheet" href="./widget_tempo_twc.css">
+        <link rel="shortcut icon" href="https://www.iol.pt/images/favicon.ico">
+
+        <script src="./jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                switchWeather();
+                setRandomSentence();
+                function switchWeather() {
+                    var current = $('#tempotop .rowCidade:visible');
+                    var next = current.next();
+                    if (next.length === 0)
+                        next = $('#tempotop .rowCidade:first');
+                    $('#tempotop .rowCidade').fadeOut(1000);
+                    next.fadeIn(1000, function () {
+                        window.setTimeout(switchWeather, 2000);
+                    }).css('display', 'table');
+                }
+
+
+                function createSentencesMap() {
+                    var sentences = new Map();
+
+                    //Comuns a todos os targets 
+                    var sentences_general = [
+                        "Problemas com as alergias?",
+                        "Escapadinha romântica?",
+                        "Viagem de trabalho?",
+                        "Saída a dois?",
+                        "Tem de preparar um evento?",
+                        "Atividades ao ar livre?",
+                        "Pratica running?",
+                        "De saída para férias?",
+                        "Passeio de bicicleta?"
+                    ];
+
+                    //Comuns a todos os targets no inverno e outuno
+                    var sentences_winter_general = ["Estender roupa lá fora ou cá dentro?"];
+                    //Comuns a todos os targets no verão e primavera
+                    var sentences_summer_general = [
+                        "Vai à praia?",
+                        "Sunset com os amigos?"
+
+                    ];
+
+                    //Comuns a todos os targets para quinta, sexta e sábado
+                    var sentences_weekend_general = [
+                        "Fim de semana com os miúdos?",
+                        "Fim de semana fora?"
+                    ];
+
+                    //Selfie e TVI
+                    var sentences_lifestyle = ["O que vestir?", "Tem um casamento?"].concat(sentences_general);
+
+
+                    var sentences_winter_lifestyle = ["Gabardine ou sobretudo?", "Ténis ou botas?"].concat(sentences_winter_general);
+
+
+                    var sentences_summer_lifestyle = [
+                        "Está a planear um picnic?",
+                        "Sandálias ou sapatos?"
+                    ].concat(sentences_summer_general);
+
+
+
+                    var sentences_weekend_lifestyle = [].concat(sentences_weekend_general);
+
+                    // Autoportal / Maisfutebol
+                    var sentences_sport = ["Corrida de kart com os amigos?", "Mota ou automóvel?",
+                        "Vai ao futebol?", "Vai surfar?"].concat(sentences_general);
+                    var sentences_winter_sport = [].concat(sentences_winter_general);
+                    var sentences_summer_sport = [
+
+                    ].concat(sentences_summer_general);
+                    var sentences_weekend_sport = [].concat(sentences_weekend_general);
+
+
+                    sentences.set("self_winter", sentences_lifestyle.concat(sentences_winter_lifestyle));
+                    sentences.set("self_summer", sentences_lifestyle.concat(sentences_summer_lifestyle));
+                    sentences.set("self_weekend", sentences_lifestyle.concat(sentences_weekend_lifestyle));
+
+                    sentences.set("tvi_winter", sentences_lifestyle.concat(sentences_winter_lifestyle));
+                    sentences.set("tvi_summer", sentences_lifestyle.concat(sentences_summer_lifestyle));
+                    sentences.set("tvi_weekend", sentences_lifestyle.concat(sentences_weekend_lifestyle));
+
+                    sentences.set("auto_winter", sentences_sport.concat(sentences_winter_sport));
+                    sentences.set("auto_summer", sentences_sport.concat(sentences_summer_sport));
+                    sentences.set("auto_weekend", sentences_sport.concat(sentences_weekend_sport));
+
+                    sentences.set("mais_winter", sentences_sport.concat(sentences_winter_sport));
+                    sentences.set("mais_summer", sentences_sport.concat(sentences_summer_sport));
+                    sentences.set("mais_weekend", sentences_sport.concat(sentences_weekend_sport));
+
+                    sentences.set("iol_winter", sentences_general.concat(sentences_winter_general));
+                    sentences.set("iol_summer", sentences_general.concat(sentences_summer_general));
+                    sentences.set("iol_weekend", sentences_weekend_general.concat(sentences_weekend_general));
+
+                    sentences.set("tvipl_winter", sentences_general.concat(sentences_winter_general));
+                    sentences.set("tvipl_summer", sentences_general.concat(sentences_summer_general));
+                    sentences.set("tvipl_weekend", sentences_weekend_general.concat(sentences_weekend_general));
+
+
+
+                    return sentences;
+                }
+
+
+                function setRandomSentence() {
+                    var date = new Date();
+                    var dayOftheWeek = date.getDay(); // 0 é sunday
+                    var month = date.getMonth();
+
+                    var target = "tvi24";
+                    if (target === "") {
+                        return;
+                    }
+                    var season = "winter";
+
+                    if (month >= 3 && month <= 8) {
+                        season = "summer";
+                    }
+
+                    var sentences = createSentencesMap();
+                    var selectedSentencesBySeason = sentences.get(target + "_" + season);
+
+                    if (selectedSentencesBySeason !== undefined && selectedSentencesBySeason !== null) {
+                        if (dayOftheWeek === 4 || dayOftheWeek === 5 || dayOftheWeek === 6) {
+                            selectedSentencesBySeason = selectedSentencesBySeason.concat(sentences.get(target + "_weekend"));
+                        }
+
+                        var randomSentence = selectedSentencesBySeason[Math.floor(Math.random() * selectedSentencesBySeason.length)];
+
+                        $(".pergunta").text(randomSentence);
+                    }
+                }
+            });
+        </script>
+
+
+        <style>
+            .headerWidget {
+                display:none;
+                
+                }
+            </style>      
+
+
+        </head>
+
+        <body class="widget_tempo" style="">
+            <a href="https://weather.com/pt-PT?par=gmc_tvi24" title="Tempo" target="_blank">
+            <div class="headerWidget">
+
+
+                <div class="pergunta">
+
+                </div>
+
+                <div class="veja">Veja o Tempo!</div>
+            </div>
+
+
+
+            <div class="box-weather">
+
+                <div id="tempotop">
+                    
+                        <div class="rowCidade" style="display: table; opacity: 0;">
+                            <span class="cidade">Faro</span>                          
+                            
+                            <span class="atual">27º</span>
+                            <span class="imagem tempo-mostlysunny" title="Limpo"></span>
+
+                            <span class="max">29º</span>
+                            <span class="min">21º</span>
+
+                        </div>
+                    
+                        <div class="rowCidade" style="display: none;">
+                            <span class="cidade">Funchal</span>                          
+                            
+                            <span class="atual">31º</span>
+                            <span class="imagem tempo-mostlysunny" title="Limpo/ventoso"></span>
+
+                            <span class="max">32º</span>
+                            <span class="min">23º</span>
+
+                        </div>
+                    
+                        <div class="rowCidade" style="display: none;">
+                            <span class="cidade">Lisboa</span>                          
+                            
+                            <span class="atual">26º</span>
+                            <span class="imagem tempo-clear" title="Ensolarado"></span>
+
+                            <span class="max">28º</span>
+                            <span class="min">17º</span>
+
+                        </div>
+                    
+                        <div class="rowCidade" style="display: none;">
+                            <span class="cidade">P. Delgada</span>                          
+                            
+                            <span class="atual">21º</span>
+                            <span class="imagem tempo-mostlysunny" title="Limpo"></span>
+
+                            <span class="max">21º</span>
+                            <span class="min">18º</span>
+
+                        </div>
+                    
+                        <div class="rowCidade" style="display: table; opacity: 1;">
+                            <span class="cidade">Porto</span>                          
+                            
+                            <span class="atual">22º</span>
+                            <span class="imagem tempo-mostlysunny" title="Limpo"></span>
+
+                            <span class="max">26º</span>
+                            <span class="min">14º</span>
+
+                        </div>
+                    
+
+                </div>
+
+            </div>
+
+        </a>
+
+    
+
+<img id="floatBarImgId" style="display: none; opacity: 0; position: absolute; z-index: 2147483647;" src="chrome-extension://dbkmjjclgbiooljcegcddagnddjedmed/pics/save2-32.png"></body></html>

@@ -1,0 +1,139 @@
+/*_hs_*/;!function () {
+	if (!window.sas_snippets) {
+		window.sas_snippets = {
+			"csync": "1"
+		};
+		if (navigator && navigator.platform) { {
+				var sasIsIosUiwebview = false;
+				if (navigator.platform.substr(0, 2) === 'iP') { {
+						var lte9 = /constructor/i.test(window.HTMLElement);
+						var nav = window.navigator,
+						ua = nav.userAgent,
+						idb = !!window.indexedDB;
+						if (ua.indexOf('Safari') !== -1 && ua.indexOf('Version') !== -1 && !nav.standalone) { {
+								sasIsIosUiwebview = false;
+
+							}
+						} else if ((!idb && lte9) || !window.statusbar.visible) { {
+								sasIsIosUiwebview = true;
+
+							}
+						} else if ((window.webkit && window.webkit.messageHandlers) || !lte9 || idb) { {
+								sasIsIosUiwebview = true;
+
+							}
+						}
+
+					}
+				}
+				if (!sasIsIosUiwebview) {
+					var iframe = document.createElement("iframe");
+					iframe.scrolling = 'no';
+					iframe.frameBorder = 0;
+					iframe.width = 0;
+					iframe.height = 0;
+					iframe.style.margin = 0;
+					iframe.style.padding = 0;
+					iframe.style.display = 'none';
+					iframe.style.width = '0px';
+					iframe.style.height = '0px';
+					iframe.style.visibility = 'hidden';
+					var dc_id = "3";
+					if (dc_id === "5") {
+						iframe.src = "https://secure-assets.rubiconproject.com/utils/xapi/multi-sync.html?p=smartadserver&endpoint=us-east";
+					} else {
+						iframe.src = "https://secure-assets.rubiconproject.com/utils/xapi/multi-sync.html?p=smartadserver&endpoint=eu";
+					}
+					document.body.appendChild(iframe);
+				}
+			}
+		}
+	}
+}
+();
+;var sas = sas || {};
+if(sas && sas.events && sas.events.fire && typeof sas.events.fire === "function" )
+        sas.events.fire("ad", { tagId: "sas_37921", formatId: 37921 }, "sas_37921");;/*_hs_*/var sas=sas||{};sas.utils=sas.utils||{},sas.events=sas.events||{},sas.rev=sas.rev||20110214,function(){sas.utils.cdns?(sas.utils.cdns["http:"]&&0!=sas.utils.cdns["http:"].length||(sas.utils.cdns["http:"]="http://ak-ns.sascdn.com"),sas.utils.cdns["https:"]&&0!=sas.utils.cdns["https:"].length||(sas.utils.cdns["https:"]="https://ec-ns.sascdn.com")):sas.utils.cdns={"http:":"http://ak-ns.sascdn.com","https:":"https://ec-ns.sascdn.com"};var t=function(){};sas.utils.getIEVersion=function(){var t=navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);return t?parseInt(t[1]):void 0},sas.events.addEvent=function(t,s,a){if(t&&s&&a)return t.attachEvent?t.attachEvent("on"+s,a):t.addEventListener&&t.addEventListener(s,a,!1),{removeEvent:function(){t.detachEvent?t.detachEvent("on"+s,a):t.removeEventListener&&t.removeEventListener(s,a,!1)}}},sas.events.addLoadEvent=function(t,s){if(t&&s){var a="load",n=function(){return!0};(sas.utils.getIEVersion()<11||t==document)&&(a="readystatechange",n=function(){if(!t.readyState||"complete"==t.readyState||"loaded"==t.readyState||4==t.readyState)return!0});var e=sas.events.addEvent(t,a,function(){n()&&(e.removeEvent(),s.apply(this,arguments))})}},sas.utils.Latch=function(t){for(var s=[],a={},n=t=t||[],e=!1,i=0;i<n.length;i++)a[t[i]]={};var l=function(){if(!e){for(var t in a)if(!a[t].status)return;e=!0;for(var n=c(),i=0;i<s.length;i++)s[i].apply(this,n)}},c=function(){for(var t=[],s=0;s<n.length;s++)t.push(a[n[s]].result);return t};this.notify=function(t,s){a[t]&&(a[t].status=!0,a[t].result=s,l())},this.addListener=function(t){null!=t&&(e?t():s.push(t))},l()},sas.utils._libs=sas.utils._libs||{};var s=function(t){"string"==typeof t&&(t=[t]);for(var s,a,n="https:"==document.location.protocol||"about:"==document.location.protocol?sas.utils.cdns["https:"]:sas.utils.cdns[document.location.protocol]||sas.utils.cdns["http:"],e=0;e<t.length;e++)t[e]=(s=n,a=t[e],"/"==s.charAt(s.length-1)&&(s=s.slice(0,-1)),"/"==a.charAt(0)&&(a=a.slice(1)),s+"/"+a);return t};sas.utils.loadLinkCdn=function(t){t=s(t);for(var a=0;a<t.length;a++)e(t[a],!0)},sas.utils.loadScriptCdn=function(t,a){t=s(t),sas.utils.loadScript(t,a)};var a=Math.floor(1e6*Math.random()),n=1;sas.utils._callbacks=sas.utils._callbacks||{};var e=function(t,s,e,i){var l,c=(s?"link":"script")+"-"+a+"-"+n++,r=document.createElement(s?"link":"script");r.id=c,r.setAttribute("type",s?"text/css":"text/javascript"),r.setAttribute(s?"href":"src",t),s&&r.setAttribute("rel","stylesheet"),!s&&e&&r.setAttribute("async","true"),sas.utils._libs[t]={loaded:!1,callbacks:[]},null!=i&&sas.utils._libs[t].callbacks.push(i),sas.utils._callbacks[c]=(l=t,function(){sas.utils._libs[l].loaded=!0;for(var t=0;t<sas.utils._libs[l].callbacks.length;t++)sas.utils._libs[l].callbacks[t]()}),s||e?(document.getElementsByTagName("head")[0].appendChild(r),sas.events.addLoadEvent(document.getElementById(c),sas.utils._callbacks[c])):(document.write(r.outerHTML),document.write("<script type='text/javascript'>(function() { sas.utils._callbacks['"+c+"'](); })();<\/script>"))};sas.utils.loadScript=function(s,a){(a=a||{}).async=null==a.async||a.async;var n=a.onLoad||t;"string"==typeof s&&(s=[s]);var i=new sas.utils.Latch(s);i.addListener(n);for(var l=0;l<s.length;l++){var c=s[l],r=function(t){return function(){i.notify(t)}}(c);sas.utils._libs[c]?sas.utils._libs[c].loaded?i.notify(c):sas.utils._libs[c].callbacks.push(r):e(c,!1,a.async,r)}}}();
+
+(function () {
+    var config = {
+        insertionId: Number(9478792),
+        pageId: "618880",
+        sessionId: new Date().getTime(),
+        baseUrl: String("https://www8.smartadserver.com"),
+        formatId: Number(37921),
+        tagId: String("sas_37921"),
+        isAsync: window.sas_ajax || false,
+        customScript: String(''),
+        filePath: (document.location.protocol == 'https:' ? 'https://ced-ns.sascdn.com' : 'http://ced-ns.sascdn.com') + '/diff/templates/',
+        noadImpressionPixelUrl: String("https://www8.smartadserver.com/h/aip?tmstp=7134268191&ckid=2389475798812288943&pubid=18&systgt=%24qc%3d1313972874%3b%24ql%3dMedium%3b%24qpc%3d1069-300%3b%24qt%3d58_1442_10621t%3b%24dma%3d0%3b%24b%3d16800%3b%24o%3d12100%3b%24sw%3d1280%3b%24sh%3d768&uii=234291405327431437&acd=1590342775870&envtype=0&hol_cpm=0&siteid=89002&pgid=618880&fmtid=37921&statid=6&visit=s&tgt=%24dt%3d1t%3bcoronavirus%3burl%3d2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101%3bcxsegment%3d8n3eg5dcbhh7%3bcxsegment%3d8npkn6cmzv2w"),
+        isRtb: Boolean() && !Boolean(25424571),
+        creative: {
+            id: Number(25424571),
+            url: String('https://creatives.sascdn.com/diff/1701/9478792/expresso_600x400_fc149d48-a8ec-4456-9082-85f811883ce5.png'),
+            type: Number(1),
+            width: Number(600),
+            height: Number(400),
+            alt: String(''),
+            clickUrl: String('https://www8.smartadserver.com/click?imgid=25424571&insid=9478792&pgid=618880&ckid=2389475798812288943&uii=234291405327431437&acd=1590342775870&pubid=18&tmstp=7134268191&tgt=%24dt%3d1t%3bcoronavirus%3burl%3d2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101%3bcxsegment%3d8n3eg5dcbhh7%3bcxsegment%3d8npkn6cmzv2w%3b%24hc&systgt=%24qc%3d1313972874%3b%24ql%3dMedium%3b%24qpc%3d1069-300%3b%24qt%3d58_1442_10621t%3b%24dma%3d0%3b%24b%3d16800%3b%24o%3d12100%3b%24sw%3d1280%3b%24sh%3d768&envtype=0&imptype=0&pgDomain=https%3a%2f%2fexpresso.pt%2fcoronavirus%2f2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101&go=https%3a%2f%2fwww.facebook.com%2fvinhoverde%2f'),
+            clickUrlArray: ["https://www8.smartadserver.com/click?imgid=25424571&insid=9478792&pgid=618880&ckid=2389475798812288943&uii=234291405327431437&acd=1590342775870&pubid=18&tmstp=7134268191&tgt=%24dt%3d1t%3bcoronavirus%3burl%3d2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101%3bcxsegment%3d8n3eg5dcbhh7%3bcxsegment%3d8npkn6cmzv2w%3b%24hc&systgt=%24qc%3d1313972874%3b%24ql%3dMedium%3b%24qpc%3d1069-300%3b%24qt%3d58_1442_10621t%3b%24dma%3d0%3b%24b%3d16800%3b%24o%3d12100%3b%24sw%3d1280%3b%24sh%3d768&envtype=0&imptype=0&pgDomain=https%3a%2f%2fexpresso.pt%2fcoronavirus%2f2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101&go=https%3a%2f%2fwww.facebook.com%2fvinhoverde%2f"],
+            oryginalClickUrl: String('https://www.facebook.com/vinhoverde/'),
+            clickTarget: String('_blank'),
+            agencyCode: String(''),
+            creativeCountPixelUrl: String('https://www8.smartadserver.com/h/aip?tmstp=7134268191&ckid=2389475798812288943&pubid=18&systgt=%24qc%3d1313972874%3b%24ql%3dMedium%3b%24qpc%3d1069-300%3b%24qt%3d58_1442_10621t%3b%24dma%3d0%3b%24b%3d16800%3b%24o%3d12100%3b%24sw%3d1280%3b%24sh%3d768&uii=234291405327431437&acd=1590342775870&envtype=0&visit=S&statid=6&tgt=%24dt%3d1t%3bcoronavirus%3burl%3d2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101%3bcxsegment%3d8n3eg5dcbhh7%3bcxsegment%3d8npkn6cmzv2w%3b%24hc&imptype=0&pgDomain=https%3a%2f%2fexpresso.pt%2fcoronavirus%2f2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101&capp=1&mcrdbt=1&insid=9478792&siteid=89002&imgid=25424571&pgid=618880&fmtid=37921'),
+            creativeClickCountPixelUrl: 25424571 ? 'https://www8.smartadserver.com/h/cp?imgid=25424571&insid=9478792&pgid=618880&ckid=2389475798812288943&uii=234291405327431437&acd=1590342775870&pubid=18&tmstp=7134268191&tgt=%24dt%3d1t%3bcoronavirus%3burl%3d2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101%3bcxsegment%3d8n3eg5dcbhh7%3bcxsegment%3d8npkn6cmzv2w%3b%24hc&systgt=%24qc%3d1313972874%3b%24ql%3dMedium%3b%24qpc%3d1069-300%3b%24qt%3d58_1442_10621t%3b%24dma%3d0%3b%24b%3d16800%3b%24o%3d12100%3b%24sw%3d1280%3b%24sh%3d768&envtype=0&imptype=0&pgDomain=https%3a%2f%2fexpresso.pt%2fcoronavirus%2f2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101' : 'https://www8.smartadserver.com/h/micp?imgid=0&insid=9478792&pgid=618880&ckid=2389475798812288943&uii=234291405327431437&acd=1590342775870&pubid=18&tmstp=7134268191&tgt=%24dt%3d1t%3bcoronavirus%3burl%3d2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101%3bcxsegment%3d8n3eg5dcbhh7%3bcxsegment%3d8npkn6cmzv2w%3b%24hc&systgt=%24qc%3d1313972874%3b%24ql%3dMedium%3b%24qpc%3d1069-300%3b%24qt%3d58_1442_10621t%3b%24dma%3d0%3b%24b%3d16800%3b%24o%3d12100%3b%24sw%3d1280%3b%24sh%3d768&envtype=0&imptype=0&pgDomain=https%3a%2f%2fexpresso.pt%2fcoronavirus%2f2020-05-24-Risco-de-Transmissibiliddade-na-ultima-semana-foi-de-101'
+        },
+        statisticTracking: {
+            rtbbid: String(''),
+            rtbet: String(''),
+            rtblt: String(''),
+            rtbnid: String(''),
+            rtbh: String('')
+        },
+        time: Number(15),
+		zindex: Number(1000000000),
+		background: String('ffffff'),
+		opacity: Number(100),
+		xPosition: String('center'),
+		yPosition: String('middle'),
+		yOffset: Number(0),
+		xOffset: Number(0),
+		fullscreen: Boolean(0),
+		scroll: Boolean(1),
+		cText: String(''),
+		cColor: String('000000'),
+		cSize: Number(14),
+		cPosition: String('top-left'),
+		cPositionProperty: String('inner-creative'),
+		cDefaultButton: Boolean(1),
+		cCounterTime: Number(0),
+		logoUrl: String(''),
+		logoClick: String(''),
+		delay: Number(0),
+		floating: Boolean(1),
+		animation: String("none"),
+		disableZoom: Boolean(0),
+        blockUsingReferrer: String('disabled'),
+        onTouchMoveCounter: Number(0)
+    };
+
+    if (!document.getElementById("sas_37921")) {
+        document.write('<div id="sas_37921"><div style="display:none"></div></div>');
+    } else {
+        var el = document.createElement('div');
+        el.style.display = 'none';
+        document.getElementById('sas_37921').appendChild(el);
+    }
+
+    var sas = window.sas;
+    sas.utils.cdns["http:"] = "http://ced-ns.sascdn.com";
+    sas.utils.cdns["https:"] = "https://ced-ns.sascdn.com";
+    // sas.utils.cdns["http:"] = "http://demo.smartadserver.com";
+
+    sas.utils.loadScriptCdn("/diff/templates/ts/dist/interstitial/sas-interstitial-3.0.js", {
+        async: config.isAsync, onLoad: function () {
+            newObj9478792 = new Interstitial(config);
+            newObj9478792.init();
+        }
+    });
+})();

@@ -1,0 +1,322 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,700");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+@font-face {
+  font-family: 'tempotwc';
+  src: url("/font/tempotwc.eot?nb6fu2");
+  src: url("/font/tempotwc.eot?#iefixnb6fu2") format("embedded-opentype"), url("/font/tempotwc.ttf?nb6fu2") format("truetype"), url("/font/tempotwc.woff?nb6fu2") format("woff"), url("/font/tempotwc.svg?nb6fu2#tempotwc") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="tempo-"], [class*=" tempo-"] {
+  font-family: 'tempotwc';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.tempo-windE:before {
+  content: "\e627"; }
+
+.tempo-windENE:before {
+  content: "\e628"; }
+
+.tempo-windESE:before {
+  content: "\e629"; }
+
+.tempo-windN:before {
+  content: "\e62a"; }
+
+.tempo-windNE:before {
+  content: "\e62b"; }
+
+.tempo-windNNE:before {
+  content: "\e62c"; }
+
+.tempo-windNNO:before {
+  content: "\e62d"; }
+
+.tempo-windNO:before {
+  content: "\e62e"; }
+
+.tempo-windO:before {
+  content: "\e62f"; }
+
+.tempo-windONO:before {
+  content: "\e630"; }
+
+.tempo-windOSO:before {
+  content: "\e631"; }
+
+.tempo-windS:before {
+  content: "\e632"; }
+
+.tempo-windSE:before {
+  content: "\e633"; }
+
+.tempo-windSO:before {
+  content: "\e634"; }
+
+.tempo-windSSE:before {
+  content: "\e635"; }
+
+.tempo-windSSO:before {
+  content: "\e636"; }
+
+.tempo-wind:before {
+  content: "\e616"; }
+
+.tempo-nt_mostlycloudy:before {
+  content: "\e60a"; }
+
+.tempo-mostlycloudy:before {
+  content: "\e626"; }
+
+.tempo-chanceflurries:before {
+  content: "\e600"; }
+
+.tempo-nt_rain:before {
+  content: "\e601"; }
+
+.tempo-chancesleet:before {
+  content: "\e602"; }
+
+.tempo-chancesnow:before {
+  content: "\e603"; }
+
+.tempo-chancetstorms:before {
+  content: "\e604"; }
+
+.tempo-clear:before {
+  content: "\e605"; }
+
+.tempo-cloudy:before {
+  content: "\e606"; }
+
+.tempo-flurries:before {
+  content: "\e607"; }
+
+.tempo-fog:before {
+  content: "\e608"; }
+
+.tempo-hazy:before {
+  content: "\e609"; }
+
+.tempo-mostlysunny:before {
+  content: "\e60b"; }
+
+.tempo-nt_chanceflurries:before {
+  content: "\e60c"; }
+
+.tempo-rain:before {
+  content: "\e60d"; }
+
+.tempo-nt_chancesleet:before {
+  content: "\e60e"; }
+
+.tempo-nt_chancesnow:before {
+  content: "\e60f"; }
+
+.tempo-nt_chancetstorms:before {
+  content: "\e610"; }
+
+.tempo-nt_clear:before {
+  content: "\e611"; }
+
+.tempo-nt_cloudy:before {
+  content: "\e612"; }
+
+.tempo-nt_flurries:before {
+  content: "\e613"; }
+
+.tempo-nt_fog:before {
+  content: "\e614"; }
+
+.tempo-nt_hazy:before {
+  content: "\e615"; }
+
+.tempo-nt_mostlysunny:before {
+  content: "\e617"; }
+
+.tempo-nt_partlycloudy:before {
+  content: "\e618"; }
+
+.tempo-nt_partlysunny:before {
+  content: "\e619"; }
+
+.tempo-nt_chancerain:before {
+  content: "\e61a"; }
+
+.tempo-nt_sleet:before {
+  content: "\e61b"; }
+
+.tempo-nt_snow:before {
+  content: "\e61c"; }
+
+.tempo-nt_sunny:before {
+  content: "\e61d"; }
+
+.tempo-nt_tstorms:before {
+  content: "\e61e"; }
+
+.tempo-partlycloudy:before {
+  content: "\e61f"; }
+
+.tempo-partlysunny:before {
+  content: "\e620"; }
+
+.tempo-chancerain:before {
+  content: "\e621"; }
+
+.tempo-sleet:before {
+  content: "\e622"; }
+
+.tempo-snow:before {
+  content: "\e623"; }
+
+.tempo-sunny:before {
+  content: "\e624"; }
+
+.tempo-tstorms:before {
+  content: "\e625"; }
+
+body {
+  font-family: Roboto;
+  font-size: 5vw;
+  padding: 0;
+  position: relative;
+  color: #333; }
+
+a {
+  text-decoration: none;
+  color: #111; }
+
+.headerWidget {
+  line-height: 1.1; }
+  .headerWidget .pergunta {
+    font-size: 6.5vw;
+   /* font-weight: 700;
+  color:#044ea1;*/
+    padding-bottom: 10px;
+    display: inline-block;
+    padding-right: 5px; }
+  .headerWidget .veja {
+    display: inline-block; }
+
+#tempotop {
+  height: 0;
+  padding-top: 16.5%;
+  width: 100%;
+  background-image: url(/img/weatherchannel.png);
+  background-position: right;
+  background-size: 12%;
+  background-repeat: no-repeat;
+  /*  position: absolute;
+    top:0;
+    left:0;*/
+  background-color: #fff;
+  position: relative; }
+
+#tempotop .rowCidade {
+  width: 86%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: none; }
+  #tempotop .rowCidade span {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle; }
+
+.cidade {
+  text-align: left;
+  font-size: 6vw;
+  font-weight: 700; }
+
+.atual {
+  text-align: center;
+  font-size: 7vw;
+  font-weight: 700; }
+
+.imagem {
+  width: 22%;
+  font-size: 18vw;
+  text-align: center; }
+
+.min, .max {
+  width: 12%;
+  text-align: center;
+  font-size: 4.8vw; }
+  .min em, .max em {
+    display: block;
+    font-size: 2.4vw;
+    font-style: normal;
+    padding-bottom: 2px; }
+
+.min {
+  color: #00acee; }
+
+.max {
+  color: #dd4b38; }
+
+/*
+.more {width: 7%;
+position: absolute;
+right:0;
+top:0;
+bottom:0;
+text-align: center;
+line-height: 1.85;
+}*/
+
+/*# sourceMappingURL=widget_tempo_twc.css.map */
