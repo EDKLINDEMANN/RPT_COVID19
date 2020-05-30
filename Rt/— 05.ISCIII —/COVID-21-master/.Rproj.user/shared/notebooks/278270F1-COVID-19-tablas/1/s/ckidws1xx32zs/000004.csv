@@ -1,5 +1,0 @@
-"0","library(DT)"
-"0",""
-"0","datatable(acumulados, filter = 'top', options = list("
-"0","  pageLength = 19, autoWidth = TRUE"
-"0","))"

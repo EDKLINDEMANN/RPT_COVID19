@@ -1,4 +1,0 @@
-"0","# datatable(acumula2 %>% arrange(fecha, iso, respuesta) %>% select(-change) %>%"
-"0","#             pivot_wider(names_from = respuesta, values_from = observado), "
-"0","datatable(acumula2 %>% arrange(respuesta, fecha, iso), "
-"0","          filter = 'top', options = list(pageLength = 20, autoWidth = TRUE))"
