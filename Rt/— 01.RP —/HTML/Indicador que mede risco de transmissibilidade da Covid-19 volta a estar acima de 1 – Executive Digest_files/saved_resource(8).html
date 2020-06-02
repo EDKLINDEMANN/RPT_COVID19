@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0116)https://executivedigest.sapo.pt/indicador-que-mede-risco-de-transmissibilidade-da-covid-19-volta-a-estar-acima-de-1/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><script src="./osd.js"></script><script src="./pubads_impl_2020052601.js" async=""></script><link rel="prefetch" href="https://34fe331eeb1ccdacfd95b68168688731.safeframe.googlesyndication.com/safeframe/1-0-37/html/container.html?n=2"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html?n=2"></head><body marginwidth="0" marginheight="0"><script>!function(n){function t(n){function t(n,e){n.postMessage("__adnxs_passback__h680eih1f1591000675715","*"),n.top!==n&&e<50&&setTimeout(t(n.parent,++e),0)}n&&"noad"===n.data&&t(this.parent,0)}function e(n,t,e){n.addEventListener?n.addEventListener(t,e,!1):n.attachEvent&&n.attachEvent("on"+t,e)}function o(t){var e=n.parent["__adnxs_passback__h680eih1f1591000675715"];e&&"function"==typeof e?e(t):console.log("anx-mediation: WARN > Couldn't callback into mediation with filled: ",t)}function i(t){e(n,"load",function(){m.getTargetId()?r(n,function(){setTimeout(t,0)}):setTimeout(t,0)})}function c(){ADNXSMediation.isAsync()||(s("load",c,!1),o(!0))}function a(n){var t=n.document;return n.contentDocument&&n.contentDocument.documentElement?t=n.contentDocument:n.contentWindow&&n.contentWindow.document&&(t=n.contentWindow.document),t}function r(n,t){function o(){if(u===++d)return t()}var i,c,u=0,d=0,f=m.getTargetId();try{if(i=a(n),i.querySelectorAll(f).length)return t();c=i.querySelectorAll("frame,iframe"),u=c.length}catch(n){return t()}if(0===u)return t();for(var s=0;s<u;s++){var l=c[s];e(l,"load",function(){r(l,o)})}}function u(n){f=n}e(n,"message",t);var d={wait:function(){i(c)},domready:function(){o(!0)},async:function(){}},f="wait",s=n.removeEventListener||function(t,e){n.detachEvent("on"+t,e)},l=function(){o(!1)},A=function(){o(!0)},m={noAd:l,noad:l,adFilled:A,adfilled:A,setAsync:function(){u("async"),n.ADNXSAsync=!0},isAsync:function(){return!!n.ADNXSAsync},setStrategy:u,setTargetId:function(t){n.ADNXSTargetId=t},getTargetId:function(){return n.ADNXSTargetId},ready:function(){var t=n.parent["__adnxs_passback__h680eih1f1591000675715"];(d[f]||d.wait)(t)}};n.ADNXSMediation=m,n.ADNXSAsync=!1}(this);</script>
+
+<script>
+    const buckets = [
+
+        {
+            min: 0,
+            max: 1,
+            increment: 0.01
+        },
+
+        {
+            min: 1,
+            max: 2,
+            increment: 0.02
+        },
+
+        {
+            min: 2,
+            max: 4,
+            increment: 0.05
+        },
+
+        {
+            min: 4,
+            max: 6,
+            increment: 0.10
+        },
+
+        {
+            min: 6,
+            max: 8,
+            increment: 0.20
+        },
+
+        {
+            min: 8,
+            max: 10,
+            increment: 0.50
+        },
+
+        {
+            min: 10,
+            max: 20,
+            increment: 1.00
+        },
+
+        {
+            min: 20,
+            max: 50,
+            increment: 5.00
+        },
+
+        {
+            min: 50,
+            max: 100,
+            increment: 10.00
+        },
+
+        {
+            min: 100,
+            max: 300,
+            increment: 50.00
+        },
+
+        {
+            min: 300,
+            increment: 100.00
+        }
+
+    ];
+
+
+
+var precision = 2;
+
+
+
+function priceToBucket(cpm) {
+
+    for (var i = 0; i < buckets.length; i++) {
+        var bucket = buckets[i];
+
+        if (bucket.min !== undefined && cpm < bucket.min) {
+            continue;
+        }
+
+        if (bucket.max !== undefined && cpm > bucket.max) {
+            continue;
+        }
+
+        return bucket;
+
+    }
+
+}
+
+
+
+function priceToKeyword(cpm) {
+
+    if (cpm === 0) {
+        return '0.01';
+    }
+
+    var bucket = priceToBucket(cpm);
+
+    var pow = Math.pow(10, precision + 2);
+
+    let cpmToFloor = ((cpm * pow) - (bucket.min * pow)) / (bucket.increment * pow);
+
+    let cpmTarget = ((Math.ceil(cpmToFloor)) * bucket.increment) + bucket.min;
+
+    cpmTarget = Number(cpmTarget.toFixed(10));
+
+    return cpmTarget.toFixed(precision);
+
+}
+</script>
+
+        <script async="async" src="./gpt.js"></script>
+        <script>
+            var googletag = googletag || {};
+              googletag.cmd = googletag.cmd || [];
+        </script>
+
+        <script>
+            function _getThisFrame() {
+                try {
+                    var _element = null;
+                    var topIframes = top.document.getElementsByTagName('iframe');
+                    for (var i = 0; i < topIframes.length; i++) {
+                        if (topIframes[i].contentWindow == self) {
+                            _element = topIframes[i];
+                        }
+                    }
+                    return _element;
+                } catch (e) {}
+            }
+            googletag.cmd.push(function() {
+                                dfpSizes = [];
+                     //dfpSizes.push([300, 250]);
+                  dfpSizes.push([300, 250]);
+
+                googletag.defineSlot('/125049332/Appnexus/MPU_ROS', dfpSizes,'div-1')
+                    .setTargeting('placementId', '14948217')
+                    .setTargeting('ApnPublisherName', '1449782')
+                    .setTargeting('ApnPublisherCode', 'MP_Executive_Digest')
+                    .setTargeting('appnexusBid', priceToKeyword(0.11106))
+                    .addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+                googletag.pubads().addEventListener('slotRenderEnded', function(_event)  {
+                    try {
+                        var _creativeWidth = _event.size[0];
+                        var _creativeHeight = _event.size[1];
+                        top.apntag.resizeAd(parent.document.body.id, [_creativeWidth, _creativeHeight]);
+                        window.frameElement.width = _creativeWidth;
+                        window.frameElement.height = _creativeHeight;
+                    } catch (e) {}
+                });
+            });
+        </script>
+    
+
+    
+        
+        <div id="div-1" data-google-query-id="CIHCjrGb4OkCFYmRGwodM-oOzA">
+            
+        <div id="google_ads_iframe_/125049332/Appnexus/MPU_ROS_0__container__" style="border: 0pt none; display: inline-block; width: 300px; height: 250px;"><iframe frameborder="0" src="./container(1).html" id="google_ads_iframe_/125049332/Appnexus/MPU_ROS_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="300" height="250" data-is-safeframe="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" data-google-container-id="onjk373mcgmu" style="border: 0px; vertical-align: bottom;" data-load-complete="true"></iframe></div></div>
+    
+<script>window.ADNXSMediation.ready();</script><iframe id="google_osd_static_frame_981169026178" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./saved_resource(10).html"></iframe><div><img width="0" height="0" style="display: block; margin: 0px; padding: 0px; width: 0px;"><div name="anxv" lnttag=";tv=view7-1hs;st=0;d=300x250;vc=iab;vid_ccr=1;ab=10;tag_id=14948217;cb=https%3A%2F%2Fams1-ib.adnxs.com%2Fvevent%3Fan_audit%3D0%26referrer%3Dhttps%253A%252F%252Fexecutivedigest.sapo.pt%252Findicador-que-mede-risco-de-transmissibilidade-da-covid-19-volta-a-estar-acima-de-1%252F%26e%3DwqT_3QLJC-jJBQAAAwDWAAUBCOX80vYFEMKz8p2I7bvjYBjHldiw7dKF_yMqNgl0zeSbbW68PxF0zeSbbW68PxkAAAECCA5AIREbACkRCQAxARn0JAIAANA_MPmukAc4w0xAw0xIAlCn7OdEWInYbWAAaL7-nAF4vLUFgAEBigEDVVNEkgEDRVVSmAGsAqAB-gGoAQawAQC4AQHAAQTIAQLQAQDYAQDgAQDwAQD6AUlNUF9FeGVjdXRpdmVfRGlnZXN0X0RFU0tUT1BfQVJUSUNMRV9ST1NfMzAweDI1MF9NUFVfMzAweDYwMF9IQUxGUEFHRV9Qb3MxigI8dWYoJ2EnLCAzMDYxNjAzLCAxNTkxMDAwNjc3KTt1ZigncicsIDE0NDMwNzc1MSwgMTU5MTAwMDY3Nyk7kgKtAyE0VmlrYXdqTWxvZ05FS2ZzNTBRWUFDQ0oyRzB3QURnQVFBUkl3MHhRLWE2UUIxZ0FZUGNFYUFCd0hIakd4Z0dBQVRhSUFjYkdBWkFCQUpnQkFLQUJBYWdCQTdBQkFMa0JkYXNOYkpxWnVUX0JBYTB0QzRCaWJyd195UUVBQUFBQUFBRHdQOWtCSEVLVm1qM1E3RF9nQVFDWUFnQ2dBZ0MxQWdBQUFBQzlBZ0FBQUFEZ0FnRG9BZ0Q0QWdDQUF3R1lBd0dvQTh5V2lBMjZBd2xCVFZNeE9qTTVOVEhnQTlNaGlBUUFrQVFBbUFRQndRUUFBQUFBQUFBQUFNa0VBQUFBQUFBQUFBRFlCQUR4QkFBQUFBQUFBQUFBaUFYdkhxa0ZIRUtWbWozUTdELXhCUUFBQUFBQUFBQUF3UVVBQUENQghNa0YNChRBQUFEUkIdKAgyUVUBFQkBOE9BRjRsYnFCU1lJQXhJaQEt8Hk5bXNjX1BiLWIxQldTTnZtWnBicmVhV1gyZTVZOEJqWkJLSFloRF9MS3cuLpoCiQEhd0JVM3ZRak1sb2dORUtmczUwUVlpZGh0SUFRb0FER2FtWm1abVptNVB6b0pRVTFUTVRvek9UVXhRTk1oU1J4Q2xabzkwT3dfVR2lAFcdDABZHQwAYR0MAGMdDGhlQUEu2ALGigLgAuSjSuoCdGh0dHBzOi8vZXhN2PQOAWRpZ2VzdC5zYXBvLnB0L2luZGljYWRvci1xdWUtbWVkZS1yaXNjby1kZS10cmFuc21pc3NpYmlsaWRhZGUtZGEtY292aWQtMTktdm9sdGEtYS1lc3Rhci1hY2ltYS1kZS0xL4ADAIgDAZADAJgDF6ADAaoDAMADrALIAwHYA42FJOADAOgDAPgDAYAEAJIEBi91dC92M5gEAKIEDjE4OC44Mi4xOTEuMjIzqASomwiyBBAIABABGKwCIPoBKAAwADgCuAQAwAQAyAQA0gQOOTc5NSNBTVMxOjM5NTHaBAIIAeAEAfAEp-znRIgFAZgFAKAF____________AcAFAMkFAAAAAAAA8D_SBQkJAACJUcjYBQHgBQHwBc7wDvoFBAgAEACQBgCYBgCyBpwBQk93MVc5Uk96cGMydUFLQWhCRU5ESy1BOGB2aHJfN19fNy1fOV8tX2ZfXzl1ajNHcl92AQzwaTMyY2NMNTl2M2hfN3YtXzdmaV8tMW5WNHVfMXZmdDl5ZGsxLTVjdER6dHA1MDdpYWtpUEhtcU5lYjluX216MWVacFJQNThrMDlqNTMzN0V3X3Y4X3YtYjdCQ1BOX1kzdi04SzS4BgHBBgAFxCjwP9AGmzLaBhYKEAUQHQFcEAAYAOAGAfIGAggAgAcBiAcAoAcBugcMAeg4GAAqBDEtLS3IBwDSBw0JETYwEAAYANoHBggAEAAYAA..%26s%3Dc766cb53f6ad825d5692783228219016a91d1a55;ts=1591000677;cet=0;cecb=" width="0" height="0" style="display: block; margin: 0; padding: 0; height: 0; width: 0;"><script src="./trk.js" async=""></script></div></div></body></html>
